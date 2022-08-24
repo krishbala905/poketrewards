@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:poketrewards/UI/Login.dart';
 
-import 'package:poketrewards/UI/Signup/SingUpScreen.dart';
+
 
 class MainLoginUi extends StatefulWidget {
   const MainLoginUi({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class _MainLoginUiState extends State<MainLoginUi> {
           children: [
             GestureDetector(
               onTap: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => SignupScreen()));
+
 
               },
               child: Container(
@@ -142,36 +143,42 @@ class _MainLoginUiState extends State<MainLoginUi> {
             SizedBox(
              height: 20,
             ),
-            Container(
-              width: ScreenWidth * 0.8,
-              height: 40,
+            GestureDetector(
+              onTap: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Login()));
 
-              decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  border: Border.all(color: Colors.white)
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+              },
+              child: Container(
+                width: ScreenWidth * 0.8,
+                height: 40,
 
-                  Expanded(
-                    child:
-                    Icon(Icons.login_outlined,size: 30,color: Colors.white,),
-                    flex: 1,),
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    border: Border.all(color: Colors.white)
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+
+                    Expanded(
+                      child:
+                      Icon(Icons.login_outlined,size: 30,color: Colors.white,),
+                      flex: 1,),
 
 
 
-                  Expanded(
-                    flex: 3,
-                    child:  Text('Login with Email ',style: TextStyle(
-                      color:
-                      Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),),)
-                ],
+                    Expanded(
+                      flex: 3,
+                      child:  Text('Login with Email ',style: TextStyle(
+                        color:
+                        Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),),)
+                  ],
+                ),
               ),
             ),
 
