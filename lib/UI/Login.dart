@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poketrewards/UI/Tabbar/ConsumerTab.dart';
 import 'package:poketrewards/res/Strings.dart';
 
 import '../Others/CommonUtils.dart';
@@ -30,10 +31,11 @@ class _LoginState extends State<Login> {
       backgroundColor: PoketNormalGreen,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           iconSize: 20.0,
           onPressed: () {
-            // _goBack(context);
+
+             //_goBack(context);
           },
         ),
         elevation: 0.0,
@@ -48,14 +50,14 @@ class _LoginState extends State<Login> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            decoration: BoxDecoration(color: textcolor),
+            decoration: const BoxDecoration(color: textcolor),
             height: 0.5,
           ),
-          SizedBox(
+          const SizedBox(
             height: 100,
           ),
           Container(
-            decoration: BoxDecoration(color: textcolor),
+            decoration: const BoxDecoration(color: textcolor),
             height: 0.5,
           ),
           Container(
@@ -65,11 +67,11 @@ class _LoginState extends State<Login> {
               crossAxisAlignment: CrossAxisAlignment.center,
 
               children: [
-                SizedBox(width: 25),
+                const SizedBox(width: 25),
                 Container(
                     width: 100,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
+                    child: const Padding(
+                      padding: EdgeInsets.only(top: 10.0),
                       child: Text(email,
                           style: TextStyle(
                             color: textcolor,
@@ -83,11 +85,11 @@ class _LoginState extends State<Login> {
                       cursorColor: textcolor,
                       controller: emailId_cntrl,
                       keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: textcolor,
                         fontSize: 20
                       ),
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: "",
                         border: InputBorder.none,
                       ),
@@ -95,12 +97,12 @@ class _LoginState extends State<Login> {
                   ),
                   flex: 1,
                 ),
-                SizedBox(width: 25),
+                const SizedBox(width: 25),
               ],
             ),
           ),
           Container(
-            decoration: BoxDecoration(color: textcolor),
+            decoration: const BoxDecoration(color: textcolor),
             height: 0.5,
           ),
           Container(
@@ -109,11 +111,11 @@ class _LoginState extends State<Login> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(width: 25),
+                const SizedBox(width: 25),
                 Container(
                     width: 100,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
+                    child: const Padding(
+                      padding: EdgeInsets.only(top: 10.0),
                       child: Text(password,
                           style: TextStyle(
                             color: textcolor,
@@ -128,7 +130,7 @@ class _LoginState extends State<Login> {
                       controller: pwdId_cntrl,
                       obscureText: _obscured,
                       keyboardType: TextInputType.text,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: textcolor,
                           fontSize: 20
                       ),
@@ -150,27 +152,29 @@ class _LoginState extends State<Login> {
                   ),
                   flex: 1,
                 ),
-                SizedBox(width: 25),
+                const SizedBox(width: 25),
               ],
             ),
           ),
           Container(
-            decoration: BoxDecoration(color: textcolor),
+            decoration: const BoxDecoration(color: textcolor),
             height: 0.5,
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           GestureDetector(
             onTap: () {
+              print('go');
+              Navigator.push(context, MaterialPageRoute(builder: (context ) => const ConsumerTab(),));
               // Validation
-              var email = emailId_cntrl.text.toString().trim();
-              var paswd = pwdId_cntrl.text.toString();
+              // var email = emailId_cntrl.text.toString().trim();
+              // var paswd = pwdId_cntrl.text.toString();
 
                // loginTask(email,paswd);
             },
             child: Padding(
-              padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+              padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
               child: Container(
                 height: 45,
                 decoration: BoxDecoration(
@@ -178,16 +182,16 @@ class _LoginState extends State<Login> {
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: textcolor),
                 ),
-                child: Center(
+                child: const Center(
                     child: Text(
                   loginwith,
-                  style: TextStyle(color: textcolor, fontSize: 15,fontWeight: FontWeight.bold),
+                  style: const TextStyle(color: textcolor, fontSize: 15,fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 )),
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 80,
           ),
           GestureDetector(
@@ -195,9 +199,9 @@ class _LoginState extends State<Login> {
               // Validation
               // Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassword(),));
             },
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsets.fromLTRB(35.0, 0, 35.0, 0),
-              child: Center(
+              child: const Center(
                   child: Text(
                 forgot_password,
                 style: TextStyle(color: textcolor, fontSize: 15),
