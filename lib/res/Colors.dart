@@ -21,3 +21,4 @@ const  PoketMaincolo   = Color(0xFF00ADA7);
 const PoketNormalGreen = Color(0xFF39b2a9);
 const PoketBrightGreen = Color(0xFFA1E0A9);
 const PoketBrightGreen2 = Color(0xFF4caf50);
+const PoketBrightGreen3 = Color(0xFF00ADA7);

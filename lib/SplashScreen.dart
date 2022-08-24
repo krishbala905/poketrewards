@@ -4,8 +4,16 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'Others/CommonUtils.dart';
 import 'Others/Utils.dart';
 import 'res/Colors.dart';
+import 'dart:async';
+import 'package:poketrewards/UI/MainLoginSignUpScreen.dart';
+
+import 'package:shared_preferences/shared_preferences.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
+
+
+
+
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -13,11 +21,63 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  void initState() {
+  void initState()  {
     // TODO: implement initState
     super.initState();
+   // getToken();
     Utils().getDeviceINFO();
+    hideKeyboard();
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      _setloadingPage();
+    });
+
   }
+
+  // getToken() async {
+  //   if (Platform.isAndroid) {
+  //     CommonUtils.deviceToken = await FirebaseMessaging.instance.getToken();
+  //
+  //   }
+  //   else if (Platform.isIOS) {
+  //
+  //     CommonUtils.deviceToken=await FirebaseMessaging.instance.getAPNSToken();
+  //     if (CommonUtils.deviceToken == null) {
+  //       CommonUtils.deviceToken = "NO PNS";
+  //     }
+  //
+  //   }
+  //   debugPrint("DeviceToken:"+CommonUtils.deviceToken.toString());
+  // }
+
+  _setloadingPage() async{
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    //
+    //
+    var alreadyLoggedIn=prefs.getString('alreadyLoggedIn');
+
+    CommonUtils.consumerID =prefs.getString('consumerId');
+    CommonUtils.consumerName=prefs.getString('consumerName');
+    CommonUtils.consumerEmail=prefs.getString('consumerEmail');
+    CommonUtils.deviceTokenID=prefs.getString('consumerDeviceTokenId');
+
+
+    Timer(Duration(seconds: 3), () {
+      if(alreadyLoggedIn==null){
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => MainLoginUi()));
+      }
+      else{
+      //  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => ConsumerTab()));
+      }
+
+    });
+  }
+
+
+
+
+
+
   @override
 
   Widget build(BuildContext context) {
