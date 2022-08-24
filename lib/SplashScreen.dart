@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:poketrewards/UI/Tabbar/ConsumerTab.dart';
 
 import 'Others/CommonUtils.dart';
 import 'Others/Utils.dart';
 import 'res/Colors.dart';
 import 'dart:async';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:poketrewards/UI/MainLoginSignUpScreen.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState()  {
     // TODO: implement initState
     super.initState();
-   // getToken();
+    getToken();
     Utils().getDeviceINFO();
     hideKeyboard();
     WidgetsBinding.instance.addPostFrameCallback((_){
@@ -34,21 +38,21 @@ class _SplashScreenState extends State<SplashScreen> {
 
   }
 
-  // getToken() async {
-  //   if (Platform.isAndroid) {
-  //     CommonUtils.deviceToken = await FirebaseMessaging.instance.getToken();
-  //
-  //   }
-  //   else if (Platform.isIOS) {
-  //
-  //     CommonUtils.deviceToken=await FirebaseMessaging.instance.getAPNSToken();
-  //     if (CommonUtils.deviceToken == null) {
-  //       CommonUtils.deviceToken = "NO PNS";
-  //     }
-  //
-  //   }
-  //   debugPrint("DeviceToken:"+CommonUtils.deviceToken.toString());
-  // }
+  getToken() async {
+    if (Platform.isAndroid) {
+      CommonUtils.deviceToken = await FirebaseMessaging.instance.getToken();
+
+    }
+    else if (Platform.isIOS) {
+
+      CommonUtils.deviceToken=await FirebaseMessaging.instance.getAPNSToken();
+      if (CommonUtils.deviceToken == null) {
+        CommonUtils.deviceToken = "NO PNS";
+      }
+
+    }
+    debugPrint("DeviceToken:"+CommonUtils.deviceToken.toString());
+  }
 
   _setloadingPage() async{
 
@@ -65,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer(Duration(seconds: 3), () {
       if(alreadyLoggedIn==null){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => MainLoginUi()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => ConsumerTab()));
       }
       else{
       //  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => ConsumerTab()));
