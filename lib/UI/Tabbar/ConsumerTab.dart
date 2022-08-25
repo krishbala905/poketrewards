@@ -3,7 +3,7 @@ import 'package:poketrewards/res/Colors.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:poketrewards/UI/Tabbar/AddTab.dart';
 import 'package:poketrewards/UI/Tabbar/EWalletTab.dart';
-import 'package:poketrewards/UI/Tabbar/MoreTab.dart';
+import 'package:poketrewards/UI/Tabbar/More/MoreTab.dart';
 import 'package:poketrewards/UI/Tabbar/NotificationTab.dart';
 import 'package:poketrewards/UI/Tabbar/WatsonTab.dart';
 import '../../Others/LocalNotificationService.dart';
@@ -92,8 +92,8 @@ class _ConsumerTabState extends State<ConsumerTab> {
         CurrentIndex = index),
 
         currentIndex: CurrentIndex,
-        selectedFontSize: 10,
-        unselectedFontSize: 08,
+        selectedFontSize: 12,
+        unselectedFontSize: 10,
         showUnselectedLabels: true,
         selectedItemColor: PoketMaincolo,
         unselectedItemColor: Colors.grey,
@@ -104,30 +104,30 @@ class _ConsumerTabState extends State<ConsumerTab> {
           color: Colors.grey,
         ),
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.add_rounded),
+          BottomNavigationBarItem(icon: Image.asset('assets/ic_add_normal.png',height: 25,width: 25,),
             label: 'Add',
-
+            activeIcon:new Image.asset('assets/ic_more_over.png',height: 25,width: 25,),
 
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.wallet),
+          BottomNavigationBarItem(icon: Image.asset('assets/ic_wallet_normal.png',height: 25,width: 25,),
             label: 'E-Wallet',
-
+            activeIcon:new Image.asset('assets/ic_wallet_over.png',height: 25,width: 25,),
 
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.category_rounded),
+          BottomNavigationBarItem(icon: Image.asset('assets/ic_wallet_normal.png',height: 25,width: 25,),
             label: 'Whats On',
-
-
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.notifications),
-            label: 'Notifiction',
-
+            activeIcon:new Image.asset('assets/ic_wallet_over.png',height: 25,width: 25,),
 
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.more),
+          BottomNavigationBarItem(icon: Image.asset('assets/Notification.png',height: 25,width: 25,color: Colors.black54,),
+
+            label: 'Notification',
+            activeIcon:new Image.asset('assets/ic_wallet_over.png',height: 25,width: 25,),
+
+          ),
+          BottomNavigationBarItem(icon: Image.asset('assets/ic_more_normal.png',height: 25,width: 25,),
             label: 'More',
-
-
+            activeIcon:new Image.asset('assets/ic_more_over.png',height: 25,width: 25,),
           ),
         ],
       ),
