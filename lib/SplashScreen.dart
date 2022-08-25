@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:poketrewards/UI/Tabbar/ConsumerTab.dart';
+
 
 import 'Others/CommonUtils.dart';
 import 'Others/Utils.dart';
@@ -69,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer(Duration(seconds: 3), () {
       if(alreadyLoggedIn==null){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => ConsumerTab()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => MainLoginUi()));
       }
       else{
       //  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => ConsumerTab()));

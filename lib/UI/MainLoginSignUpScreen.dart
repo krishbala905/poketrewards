@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:poketrewards/UI/Login.dart';
+import 'package:poketrewards/UI/Signup/SingUpScreen.dart';
 
 
 
@@ -34,6 +35,7 @@ class _MainLoginUiState extends State<MainLoginUi> {
             GestureDetector(
               onTap: (){
 
+                Navigator.push(context, MaterialPageRoute(builder: (_) => SignupScreen()));
 
               },
               child: Container(
@@ -145,7 +147,7 @@ class _MainLoginUiState extends State<MainLoginUi> {
             ),
             GestureDetector(
               onTap: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Login()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => Login()));
 
               },
               child: Container(

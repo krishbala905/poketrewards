@@ -3,6 +3,7 @@ import 'package:poketrewards/res/Strings.dart';
 
 import '../Others/CommonUtils.dart';
 import '../res/Colors.dart';
+import 'package:poketrewards/UI/Tabbar/ConsumerTab.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -33,6 +34,7 @@ class _LoginState extends State<Login> {
           icon: Icon(Icons.arrow_back_ios),
           iconSize: 20.0,
           onPressed: () {
+            Navigator.pop(context, true);
             // _goBack(context);
           },
         ),
@@ -163,9 +165,11 @@ class _LoginState extends State<Login> {
           ),
           GestureDetector(
             onTap: () {
+
+              Navigator.push(context, MaterialPageRoute(builder: (_) => ConsumerTab()));
               // Validation
-              var email = emailId_cntrl.text.toString().trim();
-              var paswd = pwdId_cntrl.text.toString();
+              // var email = emailId_cntrl.text.toString().trim();
+              // var paswd = pwdId_cntrl.text.toString();
 
                // loginTask(email,paswd);
             },
