@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:poketrewards/Others/CommonUtils.dart';
 import 'package:poketrewards/UI/Tabbar/More/ChangePassword.dart';
+import 'package:poketrewards/UI/Tabbar/More/History.dart';
 import 'package:poketrewards/UI/Tabbar/More/Language.dart';
 import 'package:poketrewards/UI/Tabbar/More/Privacy.dart';
+import 'package:poketrewards/UI/Tabbar/More/Profile.dart';
 import 'package:poketrewards/UI/Tabbar/More/Signout.dart';
 import 'package:poketrewards/UI/Tabbar/More/Subscribe.dart';
 import 'package:poketrewards/UI/Tabbar/More/Tellyourfriends.dart';
 import 'package:poketrewards/UI/Tabbar/More/TermsandConditions.dart';
+import 'package:poketrewards/UI/Tabbar/More/feadback.dart';
 import 'package:poketrewards/res/Colors.dart';
 
 import '../../../res/Strings.dart';
-import 'History.dart';
-import 'Profile.dart';
-import 'feadback.dart';
 
 class MoreTab extends StatefulWidget {
   const MoreTab({Key? key}) : super(key: key);
@@ -82,7 +83,7 @@ class _MoreTabState extends State<MoreTab> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
-                        child: Text(language, style: TextStyle(
+                        child: Text(lang_uage, style: TextStyle(
                             color: PoketMaincolo, fontSize: 15),)),
                   )),
             ),
@@ -187,7 +188,8 @@ class _MoreTabState extends State<MoreTab> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
-                        child: Text(signout, style: TextStyle(
+                        child: Text(signout + "  (" + CommonUtils.consumerEmail.toString() +
+                            ")", style: TextStyle(
                             color: PoketMaincolo, fontSize: 15),)),
                   )),
             ),

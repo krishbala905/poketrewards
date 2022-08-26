@@ -106,7 +106,7 @@ class _ConsumerTabState extends State<ConsumerTab> {
         items: [
           BottomNavigationBarItem(icon: Image.asset('assets/ic_add_normal.png',height: 25,width: 25,),
             label: 'Add',
-            activeIcon:new Image.asset('assets/ic_more_over.png',height: 25,width: 25,),
+            activeIcon:new Image.asset('assets/ic_add_over.png',height: 25,width: 25,),
 
           ),
           BottomNavigationBarItem(icon: Image.asset('assets/ic_wallet_normal.png',height: 25,width: 25,),
@@ -114,15 +114,15 @@ class _ConsumerTabState extends State<ConsumerTab> {
             activeIcon:new Image.asset('assets/ic_wallet_over.png',height: 25,width: 25,),
 
           ),
-          BottomNavigationBarItem(icon: Image.asset('assets/ic_wallet_normal.png',height: 25,width: 25,),
+          BottomNavigationBarItem(icon: Image.asset('assets/ic_catlogue_normal.png',height: 25,width: 25,),
             label: 'Whats On',
-            activeIcon:new Image.asset('assets/ic_wallet_over.png',height: 25,width: 25,),
+            activeIcon:new Image.asset('assets/ic_catlogue_over.png',height: 25,width: 25,),
 
           ),
           BottomNavigationBarItem(icon: Image.asset('assets/Notification.png',height: 25,width: 25,color: Colors.black54,),
 
             label: 'Notification',
-            activeIcon:new Image.asset('assets/ic_wallet_over.png',height: 25,width: 25,),
+            activeIcon:new Image.asset('assets/ic_inbox_over.png',height: 25,width: 25,),
 
           ),
           BottomNavigationBarItem(icon: Image.asset('assets/ic_more_normal.png',height: 25,width: 25,),

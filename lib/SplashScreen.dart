@@ -99,14 +99,14 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               SizedBox(
                 height: 400,
-                width: 600,
+                width: 800,
                 //height: MediaQuery.of(context).size.height,
                 // width: MediaQuery.of(context).size.width,
                 child: Image.asset('assets/splash.png',),
               ),
               SpinKitCircle(
-                color: corporateColor,
-                size: 30.0,
+                color: PoketMaincolo,
+                size: 60.0,
               ),
             ],
           ),
