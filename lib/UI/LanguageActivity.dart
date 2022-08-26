@@ -1,8 +1,11 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:poketrewards/Others/CommonUtils.dart';
 import 'package:poketrewards/res/Colors.dart';
 import 'package:poketrewards/res/Strings.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 
 enum language{english,japanese,Czech,Spanish}
 class LanguageActivity extends StatefulWidget {
@@ -119,7 +122,7 @@ language _site = language.english;
               ),
             ),
           ),
-          Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+          Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,)  ,
           SizedBox(
             height: 50,
           ),
@@ -127,6 +130,11 @@ language _site = language.english;
             onTap: () {
               var selectedlanguage = _site.toString();
               debugPrint(selectedlanguage);
+              if(selectedlanguage == "language.japanese"){
+                CommonUtils.APPLICATIONLANGUAGEID =2;
+                context.read<LanguageChangeProvider>().changeLocale("ja");
+
+              }
             },
             child: Padding(
               padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
@@ -151,4 +159,16 @@ language _site = language.english;
       ),
     ));
   }
+}
+
+class LanguageChangeProvider with ChangeNotifier{
+  Locale _currentLocale = new Locale("en");
+  Locale get currentLocale => _currentLocale;
+
+  void changeLocale (String _locale){
+    this._currentLocale = new Locale(_locale);
+    notifyListeners();
+
+  }
+
 }

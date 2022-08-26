@@ -68,6 +68,7 @@ class CommonUtils{
   static  int QRVERSION = 1;
   static  int APPLICATIONID = 1;
   static  int SELECTEDLANGUAGEPACKAGEID = 1;
+  static int APPLICATIONLANGUAGEID = 1;
 
   static String? consumerID="";
   static String? merchantID="318";

@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:poketrewards/UI/Login.dart';
 import 'package:poketrewards/UI/Signup/SingUpScreen.dart';
-import 'package:poketrewards/UI/Tabbar/More/LanguageActivity.dart';
+import 'package:poketrewards/UI/LanguageActivity.dart';
 import 'package:poketrewards/res/Colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,6 +16,7 @@ class MainLoginUi extends StatefulWidget {
 }
 
 class _MainLoginUiState extends State<MainLoginUi> {
+
   @override
   Widget build(BuildContext context) {
     double ScreenWidth = MediaQuery.of(context).size.width;
@@ -124,7 +125,7 @@ class _MainLoginUiState extends State<MainLoginUi> {
               ),
               GestureDetector(
                 onTap: () {
-
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Login()));
                 },
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(40.0, 0, 40.0, 0),
