@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
 class AddTab extends StatefulWidget {
   const AddTab({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class _AddTabState extends State<AddTab> {
       top: true,
         child:Scaffold(
 
-          appBar: AppBar(title: Text('Add',style: TextStyle(
+          appBar: AppBar(title: Text(S.of(context).add,style: TextStyle(
             fontSize: 20
 
           ),

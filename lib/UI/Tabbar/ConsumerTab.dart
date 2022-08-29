@@ -8,7 +8,7 @@ import 'package:poketrewards/UI/Tabbar/NotificationTab.dart';
 import 'package:poketrewards/UI/Tabbar/WatsonTab.dart';
 import '../../Others/LocalNotificationService.dart';
 import '../../Others/CommonUtils.dart';
-import '../MainLoginSignUpScreen.dart';
+import '../MainLoginUi.dart';
 
 class ConsumerTab extends StatefulWidget {
   const ConsumerTab({Key? key}) : super(key: key);

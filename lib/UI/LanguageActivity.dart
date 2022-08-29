@@ -1,11 +1,18 @@
 import 'dart:ffi';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:poketrewards/Others/CommonUtils.dart';
+import 'package:poketrewards/Others/LanguageChangeProvider.dart';
+import 'package:poketrewards/UI/MainLoginUi.dart';
 import 'package:poketrewards/res/Colors.dart';
 import 'package:poketrewards/res/Strings.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:share/share.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../generated/l10n.dart';
 
 enum language{english,japanese,Czech,Spanish}
 class LanguageActivity extends StatefulWidget {
@@ -24,16 +31,16 @@ language _site = language.english;
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           iconSize: 20.0,
-          onPressed: () {
-            Navigator.pop(context, true);
-            // _goBack(context);
+          onPressed: () async {
+            await  Navigator.push(context, MaterialPageRoute(builder: (_)=> MainLoginUi()));
+              // await Navigator.pushReplacement(context, new MaterialPageRoute(builder: (_) => MainLoginUi()));
           },
         ),
         elevation: 0.0,
         backgroundColor: PoketNormalGreen,
         centerTitle: true,
         title:  Text(
-          lang_uage,
+         S.of(context,).lang_uage,
           style: TextStyle(color: textcolor, fontSize: 20),
         ),
       ),
@@ -127,14 +134,33 @@ language _site = language.english;
             height: 50,
           ),
           GestureDetector(
-            onTap: () {
+            onTap: () async {
               var selectedlanguage = _site.toString();
               debugPrint(selectedlanguage);
               if(selectedlanguage == "language.japanese"){
-                CommonUtils.APPLICATIONLANGUAGEID =2;
+                CommonUtils.APPLICATIONLANGUAGEID ="2";
                 context.read<LanguageChangeProvider>().changeLocale("ja");
 
               }
+              else if(selectedlanguage == "language.english"){
+                CommonUtils.APPLICATIONLANGUAGEID = "1";
+                context.read<LanguageChangeProvider>().changeLocale("en");
+
+              }
+              else if(selectedlanguage == "language.Czech"){
+                CommonUtils.APPLICATIONLANGUAGEID = "3";
+                context.read<LanguageChangeProvider>().changeLocale("cs");
+              }
+              else if(selectedlanguage == "language.Spanish"){
+                CommonUtils.APPLICATIONLANGUAGEID = "4";
+                context.read<LanguageChangeProvider>().changeLocale("es");
+              }
+              else{
+                debugPrint("anything Pressed");
+              }
+              SharedPreferences pre=await SharedPreferences.getInstance();
+              pre.setString("ApplicationLanguageId", CommonUtils.APPLICATIONLANGUAGEID.toString());
+              print("langId2:"+CommonUtils.APPLICATIONLANGUAGEID.toString());
             },
             child: Padding(
               padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
@@ -161,14 +187,4 @@ language _site = language.english;
   }
 }
 
-class LanguageChangeProvider with ChangeNotifier{
-  Locale _currentLocale = new Locale("en");
-  Locale get currentLocale => _currentLocale;
 
-  void changeLocale (String _locale){
-    this._currentLocale = new Locale(_locale);
-    notifyListeners();
-
-  }
-
-}

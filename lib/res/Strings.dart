@@ -25,6 +25,16 @@ const eng_lish = "English";
 const jap_anese = "Japanese";
 const cze_ch ="Czech";
 const spa_nish = "Spanish";
+const Bysigningyoutoagreethe = "By Signing you to agree the";
+const termsofservice = "Terms of Service";
+const and = "&";
+const privacypolicy = " Privacy Policy";
+const add = "Add";
+const e_wallet = "E-wallet";
+const whatson = "Whats On";
+const notify = "Notification";
+
+
 
 
 

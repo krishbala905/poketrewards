@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
 class WatsonTab extends StatefulWidget {
   const WatsonTab({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class _WatsonTabState extends State<WatsonTab> {
   Widget build(BuildContext context) {
     return SafeArea(
       child:Scaffold(
-        appBar: AppBar(title: Text('Whatson',style: TextStyle(
+        appBar: AppBar(title: Text(S.of(context).whatson,style: TextStyle(
             fontSize: 20,
 
         ),

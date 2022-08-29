@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
 class EwalletTab extends StatefulWidget {
   const EwalletTab({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class _EwalletTabState extends State<EwalletTab> {
   Widget build(BuildContext context) {
     return SafeArea(
       child:Scaffold(
-        appBar: AppBar(title: Text('E-Wallet',style: TextStyle(
+        appBar: AppBar(title: Text(S.of(context).e_wallet,style: TextStyle(
             fontSize: 20,
 
         ),

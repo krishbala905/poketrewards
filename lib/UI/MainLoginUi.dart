@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:poketrewards/UI/Login.dart';
 import 'package:poketrewards/UI/Signup/SingUpScreen.dart';
 import 'package:poketrewards/UI/LanguageActivity.dart';
+import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../res/Strings.dart';
 
 class MainLoginUi extends StatefulWidget {
-  const MainLoginUi({Key? key}) : super(key: key);
+  const MainLoginUi( {Key? key,}) : super(key: key);
 
   @override
   State<MainLoginUi> createState() => _MainLoginUiState();
@@ -62,6 +63,7 @@ class _MainLoginUiState extends State<MainLoginUi> {
                   Expanded(
                     flex: 3,
                     child: Text(
+                      S.of(context).
                       signupwithemail,
                       style: TextStyle(
                         color: PoketNormalGreen,
@@ -106,7 +108,7 @@ class _MainLoginUiState extends State<MainLoginUi> {
                         SizedBox( width: 15,),
                         Expanded(
                           flex: 3,
-                          child: Text(
+                          child: Text( S.of(context).
                             connectwithfb,
                             style: TextStyle(
                               color: PoketNormalGreen,
@@ -151,7 +153,7 @@ class _MainLoginUiState extends State<MainLoginUi> {
                         SizedBox( width: 15,),
                         Expanded(
                           flex: 3,
-                          child: Text(
+                          child: Text(S.of(context).
                             loginby,
                             style: TextStyle(
                               color: Colors.white,
@@ -184,14 +186,14 @@ class _MainLoginUiState extends State<MainLoginUi> {
                           textAlign: TextAlign.center,
                             text: new TextSpan(children: [
                               new TextSpan(
-                                text: 'By signning in you agree to the ',
+                                text: S.of(context).Bysigningyoutoagreethe,
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: PoketNormalGreen,
                                 ),
                               ),
                               new TextSpan(
-                                  text: 'Terms of Service',
+                                  text: S.of(context).termsofservice,
                                   style: new TextStyle(color: PoketNormalGreen,
                                       fontSize: 12,
                                       decoration: TextDecoration.underline,decorationThickness: 2),
@@ -201,14 +203,14 @@ class _MainLoginUiState extends State<MainLoginUi> {
                                       if (await canLaunch(url)) launch(url);
                                     }),
                               new TextSpan(
-                                text: ' &',
+                                text: S.of(context).and,
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: PoketNormalGreen,
                                 ),
                               ),
                               new TextSpan(
-                                  text: ' Privacy Policy',
+                                  text: S.of(context).privacypolicy,
                                   style: new TextStyle(color: PoketNormalGreen,fontSize: 12,
                                       decoration: TextDecoration.underline,decorationThickness: 2),
                                   recognizer: new TapGestureRecognizer()
@@ -261,7 +263,7 @@ class _MainLoginUiState extends State<MainLoginUi> {
                         ),
                         Expanded(
                           flex: 3,
-                          child: Text(
+                          child: Text( S.of(context).
                             english,
                             textAlign: TextAlign.center,
                             style: TextStyle(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:poketrewards/UI/LanguageActivity.dart';
+import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Strings.dart';
 
 import '../Others/CommonUtils.dart';
@@ -41,7 +43,7 @@ class _LoginState extends State<Login> {
         elevation: 0.0,
         backgroundColor: PoketNormalGreen,
         centerTitle: true,
-        title: const Text(
+        title:  Text( S.of(context).
           login,
           style: TextStyle(color: textcolor, fontSize: 20),
         ),
@@ -72,7 +74,7 @@ class _LoginState extends State<Login> {
                     width: 100,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 10.0),
-                      child: Text(email,
+                      child: Text(S.of(context).email,
                           style: TextStyle(
                             color: textcolor,
                             fontSize: 15,
@@ -116,7 +118,7 @@ class _LoginState extends State<Login> {
                     width: 100,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 10.0),
-                      child: Text(password,
+                      child: Text(S.of(context).password,
                           style: TextStyle(
                             color: textcolor,
                             fontSize: 15,
@@ -183,7 +185,7 @@ class _LoginState extends State<Login> {
                   border: Border.all(color: textcolor),
                 ),
                 child: Center(
-                    child: Text(
+                    child: Text( S.of(context).
                   loginwith,
                   style: TextStyle(color: textcolor, fontSize: 15,fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
@@ -202,7 +204,7 @@ class _LoginState extends State<Login> {
             child: Padding(
               padding: EdgeInsets.fromLTRB(35.0, 0, 35.0, 0),
               child: Center(
-                  child: Text(
+                  child: Text(S.of(context).
                 forgot_password,
                 style: TextStyle(color: textcolor, fontSize: 15),
                 textAlign: TextAlign.center,

@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:poketrewards/Others/LanguageChangeProvider.dart';
+import 'package:provider/provider.dart';
 
 
 import 'Others/CommonUtils.dart';
@@ -9,7 +11,7 @@ import 'Others/Utils.dart';
 import 'res/Colors.dart';
 import 'dart:async';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:poketrewards/UI/MainLoginSignUpScreen.dart';
+import 'package:poketrewards/UI/MainLoginUi.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -65,6 +67,29 @@ class _SplashScreenState extends State<SplashScreen> {
     CommonUtils.consumerName=prefs.getString('consumerName');
     CommonUtils.consumerEmail=prefs.getString('consumerEmail');
     CommonUtils.deviceTokenID=prefs.getString('consumerDeviceTokenId');
+    CommonUtils.APPLICATIONLANGUAGEID=prefs.getString('ApplicationLanguageId');
+    print("langId:"+CommonUtils.APPLICATIONLANGUAGEID.toString());
+    if(CommonUtils.APPLICATIONLANGUAGEID=="1"){
+      CommonUtils.APPLICATIONLANGUAGECOUNTRY="en";
+      context.read<LanguageChangeProvider>().changeLocale("en");
+    }
+    else if(CommonUtils.APPLICATIONLANGUAGEID=="2"){
+      CommonUtils.APPLICATIONLANGUAGECOUNTRY="ja";
+      context.read<LanguageChangeProvider>().changeLocale("ja");
+    }
+
+    else if(CommonUtils.APPLICATIONLANGUAGEID=="3"){
+      CommonUtils.APPLICATIONLANGUAGECOUNTRY="cs";
+      context.read<LanguageChangeProvider>().changeLocale("cs");
+    }
+    else if(CommonUtils.APPLICATIONLANGUAGEID=="4"){
+      CommonUtils.APPLICATIONLANGUAGECOUNTRY="es";
+      context.read<LanguageChangeProvider>().changeLocale("es");
+    }
+    else{
+      CommonUtils.APPLICATIONLANGUAGECOUNTRY="en";
+      context.read<LanguageChangeProvider>().changeLocale("en");
+    }
 
 
     Timer(Duration(seconds: 3), () {

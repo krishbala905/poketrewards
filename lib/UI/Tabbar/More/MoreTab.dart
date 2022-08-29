@@ -10,6 +10,7 @@ import 'package:poketrewards/UI/Tabbar/More/Subscribe.dart';
 import 'package:poketrewards/UI/Tabbar/More/Tellyourfriends.dart';
 import 'package:poketrewards/UI/Tabbar/More/TermsandConditions.dart';
 import 'package:poketrewards/UI/Tabbar/More/feadback.dart';
+import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
 
 import '../../../res/Strings.dart';
@@ -27,7 +28,7 @@ class _MoreTabState extends State<MoreTab> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: Text(S.of(context).
             more_appbar,
             style: TextStyle(
               fontSize: 20,
@@ -53,7 +54,7 @@ class _MoreTabState extends State<MoreTab> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
-                        child: Text(profile, style: TextStyle(
+                        child: Text(S.of(context).profile, style: TextStyle(
                             color: PoketMaincolo, fontSize: 15),)),
                   )),
             ),
@@ -68,7 +69,7 @@ class _MoreTabState extends State<MoreTab> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
-                        child: Text(history, style: TextStyle(
+                        child: Text(S.of(context).history, style: TextStyle(
                             color: PoketMaincolo, fontSize: 15),)),
                   )),
             ),
@@ -83,7 +84,7 @@ class _MoreTabState extends State<MoreTab> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
-                        child: Text(lang_uage, style: TextStyle(
+                        child: Text(S.of(context).lang_uage, style: TextStyle(
                             color: PoketMaincolo, fontSize: 15),)),
                   )),
             ),
@@ -98,7 +99,7 @@ class _MoreTabState extends State<MoreTab> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
-                        child: Text(change_password, style: TextStyle(
+                        child: Text(S.of(context).change_password, style: TextStyle(
                             color: PoketMaincolo, fontSize: 15),)),
                   )),
             ),
@@ -113,7 +114,7 @@ class _MoreTabState extends State<MoreTab> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
-                        child: Text(feed_back, style: TextStyle(
+                        child: Text(S.of(context).feed_back, style: TextStyle(
                             color: PoketMaincolo, fontSize: 15),)),
                   )),
             ),
@@ -128,7 +129,7 @@ class _MoreTabState extends State<MoreTab> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
-                        child: Text(tell_your_friends, style: TextStyle(
+                        child: Text(S.of(context).tell_your_friends, style: TextStyle(
                             color: PoketMaincolo, fontSize: 15),)),
                   )),
             ),
@@ -143,7 +144,7 @@ class _MoreTabState extends State<MoreTab> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
-                        child: Text(privacy, style: TextStyle(
+                        child: Text(S.of(context).privacy, style: TextStyle(
                             color: PoketMaincolo, fontSize: 15),)),
                   )),
             ),
@@ -158,7 +159,7 @@ class _MoreTabState extends State<MoreTab> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
-                        child: Text(termsandconditions, style: TextStyle(
+                        child: Text(S.of(context).termsandconditions, style: TextStyle(
                             color: PoketMaincolo, fontSize: 15),)),
                   )),
             ),
@@ -173,7 +174,7 @@ class _MoreTabState extends State<MoreTab> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
-                        child: Text(subscribe, style: TextStyle(
+                        child: Text(S.of(context).subscribe, style: TextStyle(
                             color: PoketMaincolo, fontSize: 15),)),
                   )),
             ),
@@ -188,7 +189,7 @@ class _MoreTabState extends State<MoreTab> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
-                        child: Text(signout + "  (" + CommonUtils.consumerEmail.toString() +
+                        child: Text(S.of(context).signout + "  (" + CommonUtils.consumerEmail.toString() +
                             ")", style: TextStyle(
                             color: PoketMaincolo, fontSize: 15),)),
                   )),
