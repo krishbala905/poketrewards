@@ -21,12 +21,14 @@ class _AddTabState extends State<AddTab> {
           appBar: AppBar(title: Text(S.of(context).add,style: TextStyle(
             fontSize: 20
 
+
           ),
 
           ),
           //elevation: 0.0,
+            centerTitle: true,
           backgroundColor: PoketMaincolo,),
-          backgroundColor:  PoketMaincolo,
+          backgroundColor:  Colors.white,
         ),
 
     );

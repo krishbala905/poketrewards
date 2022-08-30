@@ -33,6 +33,16 @@ const add = "Add";
 const e_wallet = "E-wallet";
 const whatson = "Whats On";
 const notify = "Notification";
+const ok ="OK";
+const alert="Alert";
+const enter_empty_email="Please Enter Email Address";
+const enter_empty_pwd="Please Enter Password";
+const enter_valid_email="Please Enter Valid Email";
+const enter_valid_pwd="Please Enter Valid Password";
+const something_went_wrong="Something went wrong";
+const forgott_password = "Forgot Password";
+const please_enter_your_email_address_to_reset_your_passworrd = "Please enter your email address to reset your password";
+const reset_password = "RESET PASSWORD";
 
 
 

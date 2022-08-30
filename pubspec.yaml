@@ -59,6 +59,7 @@ dependencies:
   firebase_core: ^1.20.0
   share: ^2.0.1
   share_plus: ^4.0.10+1
+  xml2json: ^5.3.4
 
 
 dev_dependencies:

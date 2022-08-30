@@ -17,8 +17,8 @@ class _NotificationTabState extends State<NotificationTab> {
             fontSize: 20,
           color: Colors.white
         ),
-        ), backgroundColor: PoketMaincolo,),
-        backgroundColor:  PoketMaincolo,
+        ), centerTitle: true,backgroundColor: PoketMaincolo,),
+        backgroundColor:  Colors.white,
       ),
 
     );
