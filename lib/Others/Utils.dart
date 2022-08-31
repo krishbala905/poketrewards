@@ -88,8 +88,6 @@ class Utils {
     };
   }
 
-
-
   String getTimeStamp(){
     DateTime _now = DateTime.now();
     CommonUtils.timeStamp='${_now.hour}:${_now.minute}:${_now.second}.${_now.millisecond}';

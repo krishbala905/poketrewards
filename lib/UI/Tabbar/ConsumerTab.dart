@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:poketrewards/res/Colors.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:poketrewards/UI/Tabbar/AddTab.dart';
-import 'package:poketrewards/UI/Tabbar/EWalletTab.dart';
+import 'package:poketrewards/UI/Tabbar/Add/AddTab.dart';
+import 'package:poketrewards/UI/Tabbar/Wallet/EWalletTab.dart';
 import 'package:poketrewards/UI/Tabbar/More/MoreTab.dart';
-import 'package:poketrewards/UI/Tabbar/NotificationTab.dart';
-import 'package:poketrewards/UI/Tabbar/WatsonTab.dart';
+import 'package:poketrewards/UI/Tabbar/Inbox/InboxTab.dart';
+import 'package:poketrewards/UI/Tabbar/Catalogue/WatsonTab.dart';
 import '../../Others/LocalNotificationService.dart';
 import '../../Others/CommonUtils.dart';
 import '../MainLoginUi.dart';
@@ -26,7 +26,7 @@ class _ConsumerTabState extends State<ConsumerTab> {
     AddTab(),
     EwalletTab(),
     WatsonTab(),
-    NotificationTab(),
+    InboxTab(),
     MoreTab(),
 
   ];

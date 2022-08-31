@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
-class NotificationTab extends StatefulWidget {
-  const NotificationTab({Key? key}) : super(key: key);
+class InboxTab extends StatefulWidget {
+  const InboxTab({Key? key}) : super(key: key);
 
   @override
-  State<NotificationTab> createState() => _NotificationTabState();
+  State<InboxTab> createState() => _InboxTabState();
 }
 
-class _NotificationTabState extends State<NotificationTab> {
+class _InboxTabState extends State<InboxTab> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
