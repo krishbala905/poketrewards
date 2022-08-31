@@ -43,6 +43,14 @@ const something_went_wrong="Something went wrong";
 const forgott_password = "Forgot Password";
 const please_enter_your_email_address_to_reset_your_passworrd = "Please enter your email address to reset your password";
 const reset_password = "RESET PASSWORD";
+const changePassword = "Change Password";
+const oldpassword = "Old Password";
+const newpassword = "New Password";
+const confirmpassword = "Confirm Password";
+const please_enter_old_pwd = "Please enter old password";
+const please_enter_new_pwd = "Please enter new password";
+const please_enter_confrim_pwd = "Please enter confirm password";
+const new_confirm_pwd_mismatch = "Password mismatch!";
 
 
 

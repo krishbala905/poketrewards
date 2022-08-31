@@ -11,6 +11,7 @@ import 'package:poketrewards/UI/Onboarding.dart';
 import 'package:poketrewards/UI/Tabbar/ConsumerTab.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:poketrewards/generated/l10n.dart';
+import 'package:poketrewards/res/Colors.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
        child: Builder(
          builder: (context)=>
           MaterialApp(
-    locale: Provider.of<LanguageChangeProvider>(context,listen: true).currentLocale,
+          locale: Provider.of<LanguageChangeProvider>(context,listen: true).currentLocale,
           localizationsDelegates: [
             S.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -75,10 +76,10 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: S.delegate.supportedLocales,
 
-           title: 'Flutter Demo',
+          title: 'Poket Rewards',
           theme: ThemeData(
 
-            primarySwatch: Colors.blue,
+            primaryColor: corporateColor,
           ),
             home: const SplashScreen(),
       ),

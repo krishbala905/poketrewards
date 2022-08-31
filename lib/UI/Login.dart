@@ -310,27 +310,30 @@ class _LoginState extends State<Login> {
       print("1:" + jsonstring);
       Map<String, dynamic> data = await jsonDecode(jsonstring)["info"];
       var status = stringSplit(data['p1']);
-      var consId = stringSplit(data['p2']);
-      var name = stringSplit(data['p3']);
-      var devTokenId = stringSplit(data['p4']);
       var messg = stringSplit(data['p5']);
-      var p6 = stringSplit(data['p6']);
-      var p7 = stringSplit(data['p7']);
-      var gender = stringSplit(data['p8']);
-      var profileImg = stringSplit(data['p9']);
-      ;
-      var mobNmbr = stringSplit(data['p10']);
-      var firstPag = stringSplit(data['p11']);
+
       if (status == "1") {
+
+        var consId = stringSplit(data['p2']);
+        var name = stringSplit(data['p3']);
+        var devTokenId = stringSplit(data['p4']);
+
+        var p6 = stringSplit(data['p6']);
+        var p7 = stringSplit(data['p7']);
+        var gender = stringSplit(data['p8']);
+        var profileImg = stringSplit(data['p9']);
+
+        var mobNmbr = stringSplit(data['p10']);
+        var firstPag = stringSplit(data['p11']);
         print(status);
-        CommonUtils.consumerID = data['p2'].toString();
-        CommonUtils.consumerName = data['p3'].toString();
-        CommonUtils.consumerGender = data['p8'].toString();
-        CommonUtils.consumerProfileImageUrl = data['p9'].toString();
-        CommonUtils.consumermobileNumber = data['p10'].toString();
-        CommonUtils.consumerIntialScreen = data['p11'].toString();
+        CommonUtils.consumerID = consId;
+        CommonUtils.consumerName = name;
+        CommonUtils.consumerGender = gender;
+        CommonUtils.consumerProfileImageUrl = profileImg;
+        CommonUtils.consumermobileNumber = mobNmbr;
+        CommonUtils.consumerIntialScreen = firstPag;
         CommonUtils.consumerEmail = email;
-        CommonUtils.deviceTokenID = data['p4'].toString();
+        CommonUtils.deviceTokenID =devTokenId;
 
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('alreadyLoggedIn', "1");
