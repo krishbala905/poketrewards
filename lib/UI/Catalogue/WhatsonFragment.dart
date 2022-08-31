@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
-class EwalletTab extends StatefulWidget {
-  const EwalletTab({Key? key}) : super(key: key);
+class WhatsOnFragment extends StatefulWidget {
+  const WhatsOnFragment({Key? key}) : super(key: key);
 
   @override
-  State<EwalletTab> createState() => _EwalletTabState();
+  State<WhatsOnFragment> createState() => _WhatsOnFragmentState();
 }
 
-class _EwalletTabState extends State<EwalletTab> {
+class _WhatsOnFragmentState extends State<WhatsOnFragment> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child:Scaffold(
-        appBar: AppBar(title: Text(S.of(context).e_wallet,style: TextStyle(
+        appBar: AppBar(automaticallyImplyLeading:false,
+          title: Text(S.of(context).whatson,style: TextStyle(
             fontSize: 20,
 
-        ),
-        ),
+        ),),
           centerTitle: true,backgroundColor: corporateColor, ),
         backgroundColor:  Colors.white,
       ),

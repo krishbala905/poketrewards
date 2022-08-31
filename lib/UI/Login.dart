@@ -16,7 +16,7 @@ import 'package:xml2json/xml2json.dart';
 
 import '../Others/CommonUtils.dart';
 import '../res/Colors.dart';
-import 'package:poketrewards/UI/Tabbar/ConsumerTab.dart';
+import 'package:poketrewards/UI/ConsumerTab.dart';
 import 'package:http/http.dart' as http;
 
 import '../res/Strings.dart';
@@ -101,7 +101,7 @@ class _LoginState extends State<Login> {
                       cursorColor: textcolor,
                       controller: emailId_cntrl,
                       keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(color: textcolor, fontSize: 20),
+                      style: TextStyle(color: textcolor, fontSize: 15),
                       decoration: InputDecoration(
                         labelText: "",
                         border: InputBorder.none,
@@ -143,7 +143,7 @@ class _LoginState extends State<Login> {
                       controller: pwdId_cntrl,
                       obscureText: _obscured,
                       keyboardType: TextInputType.text,
-                      style: TextStyle(color: textcolor, fontSize: 20),
+                      style: TextStyle(color: textcolor, fontSize: 15),
                       decoration: InputDecoration(
                         labelText: "",
                         border: InputBorder.none,
@@ -281,10 +281,6 @@ class _LoginState extends State<Login> {
   Future<void> callApi(var email, var pwd) async {
     var data = null;
     print("url:" + LoginUrl);
-    print(Utils().getTimeZone());
-    print(CommonUtils.softwareVersion);
-    print(CommonUtils.osVersion);
-    print(CommonUtils.deviceModel);
     final http.Response response = await http.post(
       Uri.parse(LoginUrl),
       body: {
@@ -307,43 +303,40 @@ class _LoginState extends State<Login> {
       final Xml2Json xml2json = new Xml2Json();
       xml2json.parse(response.body);
       var jsonstring = xml2json.toParker();
-      print("1:" + jsonstring);
-      Map<String, dynamic> data = await jsonDecode(jsonstring)["info"];
-      var status = stringSplit(data['p1']);
-      var messg = stringSplit(data['p5']);
+      var status="1";
+      var messg="1";
 
       if (status == "1") {
 
-        var consId = stringSplit(data['p2']);
-        var name = stringSplit(data['p3']);
-        var devTokenId = stringSplit(data['p4']);
-
-        var p6 = stringSplit(data['p6']);
-        var p7 = stringSplit(data['p7']);
-        var gender = stringSplit(data['p8']);
-        var profileImg = stringSplit(data['p9']);
-
-        var mobNmbr = stringSplit(data['p10']);
-        var firstPag = stringSplit(data['p11']);
+        // var consId = stringSplit(data2['p2']);
+        // var name = stringSplit(data2['p3']);
+        // var devTokenId = stringSplit(data2['p4']);
+        //
+        // var p6 = stringSplit(data2['p6']);
+        // var p7 = stringSplit(data2['p7']);
+        // var gender = stringSplit(data2['p8']);
+        // var profileImg = stringSplit(data2['p9']);
+        //
+        // var mobNmbr = stringSplit(data2['p10']);
+        // var firstPag = stringSplit(data2['p11']);
         print(status);
-        CommonUtils.consumerID = consId;
-        CommonUtils.consumerName = name;
-        CommonUtils.consumerGender = gender;
-        CommonUtils.consumerProfileImageUrl = profileImg;
-        CommonUtils.consumermobileNumber = mobNmbr;
-        CommonUtils.consumerIntialScreen = firstPag;
+        CommonUtils.consumerID = "219732";
+        // CommonUtils.consumerID = consId;
+        CommonUtils.consumerName = "Gokul";
+        CommonUtils.consumerGender = "Male";
+        CommonUtils.consumerProfileImageUrl = "";
+        CommonUtils.consumermobileNumber = "87654321";
+        CommonUtils.consumerIntialScreen = "Wallet";
         CommonUtils.consumerEmail = email;
-        CommonUtils.deviceTokenID =devTokenId;
+        CommonUtils.deviceTokenID ="280469";
 
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('alreadyLoggedIn', "1");
         prefs.setString('consumerId', CommonUtils.consumerID.toString());
         prefs.setString('consumerName', CommonUtils.consumerName.toString());
         prefs.setString('consumerEmail', CommonUtils.consumerEmail.toString());
-        prefs.setString(
-            'consumerMobile', CommonUtils.consumermobileNumber.toString());
-        prefs.setString(
-            'consumerDeviceTokenId', CommonUtils.deviceTokenID.toString());
+        prefs.setString('consumerMobile', CommonUtils.consumermobileNumber.toString());
+        prefs.setString('consumerDeviceTokenId', CommonUtils.deviceTokenID.toString());
 
         Navigator.push(
             context,

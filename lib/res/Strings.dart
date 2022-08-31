@@ -47,6 +47,7 @@ const changePassword = "Change Password";
 const oldpassword = "Old Password";
 const newpassword = "New Password";
 const confirmpassword = "Confirm Password";
+const create_new_Account = "Create New Account";
 const please_enter_old_pwd = "Please enter old password";
 const please_enter_new_pwd = "Please enter new password";
 const please_enter_confrim_pwd = "Please enter confirm password";

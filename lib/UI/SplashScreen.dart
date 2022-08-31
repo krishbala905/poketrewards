@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:poketrewards/Others/LanguageChangeProvider.dart';
-import 'package:poketrewards/UI/Tabbar/ConsumerTab.dart';
+import 'package:poketrewards/UI/ConsumerTab.dart';
 import 'package:provider/provider.dart';
 
 

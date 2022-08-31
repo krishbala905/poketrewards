@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../res/Strings.dart';
+
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
 
@@ -12,7 +14,7 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
       appBar: AppBar(
-        title: Text('Create New Account'),centerTitle:true,backgroundColor: Colors.pink,
+        title: Text(create_new_Account),centerTitle:true,backgroundColor: Colors.pink,
       ),
       body: Container(
         color: Colors.white,

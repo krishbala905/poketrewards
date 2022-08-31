@@ -1,33 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:poketrewards/Others/CommonUtils.dart';
-import 'package:poketrewards/UI/Tabbar/More/ChangePassword.dart';
-import 'package:poketrewards/UI/Tabbar/More/History.dart';
-import 'package:poketrewards/UI/Tabbar/More/Language.dart';
-import 'package:poketrewards/UI/Tabbar/More/Privacy.dart';
-import 'package:poketrewards/UI/Tabbar/More/Profile.dart';
-import 'package:poketrewards/UI/Tabbar/More/Signout.dart';
-import 'package:poketrewards/UI/Tabbar/More/Subscribe.dart';
-import 'package:poketrewards/UI/Tabbar/More/Tellyourfriends.dart';
-import 'package:poketrewards/UI/Tabbar/More/TermsandConditions.dart';
-import 'package:poketrewards/UI/Tabbar/More/feadback.dart';
+import 'package:poketrewards/UI/More/ChangePassword.dart';
+import 'package:poketrewards/UI/More/History.dart';
+import 'package:poketrewards/UI/More/Language.dart';
+import 'package:poketrewards/UI/More/Privacy.dart';
+import 'package:poketrewards/UI/More/Profile.dart';
+import 'package:poketrewards/UI/More/Signout.dart';
+import 'package:poketrewards/UI/More/Subscribe.dart';
+import 'package:poketrewards/UI/More/Tellyourfriends.dart';
+import 'package:poketrewards/UI/More/TermsandConditions.dart';
+import 'package:poketrewards/UI/More/feadback.dart';
 import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
 
 import '../../../res/Strings.dart';
 
-class MoreTab extends StatefulWidget {
-  const MoreTab({Key? key}) : super(key: key);
+class MoreFragment extends StatefulWidget {
+  const MoreFragment({Key? key}) : super(key: key);
 
   @override
-  State<MoreTab> createState() => _MoreTabState();
+  State<MoreFragment> createState() => _MoreFragmentState();
 }
 
-class _MoreTabState extends State<MoreTab> {
+class _MoreFragmentState extends State<MoreFragment> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading:false,
           title: Text(S.of(context).
             more_appbar,
             style: TextStyle(

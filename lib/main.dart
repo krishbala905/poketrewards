@@ -8,7 +8,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart' show Firebase;
 import 'package:poketrewards/UI/LanguageActivity.dart';
 import 'package:poketrewards/UI/Onboarding.dart';
-import 'package:poketrewards/UI/Tabbar/ConsumerTab.dart';
+import 'package:poketrewards/UI/ConsumerTab.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';

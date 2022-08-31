@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
-class AddTab extends StatefulWidget {
-  const AddTab({Key? key}) : super(key: key);
+class AddFragment extends StatefulWidget {
+  const AddFragment({Key? key}) : super(key: key);
 
   @override
-  State<AddTab> createState() => _AddTabState();
+  State<AddFragment> createState() => _AddFragmentState();
 }
 
-class _AddTabState extends State<AddTab> {
+class _AddFragmentState extends State<AddFragment> {
 
   
   
@@ -17,12 +17,10 @@ class _AddTabState extends State<AddTab> {
     return SafeArea(
       top: true,
         child:Scaffold(
-
-          appBar: AppBar(title: Text(S.of(context).add,style: TextStyle(
-            fontSize: 20
-
-
-          ),
+          appBar: AppBar(
+            automaticallyImplyLeading:false,
+            title: Text(S.of(context).add,style: TextStyle(
+            fontSize: 20),
 
           ),
           //elevation: 0.0,
