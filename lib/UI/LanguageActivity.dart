@@ -4,7 +4,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:poketrewards/Others/CommonUtils.dart';
 import 'package:poketrewards/Others/LanguageChangeProvider.dart';
-import 'package:poketrewards/UI/MainLoginUi.dart';
+import 'package:poketrewards/UI/Onboarding.dart';
+import 'package:poketrewards/UI/SplashScreen.dart';
 import 'package:poketrewards/res/Colors.dart';
 import 'package:poketrewards/res/Strings.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -32,12 +33,12 @@ language _site = language.english;
           icon: Icon(Icons.arrow_back_ios),
           iconSize: 20.0,
           onPressed: () async {
-            await  Navigator.push(context, MaterialPageRoute(builder: (_)=> MainLoginUi()));
-              // await Navigator.pushReplacement(context, new MaterialPageRoute(builder: (_) => MainLoginUi()));
+            await  Navigator.push(context, MaterialPageRoute(builder: (_)=> SplashScreen()));
+
           },
         ),
         elevation: 0.0,
-        backgroundColor: PoketNormalGreen,
+        backgroundColor: corporateColor2,
         centerTitle: true,
         title:  Text(
          S.of(context,).lang_uage,
@@ -52,7 +53,7 @@ language _site = language.english;
           ),
           Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
           Ink(
-            color: _site == language.english? PoketMaincolo : Colors.transparent,
+            color: _site == language.english? corporateColor : Colors.transparent,
             child: ListTile(
               title:  Text(eng_lish,style: TextStyle(
                   fontSize: 18
@@ -74,7 +75,7 @@ language _site = language.english;
           ),
           Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
           Ink(
-            color: _site == language.japanese? PoketMaincolo : Colors.transparent,
+            color: _site == language.japanese? corporateColor : Colors.transparent,
             child: ListTile(
               title:  Text(jap_anese,style: TextStyle(
                   fontSize: 18
@@ -93,7 +94,7 @@ language _site = language.english;
           ),
           Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
           Ink(
-            color: _site == language.Czech? PoketMaincolo : Colors.transparent,
+            color: _site == language.Czech? corporateColor : Colors.transparent,
             child: ListTile(
               title:  Text(cze_ch,style: TextStyle(
                   fontSize: 18
@@ -112,7 +113,7 @@ language _site = language.english;
           ),
           Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
           Ink(
-            color: _site == language.Spanish? PoketMaincolo : Colors.transparent,
+            color: _site == language.Spanish? corporateColor : Colors.transparent,
             child: ListTile(
               title:  Text(spa_nish,style: TextStyle(
                   fontSize: 18
@@ -167,7 +168,7 @@ language _site = language.english;
               child: Container(
                 height: 45,
                 decoration: BoxDecoration(
-                  color: PoketMaincolo,
+                  color: corporateColor,
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: textcolor),
                 ),

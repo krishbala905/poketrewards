@@ -19,10 +19,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      appBar: AppBar(backgroundColor: PoketMaincolo,centerTitle: true,title: Text(forgott_password,style: TextStyle(color: Colors.white,fontSize:20 ),),),
+      appBar: AppBar(backgroundColor: corporateColor,centerTitle: true,title: Text(forgott_password,style: TextStyle(color: Colors.white,fontSize:20 ),),),
 
       body: Container(
-        color: PoketMaincolo,
+        color: corporateColor,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

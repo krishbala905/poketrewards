@@ -6,7 +6,7 @@ import 'package:poketrewards/Others/Urls.dart';
 import 'package:poketrewards/Others/Utils.dart';
 import 'package:poketrewards/UI/ForgotPassword.dart';
 import 'package:poketrewards/UI/LanguageActivity.dart';
-import 'package:poketrewards/UI/MainLoginUi.dart';
+import 'package:poketrewards/UI/Onboarding.dart';
 import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Strings.dart';
 import 'package:poketrewards/res/Strings.dart';
@@ -44,7 +44,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: PoketNormalGreen,
+      backgroundColor: corporateColor2,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
@@ -56,7 +56,7 @@ class _LoginState extends State<Login> {
           },
         ),
         elevation: 0.0,
-        backgroundColor: PoketNormalGreen,
+        backgroundColor: corporateColor2,
         centerTitle: true,
         title: Text(
           S.of(context).login,

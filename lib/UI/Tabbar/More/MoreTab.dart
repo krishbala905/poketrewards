@@ -35,7 +35,7 @@ class _MoreTabState extends State<MoreTab> {
               color: Colors.white,
             ),
           ),
-          backgroundColor: PoketMaincolo,
+          backgroundColor: corporateColor,
           centerTitle: true,
         ),
         body: Column(
@@ -55,7 +55,7 @@ class _MoreTabState extends State<MoreTab> {
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
                         child: Text(S.of(context).profile, style: TextStyle(
-                            color: PoketMaincolo, fontSize: 15),)),
+                            color: corporateColor, fontSize: 15),)),
                   )),
             ),
             Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
@@ -70,7 +70,7 @@ class _MoreTabState extends State<MoreTab> {
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
                         child: Text(S.of(context).history, style: TextStyle(
-                            color: PoketMaincolo, fontSize: 15),)),
+                            color: corporateColor, fontSize: 15),)),
                   )),
             ),
             Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
@@ -85,7 +85,7 @@ class _MoreTabState extends State<MoreTab> {
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
                         child: Text(S.of(context).lang_uage, style: TextStyle(
-                            color: PoketMaincolo, fontSize: 15),)),
+                            color: corporateColor, fontSize: 15),)),
                   )),
             ),
             Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
@@ -100,7 +100,7 @@ class _MoreTabState extends State<MoreTab> {
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
                         child: Text(S.of(context).change_password, style: TextStyle(
-                            color: PoketMaincolo, fontSize: 15),)),
+                            color: corporateColor, fontSize: 15),)),
                   )),
             ),
             Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
@@ -115,7 +115,7 @@ class _MoreTabState extends State<MoreTab> {
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
                         child: Text(S.of(context).feed_back, style: TextStyle(
-                            color: PoketMaincolo, fontSize: 15),)),
+                            color: corporateColor, fontSize: 15),)),
                   )),
             ),
             Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
@@ -130,7 +130,7 @@ class _MoreTabState extends State<MoreTab> {
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
                         child: Text(S.of(context).tell_your_friends, style: TextStyle(
-                            color: PoketMaincolo, fontSize: 15),)),
+                            color: corporateColor, fontSize: 15),)),
                   )),
             ),
             Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
@@ -145,7 +145,7 @@ class _MoreTabState extends State<MoreTab> {
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
                         child: Text(S.of(context).privacy, style: TextStyle(
-                            color: PoketMaincolo, fontSize: 15),)),
+                            color: corporateColor, fontSize: 15),)),
                   )),
             ),
             Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
@@ -160,7 +160,7 @@ class _MoreTabState extends State<MoreTab> {
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
                         child: Text(S.of(context).termsandconditions, style: TextStyle(
-                            color: PoketMaincolo, fontSize: 15),)),
+                            color: corporateColor, fontSize: 15),)),
                   )),
             ),
             Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
@@ -175,7 +175,7 @@ class _MoreTabState extends State<MoreTab> {
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Align(alignment: Alignment.centerLeft,
                         child: Text(S.of(context).subscribe, style: TextStyle(
-                            color: PoketMaincolo, fontSize: 15),)),
+                            color: corporateColor, fontSize: 15),)),
                   )),
             ),
             Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
@@ -191,7 +191,7 @@ class _MoreTabState extends State<MoreTab> {
                     child: Align(alignment: Alignment.centerLeft,
                         child: Text(S.of(context).signout + "  (" + CommonUtils.consumerEmail.toString() +
                             ")", style: TextStyle(
-                            color: PoketMaincolo, fontSize: 15),)),
+                            color: corporateColor, fontSize: 15),)),
                   )),
             ),
             Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),

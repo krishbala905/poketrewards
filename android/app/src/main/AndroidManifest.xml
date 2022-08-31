@@ -2,7 +2,7 @@
     package="com.poket.Consumer.poketrewards">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    
+
    <application
         android:label="poketrewards"
         android:name="${applicationName}"

@@ -5,19 +5,17 @@ import 'package:poketrewards/UI/Tabbar/Add/AddTab.dart';
 import 'package:poketrewards/UI/Tabbar/Wallet/EWalletTab.dart';
 import 'package:poketrewards/UI/Tabbar/More/MoreTab.dart';
 import 'package:poketrewards/UI/Tabbar/Inbox/InboxTab.dart';
-import 'package:poketrewards/UI/Tabbar/Catalogue/WatsonTab.dart';
+import 'package:poketrewards/UI/Tabbar/Catalogue/WhatsonTab.dart';
 import '../../Others/LocalNotificationService.dart';
 import '../../Others/CommonUtils.dart';
-import '../MainLoginUi.dart';
+import '../Onboarding.dart';
 
 class ConsumerTab extends StatefulWidget {
   const ConsumerTab({Key? key}) : super(key: key);
 
   @override
   State<ConsumerTab> createState() => _ConsumerTabState();
-  getData(){
-    showToast("Notification Recieved");
-  }
+
 }
 
 class _ConsumerTabState extends State<ConsumerTab> {
@@ -25,7 +23,7 @@ class _ConsumerTabState extends State<ConsumerTab> {
   final Screens = [
     AddTab(),
     EwalletTab(),
-    WatsonTab(),
+    WhatsonTab(),
     InboxTab(),
     MoreTab(),
 
@@ -35,21 +33,16 @@ class _ConsumerTabState extends State<ConsumerTab> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // String navigatePath=callPPNAPI(context).toString();
-    // changeToPage(navigatePath);
-    // terminated state;
+
     LocalNotificationService.initialize(context);
 
-
-    // Foreground
+    //Foreground
     FirebaseMessaging.onMessage.listen((message) {
       if(message.notification!=null){
         print("Frgnd"+message.notification!.title.toString());
         try{
           Navigator.pushReplacement( context, MaterialPageRoute(builder:  (_) => MainLoginUi()));
-          /*String navigatePath=callPPNAPI(context).toString();
-          changeToPage(navigatePath);
-        */}
+          }
         catch(e){
           debugPrint("FrgndExcep"+e.toString());
         }
@@ -60,12 +53,11 @@ class _ConsumerTabState extends State<ConsumerTab> {
     // BackGround
     FirebaseMessaging.onMessageOpenedApp.listen((message) {
       if (message.notification != null) {
-        print("Bckgnd" + message.notification!.title.toString());
+
         try {
-          Navigator.pushReplacement( context, MaterialPageRoute(builder:  (_) => MainLoginUi()));
-          /*String navigatePath=callPPNAPI(context).toString();
-          changeToPage(navigatePath);
-        */}
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (_) => MainLoginUi()));
+        }
         catch (e) {
           debugPrint("FrgndExcep" + e.toString());
         }
@@ -95,7 +87,7 @@ class _ConsumerTabState extends State<ConsumerTab> {
         selectedFontSize: 12,
         unselectedFontSize: 10,
         showUnselectedLabels: true,
-        selectedItemColor: PoketMaincolo,
+        selectedItemColor: corporateColor,
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.white70,
 

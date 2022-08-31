@@ -27,7 +27,7 @@ class _AddTabState extends State<AddTab> {
           ),
           //elevation: 0.0,
             centerTitle: true,
-          backgroundColor: PoketMaincolo,),
+          backgroundColor: corporateColor,),
           backgroundColor:  Colors.white,
         ),
 

@@ -18,7 +18,7 @@ class _EwalletTabState extends State<EwalletTab> {
 
         ),
         ),
-          centerTitle: true,backgroundColor: PoketMaincolo, ),
+          centerTitle: true,backgroundColor: corporateColor, ),
         backgroundColor:  Colors.white,
       ),
 

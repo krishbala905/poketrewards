@@ -9,14 +9,14 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../res/Strings.dart';
 
-class MainLoginUi extends StatefulWidget {
-  const MainLoginUi( {Key? key,}) : super(key: key);
+class Onboarding extends StatefulWidget {
+  const Onboarding( {Key? key,}) : super(key: key);
 
   @override
-  State<MainLoginUi> createState() => _MainLoginUiState();
+  State<Onboarding> createState() => _OnboardingState();
 }
 
-class _MainLoginUiState extends State<MainLoginUi> {
+class _OnboardingState extends State<Onboarding> {
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class _MainLoginUiState extends State<MainLoginUi> {
                       S.of(context).
                       signupwithemail,
                       style: TextStyle(
-                        color: PoketNormalGreen,
+                        color: corporateColor2,
                         fontSize: 15,
                       ),
                     ),
@@ -111,7 +111,7 @@ class _MainLoginUiState extends State<MainLoginUi> {
                           child: Text( S.of(context).
                             connectwithfb,
                             style: TextStyle(
-                              color: PoketNormalGreen,
+                              color: corporateColor2,
                               fontSize: 15,
                             ),
                           ),
@@ -189,12 +189,12 @@ class _MainLoginUiState extends State<MainLoginUi> {
                                 text: S.of(context).Bysigningyoutoagreethe,
                                 style: TextStyle(
                                   fontSize: 12,
-                                  color: PoketNormalGreen,
+                                  color: corporateColor2,
                                 ),
                               ),
                               new TextSpan(
                                   text: S.of(context).termsofservice,
-                                  style: new TextStyle(color: PoketNormalGreen,
+                                  style: new TextStyle(color: corporateColor2,
                                       fontSize: 12,
                                       decoration: TextDecoration.underline,decorationThickness: 2),
                                   recognizer: new TapGestureRecognizer()
@@ -206,12 +206,12 @@ class _MainLoginUiState extends State<MainLoginUi> {
                                 text: S.of(context).and,
                                 style: TextStyle(
                                   fontSize: 12,
-                                  color: PoketNormalGreen,
+                                  color: corporateColor2,
                                 ),
                               ),
                               new TextSpan(
                                   text: S.of(context).privacypolicy,
-                                  style: new TextStyle(color: PoketNormalGreen,fontSize: 12,
+                                  style: new TextStyle(color: corporateColor2,fontSize: 12,
                                       decoration: TextDecoration.underline,decorationThickness: 2),
                                   recognizer: new TapGestureRecognizer()
                                     ..onTap = () async {
@@ -267,7 +267,7 @@ class _MainLoginUiState extends State<MainLoginUi> {
                             english,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: PoketNormalGreen,
+                              color: corporateColor2,
                               fontSize: 14,
                             ),
                           ),

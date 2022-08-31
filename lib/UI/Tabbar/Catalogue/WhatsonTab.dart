@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
-class WatsonTab extends StatefulWidget {
-  const WatsonTab({Key? key}) : super(key: key);
+class WhatsonTab extends StatefulWidget {
+  const WhatsonTab({Key? key}) : super(key: key);
 
   @override
-  State<WatsonTab> createState() => _WatsonTabState();
+  State<WhatsonTab> createState() => _WhatsonTabState();
 }
 
-class _WatsonTabState extends State<WatsonTab> {
+class _WhatsonTabState extends State<WhatsonTab> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -17,7 +17,7 @@ class _WatsonTabState extends State<WatsonTab> {
             fontSize: 20,
 
         ),
-        ),centerTitle: true,backgroundColor: PoketMaincolo, ),
+        ),centerTitle: true,backgroundColor: corporateColor, ),
         backgroundColor:  Colors.white,
       ),
 

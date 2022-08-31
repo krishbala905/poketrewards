@@ -7,12 +7,12 @@ import 'package:poketrewards/UI/Tabbar/ConsumerTab.dart';
 import 'package:provider/provider.dart';
 
 
-import 'Others/CommonUtils.dart';
-import 'Others/Utils.dart';
-import 'res/Colors.dart';
+import '../Others/CommonUtils.dart';
+import '../Others/Utils.dart';
+import '../res/Colors.dart';
 import 'dart:async';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:poketrewards/UI/MainLoginUi.dart';
+import 'package:poketrewards/UI/Onboarding.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -95,10 +95,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer(Duration(seconds: 3), () {
       if(alreadyLoggedIn==null){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => MainLoginUi()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Onboarding()));
       }
       else{
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => MainLoginUi()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => ConsumerTab()));
       }
 
     });
@@ -131,7 +131,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Image.asset('assets/splash.png',),
               ),
               SpinKitCircle(
-                color: PoketMaincolo,
+                color: corporateColor,
                 size: 60.0,
               ),
             ],

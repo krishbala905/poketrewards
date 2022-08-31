@@ -17,7 +17,7 @@ class _InboxTabState extends State<InboxTab> {
             fontSize: 20,
           color: Colors.white
         ),
-        ), centerTitle: true,backgroundColor: PoketMaincolo,),
+        ), centerTitle: true,backgroundColor: corporateColor,),
         backgroundColor:  Colors.white,
       ),
 
