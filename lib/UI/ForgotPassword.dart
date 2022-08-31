@@ -72,10 +72,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 // Validation
                 var email=forgotpasswd_cntrl.text.toString();
                 if(email.length==0){
-                  showAlertDialog_oneBtn(context, alert,enter_empty_email);
+                  showAlertDialog_oneBtn(context, alert1,enter_empty_email);
                 }
                 else if(validateEmail(email)!="1"){
-                  showAlertDialog_oneBtn(context, alert,enter_valid_email);
+                  showAlertDialog_oneBtn(context, alert1,enter_valid_email);
                 }
                 else{
                    callApi(email);
@@ -152,7 +152,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       }*/
 
     } else {
-      showAlertDialog_oneBtn(context, alert, something_went_wrong);
+      showAlertDialog_oneBtn(context, alert1, something_went_wrong1);
     }
 
 

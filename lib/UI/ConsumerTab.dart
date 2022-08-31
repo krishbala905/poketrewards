@@ -1,15 +1,24 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:poketrewards/Others/Urls.dart';
 import 'package:poketrewards/UI/SplashScreen.dart';
 import 'package:poketrewards/res/Colors.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:poketrewards/UI/Tabbar/Add/AddFragment.dart';
-import 'package:poketrewards/UI/Tabbar/Wallet/WalletFragment.dart';
-import 'package:poketrewards/UI/Tabbar/More/MoreFragment.dart';
-import 'package:poketrewards/UI/Tabbar/Inbox/InboxFragment.dart';
-import 'package:poketrewards/UI/Tabbar/Catalogue/WhatsonFragment.dart';
+import 'package:poketrewards/UI/Add/AddFragment.dart';
+import 'package:poketrewards/UI/Wallet/WalletFragment.dart';
+import 'package:poketrewards/UI/More/MoreFragment.dart';
+import 'package:poketrewards/UI/Inbox/InboxFragment.dart';
+import 'package:poketrewards/UI/Catalogue/WhatsonFragment.dart';
+import '../Others/AlertDialogUtil.dart';
 import '../Others/LocalNotificationService.dart';
 import '../Others/CommonUtils.dart';
-import 'package:poketrewards/generated/l10n.dart';
+import 'package:http/http.dart' as http;
+
+import '../Others/PPNAPIClass.dart';
+import '../Others/Utils.dart';
+import '../res/Strings.dart';
 
 class ConsumerTab extends StatefulWidget {
 
@@ -22,13 +31,13 @@ class ConsumerTab extends StatefulWidget {
 class _ConsumerTabState extends State<ConsumerTab>{
   String navigatePage="none";
 
-  var tittle="Home";
+  var tittle=add;
   int _selectedIndex = 0;
 
 
-  var homeActive=1;
-  var rewardsActive=0;
+  var addActive=1;
   var walletActive=0;
+  var whatsOnActive=0;
   var inboxActive=0;
   var moreActive=0;
 
@@ -134,10 +143,10 @@ class _ConsumerTabState extends State<ConsumerTab>{
 
                   setState(() {
                     _selectedIndex=0;
-                    tittle=home;
-                    homeActive=1;
+                    tittle=add;
+                    addActive=1;
                     walletActive=0;
-                    rewardsActive=0;
+                    whatsOnActive=0;
                     inboxActive=0;
                     moreActive=0;
                   });
@@ -149,48 +158,20 @@ class _ConsumerTabState extends State<ConsumerTab>{
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      setActive(homeActive, "assets/home_filled.png", "assets/home_outlined.png"),
-                      setActiveTittle(homeActive, home),
+                      setActive(addActive, "assets/ic_add_over.png", "assets/ic_add_normal.png"),
+                      setActiveTittle(addActive, add),
                     ],
                   ),
                 ),
               )),
-              Visibility(
-                visible: false,
-                child: Expanded(flex:1,child: GestureDetector(
-                  onTap: (){
-                    setState(() {
-                      _selectedIndex=1;
-                      tittle=rewards;
-                      rewardsActive=1;
-                      homeActive=0;
-                      walletActive=0;
-                      inboxActive=0;
-                      moreActive=0;
-                    });
-                  },
-                  child: Container(
-                    width: 40,
-                    height: 60,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        setActive(rewardsActive, "assets/reward_filled.png", "assets/reward_outline.png"),
-                        setActiveTittle(rewardsActive, rewards),
-                      ],
-                    ),
-                  ),
-                )),
-              ),
               Expanded(flex:1,child: GestureDetector(
                 onTap: (){
                   setState(() {
                     _selectedIndex=2;
-                    tittle=wallet;
-                    homeActive=0;
+                    tittle=e_wallet;
+                    addActive=0;
                     walletActive=1;
-                    rewardsActive=0;
+                    whatsOnActive=0;
                     inboxActive=0;
                     moreActive=0;
                   });
@@ -202,8 +183,33 @@ class _ConsumerTabState extends State<ConsumerTab>{
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      setActive(walletActive, "assets/wallet_filled.png", "assets/wallet_outlined.png"),
-                      setActiveTittle(walletActive, wallet),
+                      setActive(walletActive, "assets/ic_wallet_over.png", "assets/ic_wallet_normal.png"),
+                      setActiveTittle(walletActive, e_wallet),
+                    ],
+                  ),
+                ),
+              )),
+              Expanded(flex:1,child: GestureDetector(
+                onTap: (){
+                  setState(() {
+                    _selectedIndex=1;
+                    tittle=rewards;
+                    whatsOnActive=1;
+                    addActive=0;
+                    walletActive=0;
+                    inboxActive=0;
+                    moreActive=0;
+                  });
+                },
+                child: Container(
+                  width: 40,
+                  height: 60,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      setActive(whatsOnActive, "assets/ic_catlogue_over.png", "assets/ic_catlogue_normal.png"),
+                      setActiveTittle(whatsOnActive, rewards),
                     ],
                   ),
                 ),
@@ -212,10 +218,10 @@ class _ConsumerTabState extends State<ConsumerTab>{
                 onTap: (){
                   setState(() {
                     _selectedIndex=3;
-                    tittle=inbox;
-                    homeActive=0;
+                    tittle=notify;
+                    addActive=0;
                     walletActive=0;
-                    rewardsActive=0;
+                    whatsOnActive=0;
                     inboxActive=1;
                     moreActive=0;
                   });
@@ -230,8 +236,8 @@ class _ConsumerTabState extends State<ConsumerTab>{
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          setActive(inboxActive, "assets/inbox_filled.png", "assets/inbox_outlined.png"),
-                          setActiveTittle(inboxActive, inbox),
+                          setActive(inboxActive, "assets/ic_inbox_over.png", "assets/ic_inbox_normal.png"),
+                          setActiveTittle(inboxActive, notify),
                         ],
                       ),
                       _InboxCount(context),
@@ -244,9 +250,9 @@ class _ConsumerTabState extends State<ConsumerTab>{
                   setState(() {
                     _selectedIndex=4;
                     tittle=more;
-                    homeActive=0;
+                    addActive=0;
                     walletActive=0;
-                    rewardsActive=0;
+                    whatsOnActive=0;
                     inboxActive=0;
                     moreActive=1;
                   });
@@ -258,7 +264,7 @@ class _ConsumerTabState extends State<ConsumerTab>{
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      setActive(moreActive, "assets/more_filled.png", "assets/more_outlined.png"),
+                      setActive(moreActive, "assets/ic_more_over.png", "assets/ic_more_normal.png"),
                       setActiveTittle(moreActive, more),
                     ],
                   ),
@@ -298,10 +304,10 @@ class _ConsumerTabState extends State<ConsumerTab>{
     if(navigatePath==CommonUtils.walletPage){
       setState(() {
         _selectedIndex=2;
-        tittle=wallet;
-        homeActive=0;
+        tittle=e_wallet;
+        addActive=0;
         walletActive=1;
-        rewardsActive=0;
+        whatsOnActive=0;
         inboxActive=0;
         moreActive=0;
       });
@@ -310,10 +316,10 @@ class _ConsumerTabState extends State<ConsumerTab>{
       print(navigatePath+":Yes");
       setState(() {
         _selectedIndex=3;
-        tittle=inbox;
-        homeActive=0;
+        tittle=notify;
+        addActive=0;
         walletActive=0;
-        rewardsActive=0;
+        whatsOnActive=0;
         inboxActive=1;
         moreActive=0;
       });
@@ -366,7 +372,7 @@ class _ConsumerTabState extends State<ConsumerTab>{
   Future<String> getInboxCount() async {
 
     final http.Response response = await http.post(
-      Uri.parse(INBOX_Url),
+      Uri.parse(INBOX_URL),
 
       body: {
         "consumer_id": CommonUtils.consumerID.toString(),

@@ -17,15 +17,7 @@ class _AddFragmentState extends State<AddFragment> {
     return SafeArea(
       top: true,
         child:Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading:false,
-            title: Text(S.of(context).add,style: TextStyle(
-            fontSize: 20),
 
-          ),
-          //elevation: 0.0,
-            centerTitle: true,
-          backgroundColor: corporateColor,),
           backgroundColor:  Colors.white,
         ),
 

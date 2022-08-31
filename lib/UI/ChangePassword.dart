@@ -10,6 +10,8 @@ import 'package:poketrewards/res/Strings.dart';
 import 'package:http/http.dart' as http;
 import 'package:xml2json/xml2json.dart';
 
+import '../res/Strings.dart';
+
 class ChangePassword extends StatefulWidget {
   const ChangePassword({Key? key}) : super(key: key);
 
@@ -167,16 +169,16 @@ class _ChangePasswordState extends State<ChangePassword> {
     var confirmPwd=confirmpwd_cntrl.text;
 
     if(oldPwd.isEmpty){
-      showAlertDialog_oneBtn(context, alert, please_enter_old_pwd);
+      showAlertDialog_oneBtn(context, alert1, please_enter_old_pwd);
     }
     else if(newPwd.isEmpty){
-      showAlertDialog_oneBtn(context, alert, please_enter_new_pwd);
+      showAlertDialog_oneBtn(context, alert1, please_enter_new_pwd);
     }
     else if(confirmPwd.isEmpty){
-      showAlertDialog_oneBtn(context, alert, please_enter_confrim_pwd);
+      showAlertDialog_oneBtn(context, alert1, please_enter_confrim_pwd);
     }
     else if(newPwd!=confirmPwd){
-      showAlertDialog_oneBtn(context, alert, new_confirm_pwd_mismatch);
+      showAlertDialog_oneBtn(context, alert1, new_confirm_pwd_mismatch);
     }
     else{
 
@@ -213,16 +215,16 @@ class _ChangePasswordState extends State<ChangePassword> {
         var message = stringSplit(data['p2']);
         if(status.toLowerCase()=="true"){
 
-          showAlertDialog_oneBtnWitDismiss(context, alert, message);
+          showAlertDialog_oneBtnWitDismiss(context, alert1, message);
           print("Success");
 
         }
         else{
-          showAlertDialog_oneBtn(context, alert, message);
+          showAlertDialog_oneBtn(context, alert1, message);
         }
 
       } else {
-        showAlertDialog_oneBtn(context, alert, something_went_wrong);
+        showAlertDialog_oneBtn(context, alert1, something_went_wrong1);
       }
 
 

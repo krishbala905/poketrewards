@@ -249,13 +249,13 @@ class _LoginState extends State<Login> {
 
   Future<void> loginTask(var email, var paswd) async {
     if (email.length == 0) {
-      showAlertDialog_oneBtn(context, alert, enter_empty_email);
+      showAlertDialog_oneBtn(context, alert1, enter_empty_email);
     } else if (validateEmail(email) != "1") {
-      showAlertDialog_oneBtn(context, alert, enter_valid_email);
+      showAlertDialog_oneBtn(context, alert1, enter_valid_email);
     } else if (paswd.length == 0) {
-      showAlertDialog_oneBtn(context, alert, enter_empty_pwd);
+      showAlertDialog_oneBtn(context, alert1, enter_empty_pwd);
     } else if (validatePassword(paswd) != "1") {
-      showAlertDialog_oneBtn(context, alert, enter_valid_pwd);
+      showAlertDialog_oneBtn(context, alert1, enter_valid_pwd);
     } else {
       callApi(email, paswd);
     }
@@ -344,10 +344,10 @@ class _LoginState extends State<Login> {
               builder: (context) => ConsumerTab(),
             ));
       } else {
-        showAlertDialog_oneBtn(context, alert, messg);
+        showAlertDialog_oneBtn(context, alert1, messg);
       }
     } else {
-      showAlertDialog_oneBtn(context, alert, something_went_wrong);
+      showAlertDialog_oneBtn(context, alert1, something_went_wrong1);
     }
   }
 

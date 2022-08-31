@@ -27,18 +27,7 @@ class _MoreFragmentState extends State<MoreFragment> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading:false,
-          title: Text(S.of(context).
-            more_appbar,
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-            ),
-          ),
-          backgroundColor: corporateColor,
-          centerTitle: true,
-        ),
+
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

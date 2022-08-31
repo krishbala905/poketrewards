@@ -13,11 +13,6 @@ class _InboxFragmentState extends State<InboxFragment> {
   Widget build(BuildContext context) {
     return SafeArea(
       child:Scaffold(
-        appBar: AppBar(automaticallyImplyLeading:false,title: Text(S.of(context).notify,style: TextStyle(
-            fontSize: 20,
-          color: Colors.white
-        ),
-        ), centerTitle: true,backgroundColor: corporateColor,),
         backgroundColor:  Colors.white,
       ),
 

@@ -13,12 +13,7 @@ class _WalletFragmentState extends State<WalletFragment> {
   Widget build(BuildContext context) {
     return SafeArea(
       child:Scaffold(
-        appBar: AppBar(automaticallyImplyLeading:false,title: Text(S.of(context).e_wallet,style: TextStyle(
-            fontSize: 20,
 
-        ),
-        ),
-          centerTitle: true,backgroundColor: corporateColor, ),
         backgroundColor:  Colors.white,
       ),
 

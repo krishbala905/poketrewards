@@ -1,13 +1,27 @@
 import 'package:flutter/material.dart';
 
+const appName ="Poket Rewards";
 const login ="Login";
 const email = "Email";
+const submit = "Submit";
+
+const feedback = "Feedback";
+const please_choose_rating="Please choose rating to continue..";
+const please_rate_our_service="Please rate our service.";
+const tap_smile_button_msg="Tap the smiley buttons to submit your rating.";
+const key_in_your_message="Key in your message here.";
+const skip="SKIP";
+const poor="Poor";
+const average="Average";
+const good="Good";
+const excellent="Excellent";
+const share="Share";
 const password = "Password";
 const loginwith = "LOGIN WITH EMAIL";
 const loginby = "LOGIN BY EMAIL";
 const english = "ENGLISH";
 const forgot_password = "Forgot Password?";
-const more_appbar = "More";
+const more = "More";
 const profile = "Profile";
 const history ="History";
 const update = "Update";
@@ -34,12 +48,14 @@ const e_wallet = "E-wallet";
 const whatson = "Whats On";
 const notify = "Notification";
 const ok ="OK";
-const alert="Alert";
+const rewards ="Rewards";
+
 const enter_empty_email="Please Enter Email Address";
 const enter_empty_pwd="Please Enter Password";
 const enter_valid_email="Please Enter Valid Email";
 const enter_valid_pwd="Please Enter Valid Password";
-const something_went_wrong="Something went wrong";
+const alert1="Alert";
+const something_went_wrong1="Something went wrong";
 const forgott_password = "Forgot Password";
 const please_enter_your_email_address_to_reset_your_passworrd = "Please enter your email address to reset your password";
 const reset_password = "RESET PASSWORD";
@@ -52,6 +68,7 @@ const please_enter_old_pwd = "Please enter old password";
 const please_enter_new_pwd = "Please enter new password";
 const please_enter_confrim_pwd = "Please enter confirm password";
 const new_confirm_pwd_mismatch = "Password mismatch!";
+const logout_message="You have successfully logged out.";
 
 
 
