@@ -23,7 +23,7 @@ void showAlertDialog_oneBtn(BuildContext context,String tittle,String message)
             height: 35,
             width: 100,
             color: Colors.white,
-            child:Center(child: Text(ok,style: TextStyle(color: PoketMaincolo),)),
+            child:Center(child: Text(ok,style: TextStyle(color: corporateColor),)),
           ),
         ),
       ),

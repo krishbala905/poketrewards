@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poketrewards/UI/SplashScreen.dart';
 import 'package:poketrewards/res/Colors.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:poketrewards/UI/Tabbar/Add/AddTab.dart';
@@ -39,9 +40,9 @@ class _ConsumerTabState extends State<ConsumerTab> {
     //Foreground
     FirebaseMessaging.onMessage.listen((message) {
       if(message.notification!=null){
-        print("Frgnd"+message.notification!.title.toString());
+
         try{
-          Navigator.pushReplacement( context, MaterialPageRoute(builder:  (_) => MainLoginUi()));
+          Navigator.pushReplacement( context, MaterialPageRoute(builder:  (_) => SplashScreen()));
           }
         catch(e){
           debugPrint("FrgndExcep"+e.toString());
@@ -56,7 +57,7 @@ class _ConsumerTabState extends State<ConsumerTab> {
 
         try {
           Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (_) => MainLoginUi()));
+              context, MaterialPageRoute(builder: (_) => SplashScreen()));
         }
         catch (e) {
           debugPrint("FrgndExcep" + e.toString());
