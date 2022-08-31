@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.poket.Consumer.poketrewards">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
    <application
         android:label="poketrewards"
         android:name="${applicationName}"
