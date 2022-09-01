@@ -4,7 +4,6 @@ const appName ="Poket Rewards";
 const login ="Login";
 const email = "Email";
 const submit = "Submit";
-
 const feedback = "Feedback";
 const please_choose_rating="Please choose rating to continue..";
 const please_rate_our_service="Please rate our service.";
@@ -49,7 +48,6 @@ const whatson = "Whats On";
 const notify = "Notification";
 const ok ="OK";
 const rewards ="Rewards";
-
 const enter_empty_email="Please Enter Email Address";
 const enter_empty_pwd="Please Enter Password";
 const enter_valid_email="Please Enter Valid Email";
@@ -69,6 +67,8 @@ const please_enter_new_pwd = "Please enter new password";
 const please_enter_confrim_pwd = "Please enter confirm password";
 const new_confirm_pwd_mismatch = "Password mismatch!";
 const logout_message="You have successfully logged out.";
+const camera="Camera";
+const gallery="Gallery";
 
 
 

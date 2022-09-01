@@ -50,7 +50,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       cursorColor:  Colors.white,
                       controller: forgotpasswd_cntrl,
                       keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(color: textcolor, fontSize: 15),
+                      style: TextStyle(color: textColor, fontSize: 15),
                       decoration: InputDecoration(
                         labelText: "",
                         border: InputBorder.none,
@@ -63,7 +63,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ],
               ),
             ),
-            Container(decoration: BoxDecoration(color: textcolor),height: 0.5,),
+            Container(decoration: BoxDecoration(color: textColor),height: 0.5,),
 
 
             SizedBox(height: 40,),
@@ -89,7 +89,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   decoration: BoxDecoration(
                     color: Colors.white54,
                     borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: textcolor),
+                    border: Border.all(color: textColor),
                   ),
 
                   child: Center(child: Text(reset_password,style: TextStyle(color: Colors.white,fontSize: 15),textAlign: TextAlign.center,)),

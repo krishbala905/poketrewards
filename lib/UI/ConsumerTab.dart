@@ -1,9 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:poketrewards/Others/Urls.dart';
-import 'package:poketrewards/UI/SplashScreen.dart';
 import 'package:poketrewards/res/Colors.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:poketrewards/UI/Add/AddFragment.dart';
@@ -15,7 +13,6 @@ import '../Others/AlertDialogUtil.dart';
 import '../Others/LocalNotificationService.dart';
 import '../Others/CommonUtils.dart';
 import 'package:http/http.dart' as http;
-
 import '../Others/PPNAPIClass.dart';
 import '../Others/Utils.dart';
 import '../res/Strings.dart';
@@ -33,7 +30,6 @@ class _ConsumerTabState extends State<ConsumerTab>{
 
   var tittle=add;
   int _selectedIndex = 0;
-
 
   var addActive=1;
   var walletActive=0;
@@ -68,7 +64,7 @@ class _ConsumerTabState extends State<ConsumerTab>{
 
         try{
 
-          dynamic result=await callPPNAPI(context);
+           dynamic result= await callPPNAPI(context);
           changeToPage(result);
 
         }
@@ -91,7 +87,7 @@ class _ConsumerTabState extends State<ConsumerTab>{
 
         }
         catch (e) {
-          debugPrint("FrgndExcep" + e.toString());
+          debugPrint("BrgndExcep" + e.toString());
         }
       }
     });
@@ -114,7 +110,6 @@ class _ConsumerTabState extends State<ConsumerTab>{
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-
   }
 
 
@@ -286,7 +281,6 @@ class _ConsumerTabState extends State<ConsumerTab>{
       return Image.asset(inactiveIcon,height: 25,width: 25,);
     }
   }
-
   Widget setActiveTittle(var active ,var tittle){
 
     if (active==1){
@@ -298,9 +292,8 @@ class _ConsumerTabState extends State<ConsumerTab>{
       return Text(tittle,style: TextStyle(fontSize: 13,color: grey),);
     }
   }
-
   void changeToPage(String navigatePath){
-    CommonUtils.PPN_RESPONSE_CONTENT="{\"STATUS\":\"True\",\"OUTLETID\":\"1977\",\"COUNTRYINDEX\":\"191\",\"TRANSACTIONVALUE\":\"10\",\"TRANSACTIONTYPE\":\"PointsEarned\",\"RECEIVED\":\"none\",\"RECEIVED_TITLE\":\"none\",\"TOPUP\":\"none\",\"TOPUP_TITLE\":\"none\",\"DEDUCT\":\"none\",\"DEDUCT_TITLE\":\"none\",\"REDEEMED\":\"none\",\"REDEEMED_TITLE\":\"none\",\"CASHREBATE\":\"none\",\"CASHREBATE_TITLE\":\"none\",\"PUNCHREWARD\":\"none\",\"PUNCHREWARD_TITLE\":\"none\",\"PACKAGEDEDUCTED\":\"none\",\"PACKAGEDEDUCTED_TITLE\":\"none\",\"CARD_BALANCE_AFTER_DEDUCT\":\"none\",\"CARD_BALANCE_AFTER_DEDUCT_TITLE\":\"none\",\"UPGRADED\":\"none\",\"UPGRADED_TITLE\":\"none\",\"IS_SPENDING\":\"yes\",\"TRANSACTIONID\":\"149796\",\"PROGRAM_ID\":\"10965\",\"CARD_TITLE\":\"1\",\"CARD_URL\":\"https:\\/\\/brands.poket.com\\/main\\/.\\/merchant_images\\/1574\\/merchant_card\\/card_image\\/10965\\/1574_10965_01.png->image\",\"ACTION\":\"mpt\",\"FB_POINTS\":\"0\",\"FEEDBACK_POINTS\":\"0\",\"MERCHANT_NAME\":\"LETSCHANGE\",\"MERCHANT_ID\":\"1574\",\"CARD_TYPE\":\"points\",\"MEMBER_ID\":\"232757\",\"show_screen\":\"CARDS\"}";
+
     if(navigatePath==CommonUtils.walletPage){
       setState(() {
         _selectedIndex=2;
@@ -335,7 +328,6 @@ class _ConsumerTabState extends State<ConsumerTab>{
     }
 
   }
-
   Widget showInboxCount(var _counter){
     if(_counter=="0"){
       return Container();
@@ -367,8 +359,6 @@ class _ConsumerTabState extends State<ConsumerTab>{
       );
     }
   }
-
-
   Future<String> getInboxCount() async {
 
     final http.Response response = await http.post(

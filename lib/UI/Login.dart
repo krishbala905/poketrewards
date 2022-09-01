@@ -60,21 +60,21 @@ class _LoginState extends State<Login> {
         centerTitle: true,
         title: Text(
           S.of(context).login,
-          style: TextStyle(color: textcolor, fontSize: 20),
+          style: TextStyle(color: textColor, fontSize: 20),
         ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            decoration: BoxDecoration(color: textcolor),
+            decoration: BoxDecoration(color: textColor),
             height: 0.5,
           ),
           SizedBox(
             height: 100,
           ),
           Container(
-            decoration: BoxDecoration(color: textcolor),
+            decoration: BoxDecoration(color: textColor),
             height: 0.5,
           ),
           Container(
@@ -90,7 +90,7 @@ class _LoginState extends State<Login> {
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Text(S.of(context).email,
                           style: TextStyle(
-                            color: textcolor,
+                            color: textColor,
                             fontSize: 15,
                           )),
                     )),
@@ -98,10 +98,10 @@ class _LoginState extends State<Login> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 25),
                     child: TextField(
-                      cursorColor: textcolor,
+                      cursorColor: textColor,
                       controller: emailId_cntrl,
                       keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(color: textcolor, fontSize: 15),
+                      style: TextStyle(color: textColor, fontSize: 15),
                       decoration: InputDecoration(
                         labelText: "",
                         border: InputBorder.none,
@@ -115,7 +115,7 @@ class _LoginState extends State<Login> {
             ),
           ),
           Container(
-            decoration: BoxDecoration(color: textcolor),
+            decoration: BoxDecoration(color: textColor),
             height: 0.5,
           ),
           Container(
@@ -131,7 +131,7 @@ class _LoginState extends State<Login> {
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Text(S.of(context).password,
                           style: TextStyle(
-                            color: textcolor,
+                            color: textColor,
                             fontSize: 15,
                           )),
                     )),
@@ -139,11 +139,11 @@ class _LoginState extends State<Login> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 25),
                     child: TextField(
-                      cursorColor: textcolor,
+                      cursorColor: textColor,
                       controller: pwdId_cntrl,
                       obscureText: _obscured,
                       keyboardType: TextInputType.text,
-                      style: TextStyle(color: textcolor, fontSize: 15),
+                      style: TextStyle(color: textColor, fontSize: 15),
                       decoration: InputDecoration(
                         labelText: "",
                         border: InputBorder.none,
@@ -154,7 +154,7 @@ class _LoginState extends State<Login> {
                                 ? Icons.visibility_off_rounded
                                 : Icons.visibility_rounded,
                             size: 24,
-                            color: textcolor,
+                            color: textColor,
                           ),
                         ),
                       ),
@@ -167,7 +167,7 @@ class _LoginState extends State<Login> {
             ),
           ),
           Container(
-            decoration: BoxDecoration(color: textcolor),
+            decoration: BoxDecoration(color: textColor),
             height: 0.5,
           ),
           SizedBox(
@@ -189,13 +189,13 @@ class _LoginState extends State<Login> {
                 decoration: BoxDecoration(
                   color: Colors.white70,
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: textcolor),
+                  border: Border.all(color: textColor),
                 ),
                 child: Center(
                     child: Text(
                   S.of(context).loginwith,
                   style: TextStyle(
-                      color: textcolor,
+                      color: textColor,
                       fontSize: 15,
                       fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
@@ -216,7 +216,7 @@ class _LoginState extends State<Login> {
               child: Center(
                   child: Text(
                 S.of(context).forgot_password,
-                style: TextStyle(color: textcolor, fontSize: 15),
+                style: TextStyle(color: textColor, fontSize: 15),
                 textAlign: TextAlign.center,
               )),
             ),

@@ -48,7 +48,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                             color: corporateColor, fontSize: 15),)),
                   )),
             ),
-            Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+            Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -63,7 +63,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                             color: corporateColor, fontSize: 15),)),
                   )),
             ),
-            Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+            Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -78,7 +78,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                             color: corporateColor, fontSize: 15),)),
                   )),
             ),
-            Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+            Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -93,7 +93,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                             color: corporateColor, fontSize: 15),)),
                   )),
             ),
-            Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+            Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -108,7 +108,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                             color: corporateColor, fontSize: 15),)),
                   )),
             ),
-            Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+            Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -123,7 +123,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                             color: corporateColor, fontSize: 15),)),
                   )),
             ),
-            Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+            Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -138,7 +138,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                             color: corporateColor, fontSize: 15),)),
                   )),
             ),
-            Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+            Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -153,7 +153,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                             color: corporateColor, fontSize: 15),)),
                   )),
             ),
-            Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+            Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -168,7 +168,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                             color: corporateColor, fontSize: 15),)),
                   )),
             ),
-            Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+            Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -184,7 +184,7 @@ class _MoreFragmentState extends State<MoreFragment> {
                             color: corporateColor, fontSize: 15),)),
                   )),
             ),
-            Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+            Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
           ],
         )
         //  backgroundColor:  Colors.white54,

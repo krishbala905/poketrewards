@@ -36,7 +36,7 @@ class _OnboardingState extends State<Onboarding> {
             children: [
               GestureDetector(
                 onTap: () {
-
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignupScreen(),));
                 },
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(40.0, 0, 40.0, 0),
@@ -45,7 +45,7 @@ class _OnboardingState extends State<Onboarding> {
                     decoration: BoxDecoration(
                       color: Colors.white54,
                       borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: textcolor),
+                      border: Border.all(color: textColor),
                     ),
                     child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -91,7 +91,7 @@ class _OnboardingState extends State<Onboarding> {
                     decoration: BoxDecoration(
                       color: Colors.white54,
                       borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: textcolor),
+                      border: Border.all(color: textColor),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -136,7 +136,7 @@ class _OnboardingState extends State<Onboarding> {
                     decoration: BoxDecoration(
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: textcolor),
+                      border: Border.all(color: textColor),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -167,7 +167,7 @@ class _OnboardingState extends State<Onboarding> {
                   ),
                 ),
               ),
-             SizedBox(
+              SizedBox(
                height: 40,
              ),
               Container(

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -13,6 +14,7 @@ import 'CommonUtils.dart';
 void showAlertDialog_oneBtn(BuildContext context,String tittle,String message)
 {
   AlertDialog alert = AlertDialog(
+
     backgroundColor: Colors.white,
     title: Text(tittle),
     // content: CircularProgressIndicator(),
@@ -33,10 +35,14 @@ void showAlertDialog_oneBtn(BuildContext context,String tittle,String message)
     ],
   );
   showDialog(
+
     barrierDismissible: false,
     context: context,
     builder: (BuildContext context) {
-      return alert;
+      return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 6,sigmaY: 6),
+        child: alert,
+      );
     },
   );
 }

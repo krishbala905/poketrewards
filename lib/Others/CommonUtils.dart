@@ -55,8 +55,6 @@ class CommonUtils{
 
 
 
-
-
   static String triggerUrl="triggerurl";
   static String triggerPhone="triggerphone";
   static String triggerCMS="cms";

@@ -4,13 +4,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:poketrewards/Others/CommonUtils.dart';
 import 'package:poketrewards/Others/LanguageChangeProvider.dart';
-import 'package:poketrewards/UI/Onboarding.dart';
 import 'package:poketrewards/UI/SplashScreen.dart';
 import 'package:poketrewards/res/Colors.dart';
 import 'package:poketrewards/res/Strings.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:share/share.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../generated/l10n.dart';
@@ -42,7 +39,7 @@ language _site = language.english;
         centerTitle: true,
         title:  Text(
          S.of(context,).lang_uage,
-          style: TextStyle(color: textcolor, fontSize: 20),
+          style: TextStyle(color: textColor, fontSize: 20),
         ),
       ),
       body: Column(
@@ -51,7 +48,7 @@ language _site = language.english;
           SizedBox(
             height: 80,
           ),
-          Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+          Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
           Ink(
             color: _site == language.english? corporateColor : Colors.transparent,
             child: ListTile(
@@ -73,7 +70,7 @@ language _site = language.english;
               ),
             ),
           ),
-          Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+          Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
           Ink(
             color: _site == language.japanese? corporateColor : Colors.transparent,
             child: ListTile(
@@ -92,7 +89,7 @@ language _site = language.english;
               ),
             ),
           ),
-          Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+          Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
           Ink(
             color: _site == language.Czech? corporateColor : Colors.transparent,
             child: ListTile(
@@ -111,7 +108,7 @@ language _site = language.english;
               ),
             ),
           ),
-          Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,),
+          Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
           Ink(
             color: _site == language.Spanish? corporateColor : Colors.transparent,
             child: ListTile(
@@ -130,7 +127,7 @@ language _site = language.english;
               ),
             ),
           ),
-          Container(decoration: BoxDecoration(color: lightgrey), height: 0.5,)  ,
+          Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,)  ,
           SizedBox(
             height: 50,
           ),
@@ -170,12 +167,12 @@ language _site = language.english;
                 decoration: BoxDecoration(
                   color: corporateColor,
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: textcolor),
+                  border: Border.all(color: textColor),
                 ),
                 child: Center(
                     child: Text(
                       update,
-                      style: TextStyle(color: textcolor, fontSize: 15,fontWeight: FontWeight.bold),
+                      style: TextStyle(color: textColor, fontSize: 15,fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     )),
               ),

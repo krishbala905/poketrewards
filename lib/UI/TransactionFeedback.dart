@@ -44,7 +44,7 @@ class _TransactionFeedbackState extends State<TransactionFeedback> {
             child: Container(
               decoration: BoxDecoration(
                   border: Border.all(
-                      color: lightgrey
+                      color: lightGrey
                   )
               ),
               width: double.infinity,
@@ -58,13 +58,13 @@ class _TransactionFeedbackState extends State<TransactionFeedback> {
                   Container(
 
                     height: 100,
-                    color: lightgrey2,
+                    color: lightGrey2,
                     child: Center(
                       child: RatingBar.builder(
                         itemSize: 50,
                         initialRating: 0,
                         itemCount: 4,
-                        unratedColor: lightgrey,
+                        unratedColor: lightGrey,
                         updateOnDrag: false,
                         tapOnlyMode: true,
                         wrapAlignment: WrapAlignment.center,
@@ -151,15 +151,15 @@ class _TransactionFeedbackState extends State<TransactionFeedback> {
                           decoration: InputDecoration(
 
                               focusedBorder:OutlineInputBorder(
-                                borderSide: const BorderSide(color: lightgrey, width: 1.0),
+                                borderSide: const BorderSide(color: lightGrey, width: 1.0),
                                 borderRadius: BorderRadius. circular(5.0),
                               ),
                               enabledBorder:OutlineInputBorder(
-                                borderSide: const BorderSide(color: lightgrey, width: 1.0),
+                                borderSide: const BorderSide(color: lightGrey, width: 1.0),
                                 borderRadius: BorderRadius. circular(5.0),
                               ),
                               disabledBorder:OutlineInputBorder(
-                                borderSide: const BorderSide(color: lightgrey, width: 1.0),
+                                borderSide: const BorderSide(color: lightGrey, width: 1.0),
                                 borderRadius: BorderRadius. circular(5.0),
                               ),
 
@@ -180,7 +180,7 @@ class _TransactionFeedbackState extends State<TransactionFeedback> {
                             width: 100,
                             height: 45,
                             decoration: BoxDecoration(
-                              color: lightgrey,
+                              color: lightGrey,
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Center(child: Text(skip,style: TextStyle(color: Colors.white),)),
