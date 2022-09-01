@@ -280,9 +280,9 @@ class _LoginState extends State<Login> {
 
   Future<void> callApi(var email, var pwd) async {
     var data = null;
-    print("url:" + LoginUrl);
+
     final http.Response response = await http.post(
-      Uri.parse(LoginUrl),
+      Uri.parse(LOGIN_URL),
       body: {
         "consumer_email": email,
         "consumer_password": pwd,
