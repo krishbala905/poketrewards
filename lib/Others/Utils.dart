@@ -2,10 +2,22 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'CommonUtils.dart';
 class Utils {
+  Future<void> call(mobile) async {
 
+    final Uri launchUri=Uri(
+      scheme: 'tel',
+      path: mobile,
+    );
+    if (await canLaunchUrl(launchUri)) {
+      await launchUrl(launchUri);
+    } else {
+      throw 'Could not launch $mobile';
+    }
+  }
 
   Future<void> getDeviceINFO() async {
     var deviceData = <String, dynamic>{};

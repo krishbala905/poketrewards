@@ -69,7 +69,26 @@ const new_confirm_pwd_mismatch = "Password mismatch!";
 const logout_message="You have successfully logged out.";
 const camera="Camera";
 const gallery="Gallery";
-
+const optional_recipt="Optional: Receipt / Remarks";
+const ecards="E-Cards";
+const evoucher="E-Vouchers";
+const enter_store_pin="ENTER STORE PIN";
+const redeem_voucher="Redeem Voucher";
+const cancel="Cancel";
+const cardExpiry="Card Expiry";
+const terms_cond="Terms & Condition";
+const contact="Contact "+appName;
+const redeem="REDEEM";
+const points="Points";
+const description="Description";
+const location="Location";
+const no_vchr_found="No Vouchers Found";
+const no_card_found="No Cards Found";
+const daysLeft="Days Left";
+const expiry="Expiry";
+const no="No";
+const showCashierCode="SHOW CASHIER QR CODE";
+const cashierEnterStorePin="CASHIER ENTER STORE PIN";
 
 
 

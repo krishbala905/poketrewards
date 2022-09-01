@@ -132,7 +132,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               SpinKitCircle(
                 color: corporateColor,
-                size: 60.0,
+                size: 30.0,
               ),
             ],
           ),

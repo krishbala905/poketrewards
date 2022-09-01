@@ -162,7 +162,7 @@ class _ConsumerTabState extends State<ConsumerTab>{
               Expanded(flex:1,child: GestureDetector(
                 onTap: (){
                   setState(() {
-                    _selectedIndex=2;
+                    _selectedIndex=1;
                     tittle=e_wallet;
                     addActive=0;
                     walletActive=1;
@@ -187,8 +187,8 @@ class _ConsumerTabState extends State<ConsumerTab>{
               Expanded(flex:1,child: GestureDetector(
                 onTap: (){
                   setState(() {
-                    _selectedIndex=1;
-                    tittle=rewards;
+                    _selectedIndex=2;
+                    tittle=whatson;
                     whatsOnActive=1;
                     addActive=0;
                     walletActive=0;
@@ -204,7 +204,7 @@ class _ConsumerTabState extends State<ConsumerTab>{
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       setActive(whatsOnActive, "assets/ic_catlogue_over.png", "assets/ic_catlogue_normal.png"),
-                      setActiveTittle(whatsOnActive, rewards),
+                      setActiveTittle(whatsOnActive, whatson),
                     ],
                   ),
                 ),
@@ -296,7 +296,7 @@ class _ConsumerTabState extends State<ConsumerTab>{
 
     if(navigatePath==CommonUtils.walletPage){
       setState(() {
-        _selectedIndex=2;
+        _selectedIndex=1;
         tittle=e_wallet;
         addActive=0;
         walletActive=1;
