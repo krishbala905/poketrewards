@@ -419,7 +419,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   color: Colors.white,
                                 ),
 
-                                hintText: "Date of Birth",
+
                                 border: InputBorder.none,
                               ),
                               readOnly: true,
