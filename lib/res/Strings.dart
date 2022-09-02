@@ -89,6 +89,14 @@ const expiry="Expiry";
 const no="No";
 const showCashierCode="SHOW CASHIER QR CODE";
 const cashierEnterStorePin="CASHIER ENTER STORE PIN";
+const editprofile = "Edit Profile";
+const full_name = "Full Name";
+const gender = "Gender";
+const dateofbirth = "Date Of Birth";
+const address = "Address";
+const mobile_number = "Mobile Number";
+
+
 
 
 

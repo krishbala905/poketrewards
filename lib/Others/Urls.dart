@@ -8,7 +8,7 @@ const PPN_URL = "$BaseUrl${SERVER_SUB_HEADER}NewUiPPNcmdforAllCma";
 const FEEDBACK_URL = "$BaseUrl${SERVER_SUB_HEADER}NewUiTransactionFeedbackCmd";
 const INBOX_URL="$BaseUrl${SERVER_SUB_HEADER}NewUiInboxListCmd";
 const WALLET_CARD_URL="$BaseUrl${SERVER_SUB_HEADER}NewUiPoketWalletCmd";
-
+const PROFILE_URL = "$BaseUrl${SERVER_SUB_HEADER}NewUiConsumerProfileCmd";
 const WALLET_CARD_DETAILS_URL="$BaseUrl${SERVER_SUB_HEADER}NewUiPoketWalletCardDetailsCmd";
 
 
