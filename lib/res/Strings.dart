@@ -44,7 +44,8 @@ const and = "&";
 const privacypolicy = " Privacy Policy";
 const add = "Add";
 const e_wallet = "E-wallet";
-const whatson = "Whats On";
+const whatson = "What's On";
+const whatson_caps = "WHAT'S ON";
 const notify = "Notification";
 const ok ="OK";
 const rewards ="Rewards";
@@ -71,6 +72,7 @@ const camera="Camera";
 const gallery="Gallery";
 const optional_recipt="Optional: Receipt / Remarks";
 const ecards="E-Cards";
+const mycards="MY CARD";
 const evoucher="E-Vouchers";
 const enter_store_pin="ENTER STORE PIN";
 const redeem_voucher="Redeem Voucher";
@@ -87,9 +89,12 @@ const no_card_found="No Cards Found";
 const daysLeft="Days Left";
 const expiry="Expiry";
 const no="No";
+const view="View";
+const details="Details";
 const showCashierCode="SHOW CASHIER QR CODE";
 const cashierEnterStorePin="CASHIER ENTER STORE PIN";
-
+const emailContent="Hi,"+appName;
+const  noMessage="You have no message at this moment";
 
 
 

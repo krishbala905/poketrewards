@@ -9,6 +9,7 @@ import '../../../Others/Utils.dart';
 import '../../../res/Colors.dart';
 import '../Model/ECardModel.dart';
 import 'ECardDetailsFragment.dart';
+import 'ECardPrimaryFragment.dart';
 
 class ECardFragment extends StatefulWidget {
   const ECardFragment({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class _ECardFragmentState extends State<ECardFragment> {
   Widget build(BuildContext context) {
 
     return SafeArea(
-        child: Scaffold(
+      child: Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(top:10.0),
         child: _ECard(context),
@@ -67,6 +68,7 @@ class _ECardFragmentState extends State<ECardFragment> {
 
     if(response.statusCode==200 && jsonDecode(response.body)["Status"]=="True")
     {
+    debugPrint("Gojkul:"+jsonDecode(response.body)["data"]["Cards"].toString(),wrapWidth: 1024);
 
       List<dynamic> body = jsonDecode(response.body)["data"]["Cards"];
       List<ECardModel> posts1 = body.map((dynamic item) => ECardModel.fromJson(item),).toList();
@@ -111,11 +113,13 @@ class _ECardFragmentState extends State<ECardFragment> {
         return InkWell(
           onTap: (){
 
-            Navigator.push(context, MaterialPageRoute(builder: (context) => ECardDetailsFragment(
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ECardPrimaryFragment(
+
             posts[index].program_title,
-                posts[index].program_id, posts[index].program_type,
-                posts[index].program_title, posts[index].img_url,posts[index].expire_date,
-                posts[index].balance,posts[index].sub_type,posts[index].member_id
+            posts[index].program_id, posts[index].program_type,
+            posts[index].program_title, posts[index].img_url,posts[index].expire_date,
+            posts[index].balance,posts[index].sub_type,posts[index].member_id,
+            posts[index].merchant_id,posts[index].merchant_name,
             ),
 
             ));

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:poketrewards/Others/CommonUtils.dart';
 import 'package:poketrewards/Others/LanguageChangeProvider.dart';
 import 'package:poketrewards/UI/SplashScreen.dart';
@@ -61,7 +62,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: corporateColor,
+      statusBarBrightness: Brightness.light,
+    ));
     return ChangeNotifierProvider<LanguageChangeProvider>(
       create: (context)=> LanguageChangeProvider(),
        child: Builder(
@@ -76,9 +80,9 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: S.delegate.supportedLocales,
 
+          debugShowCheckedModeBanner: false,
           title: 'Poket Rewards',
           theme: ThemeData(
-
             primaryColor: corporateColor,
           ),
             home: const SplashScreen(),

@@ -12,6 +12,7 @@ import '../../../Others/CommonUtils.dart';
 import '../../../Others/Utils.dart';
 import '../Model/ECardDetailsLocationModel.dart';
 import '../Model/ECardDetailsModel.dart';
+import 'ECardRewardsModel.dart';
 
 class ECardDetailsFragment extends StatefulWidget {
   var prgmTittle ;
@@ -20,46 +21,36 @@ class ECardDetailsFragment extends StatefulWidget {
   var prgMId ;
   var prgmType;
   var expire_date;
-  var balancePoints;
+  var balancePoints,merchantId;
   var subType,memberId;
-   ECardDetailsFragment(this.tittle,this.prgMId,this.prgmType,this.prgmTittle,this.prgmImgUrl,this.expire_date,this.balancePoints,this.subType,this.memberId,{Key? key}) : super(key: key);
+   ECardDetailsFragment(this.tittle,this.prgMId,this.prgmType,this.prgmTittle,this.prgmImgUrl,this.expire_date,this.balancePoints,this.subType,this.memberId,this.merchantId,{Key? key}) : super(key: key);
 
   @override
-  State<ECardDetailsFragment> createState() => _ECardDetailsFragmentState(tittle,prgMId,prgmType,prgmTittle,prgmImgUrl,expire_date,balancePoints,subType,memberId);
+  State<ECardDetailsFragment> createState() => _ECardDetailsFragmentState(tittle,prgMId,prgmType,prgmTittle,prgmImgUrl,expire_date,balancePoints,subType,memberId,merchantId);
 }
 
 class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
   var myCardDetailsData;
-  var tittle ;
+  var tittle,merchantId ;
   var prgMId ,memberid;
   var prgmType,subType;
   var prgmTittle,prgmImgUrl,expire_date,balancePoints;
 
-  _ECardDetailsFragmentState(this.tittle, this.prgMId, this.prgmType,this.prgmTittle,this.prgmImgUrl,this.expire_date,this.balancePoints,this.subType,this.memberid);
+  _ECardDetailsFragmentState(this.tittle, this.prgMId, this.prgmType,this.prgmTittle,this.prgmImgUrl,this.expire_date,this.balancePoints,this.subType,this.memberid,this.merchantId);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      appBar: AppBar(
-        title: Text(tittle,style: TextStyle(color: Colors.white),),
-        centerTitle: true,
-        backgroundColor: corporateColor,
-      ),
+
       body: Column(
 
         children: [
           Expanded(flex: 15,child: SingleChildScrollView(
-
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _ECardDetails(context),
-                Padding(
-                  padding: const EdgeInsets.only(left:10,right: 10),
-                  child: _ECardLocation(context),
-                ),
-                SizedBox(height: 15,),
-
+                const SizedBox(height: 15,),
 
               ],
             ),
@@ -73,8 +64,8 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                 showCardQRImage();
               },
               child: Container(
-                color: corporateColor,
-                child: Center(
+                color: corporateColor3,
+                child: const Center(
                   child: Text(showCashierCode,style: TextStyle(color: Colors.white),),
                 ),
               ),
@@ -88,7 +79,6 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
       ),
     ),);
   }
-
 
   Future<List<ECardDetailsLocationModel>> getEcardLocationData() async {
 
@@ -109,7 +99,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
         'consumer_application_type':CommonUtils.consumerApplicationType,
         'consumer_language_id':CommonUtils.consumerLanguageId,
       },
-    ).timeout(Duration(seconds: 30));
+    ).timeout(const Duration(seconds: 30));
 
 
 
@@ -149,7 +139,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
   ListView _buildPostsHomeLocation(BuildContext context, List<ECardDetailsLocationModel> posts) {
     return ListView.builder(
 
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: posts.length,
 
@@ -163,56 +153,56 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
             children: [
 
 
-              SizedBox(height: 5,),
+              const SizedBox(height: 5,),
               if(posts[index].openinghrs!="")Row(
                 children: [
-                  SizedBox(width: 5,),
-                  Icon(Icons.access_time),
-                  SizedBox(width: 5,),
+                  const SizedBox(width: 5,),
+                  const Icon(Icons.access_time),
+                  const SizedBox(width: 5,),
                   Text(posts[index].openinghrs),
                 ],),
-              SizedBox(height: 5,),
+              const SizedBox(height: 5,),
               if(posts[index].shop_name!="")Row(
                 children: [
-                  SizedBox(width: 5,),
-                  Icon(Icons.store),
-                  SizedBox(width: 5,),
+                  const SizedBox(width: 5,),
+                  const Icon(Icons.store),
+                  const SizedBox(width: 5,),
                   Text(posts[index].shop_name),
                 ],),
-              SizedBox(height: 5,),
+              const SizedBox(height: 5,),
               if(posts[index].building_name!="")Row(
                 children: [
-                  SizedBox(width: 5,),
-                  Icon(Icons.location_city),
-                  SizedBox(width: 5,),
+                  const SizedBox(width: 5,),
+                  const Icon(Icons.location_city),
+                  const SizedBox(width: 5,),
                   Text(posts[index].building_name),
                 ],),
-              SizedBox(height: 5,),
+              const SizedBox(height: 5,),
               if(posts[index].address!="")Row(
                 children: [
-                  SizedBox(width: 5,),
-                  Icon(Icons.location_on_outlined),
-                  SizedBox(width: 5,),
+                  const SizedBox(width: 5,),
+                  const Icon(Icons.location_on_outlined),
+                  const SizedBox(width: 5,),
                   Text(utf8.decode(base64.decode(posts[index].address))),
                 ],),
-              SizedBox(height: 5,),
+              const SizedBox(height: 5,),
               if(posts[index].city_postal!="")Row(
                 children: [
-                  SizedBox(width: 5,),
-                  Icon(Icons.location_on_outlined),
-                  SizedBox(width: 5,),
+                  const SizedBox(width: 5,),
+                  const Icon(Icons.location_on_outlined),
+                  const SizedBox(width: 5,),
                   Text(posts[index].city_postal),
                 ],),
-              SizedBox(height: 5,),
+              const SizedBox(height: 5,),
               if(posts[index].tel!="")GestureDetector(
                 onTap: (){
                   Utils().call(posts[index].tel);
                 },
                 child: Row(
                   children: [
-                    SizedBox(width: 5,),
-                    Icon(Icons.call),
-                    SizedBox(width: 5,),
+                    const SizedBox(width: 5,),
+                    const Icon(Icons.call),
+                    const SizedBox(width: 5,),
                     Text(posts[index].tel),
                   ],),
               ),
@@ -227,6 +217,273 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
   }
 
 
+  Future<List<ECardRewardsModel>> getEcardRewardsData() async {
+
+
+    final http.Response response = await http.post(
+      Uri.parse(WALLET_CARD_DETAILS_URL),
+
+      body: {
+        "consumer_id": CommonUtils.consumerID.toString(),
+        "program_id": prgMId.toString(),
+        "program_type": prgmType.toString(),
+        "cma_timestamps":Utils().getTimeStamp(),
+        "time_zone":Utils().getTimeZone(),
+        "software_version":CommonUtils.softwareVersion,
+        "os_version":CommonUtils.osVersion,
+        "phone_model":CommonUtils.deviceModel,
+        "device_type":CommonUtils.deviceType,
+        'consumer_application_type':CommonUtils.consumerApplicationType,
+        'consumer_language_id':CommonUtils.consumerLanguageId,
+      },
+    ).timeout(const Duration(seconds: 30));
+
+
+
+    if(response.statusCode==200 && jsonDecode(response.body)["Status"]=="True")
+    {
+      if(jsonDecode(response.body)["data"]["Rewards"].toString()!=""){
+        List<dynamic> body = jsonDecode(response.body)["data"]["Rewards"];
+        List<ECardRewardsModel> posts1 = body.map((dynamic item) => ECardRewardsModel.fromJson(item),).toList();
+        return posts1;
+      }
+      else{
+        throw "Unable to retrieve posts.";
+      }
+
+
+    }
+    else {
+      throw "Unable to retrieve posts.";
+    }
+    //
+  }
+  FutureBuilder<List<ECardRewardsModel>> _ECardRewards(BuildContext context) {
+
+    return FutureBuilder<List<ECardRewardsModel>>(
+
+      future: getEcardRewardsData(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          final List<ECardRewardsModel>? posts = snapshot.data;
+          return _buildPostsRewards(context, posts!);
+        } else {
+          return Center(
+            child: Container(),
+          );
+        }
+      },
+    );
+  }
+  ListView _buildPostsRewards(BuildContext context, List<ECardRewardsModel> posts) {
+    return ListView.builder(
+
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: posts.length,
+
+      itemBuilder: (context, index) {
+        return Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex:1,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width/3,
+                    height: MediaQuery.of(context).size.width/5,
+                    child:setCardUIImagefoRewardVoucher(posts[index].img_url,posts[index].program_title,posts[index].LogoURL,posts[index].MerchantLogoSettings,posts[index].ProgramTitleSettings,posts[index].FontColor,),
+                  ),
+                ),
+
+                Expanded(
+                  flex:2,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(posts[index].program_title),
+                      SizedBox(height: 7,),
+                      Wrap(
+
+                        children: const [
+                          Text(details,style: TextStyle(fontSize: 12),),
+                          SizedBox(width: 5,),
+                           Text(view,style: TextStyle(
+                            fontSize: 12,
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.black54,
+                            decorationThickness: 4,
+                            decorationStyle: TextDecorationStyle.dashed,
+
+                          ),softWrap: true),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      showRedeemButtonOrLock(balancePoints,posts[index].amt_to_purchase),
+
+
+                    ],
+                  ),
+                ),
+
+              ],
+            ),
+            SizedBox(height: 3,),
+            Container(decoration: BoxDecoration(color: Colors.black12),height: 1,width: double.infinity,),
+            SizedBox(height: 3,),
+          ],
+        );
+      },
+    );
+  }
+  Widget showRedeemButtonOrLock(var totalPoints,var voucherPoints){
+    print("topints:"+totalPoints.toString());
+    var suffixKey="";
+    var suffixKey1="";
+    if(totalPoints.toString().contains("Points")){
+      suffixKey=" points";
+      suffixKey1="Points";
+    }
+    else if(totalPoints.toString().contains("Punches")){
+      suffixKey=" punches";
+      suffixKey1="Punches";
+    }else if(totalPoints.toString().contains("more spending")){
+      suffixKey=" more spending";
+      suffixKey1="more spending";
+    }
+    else{
+      suffixKey=" none";
+    }
+
+    totalPoints=totalPoints.toString().replaceAll(suffixKey1, "");
+    var t= int.parse(totalPoints);
+    assert(t is int);
+
+    var v=int.parse(voucherPoints);
+    assert(v is int);
+
+    if(t>=v){
+    return Container(
+
+      child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: corporateColor
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Center(child: Text(redeem,style: TextStyle(fontSize: 13,color: Colors.white),)),
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: Text(voucherPoints+suffixKey),
+          ),
+        ],
+      ),
+    );
+  }
+  else{
+    return Container(
+    child: Image.asset("assets/ic_lock.png",width: 10,height: 10,),
+    );
+  }
+  }
+
+  Widget setCardUIImagefoRewardVoucher(var imgUrl,var tittle,var logoUrl,var showLogo,var showTittle,var fontColor){
+    if(showLogo=="1" && showTittle=="1"){
+      return Center(
+        child: Container(
+          width: MediaQuery.of(context).size.width/1.5,
+          child: Stack(
+
+            children: [
+              Image.network(imgUrl,width: MediaQuery.of(context).size.width/1.5,),
+              Padding(
+                padding: const EdgeInsets.only(top:10.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(width: 20,),
+                    Image.network(logoUrl??"https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png",
+                      width: 30,height: 30,),
+                    Text(tittle,style: TextStyle(fontSize:11 ,color: hexStringToColor(fontColor)),maxLines: 3),
+
+                  ],
+                ),
+              ),
+            ],
+
+          ),
+        ),
+      );
+    }
+    else if(showLogo=="0" && showTittle=="1"){
+      return Center(
+        child: Container(
+          width: MediaQuery.of(context).size.width/1.5,
+          child: Stack(
+            children: [
+              Image.network(imgUrl,width: MediaQuery.of(context).size.width/1.5,),
+              Padding(
+                padding: const EdgeInsets.only(top:10.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(width: 20,),
+                    Text(tittle,style: TextStyle(fontSize:11,color: hexStringToColor(fontColor)),maxLines: 3),
+
+                  ],
+                ),
+              ),
+            ],
+
+          ),
+        ),
+      );
+    }
+    else if(showLogo=="1" && showTittle=="0"){
+      return Center(
+        child: Container(
+          width: MediaQuery.of(context).size.width/1.5,
+          child: Stack(
+            children: [
+              Image.network(imgUrl,width: MediaQuery.of(context).size.width/1.5,),
+              Padding(
+                padding: const EdgeInsets.only(top:10.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(width: 20,),
+                    Image.network(logoUrl??"https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png",
+                      width: 30,height: 30,),
+                    const SizedBox(width: 20,),
+
+
+                  ],
+                ),
+              ),
+            ],
+
+          ),
+        ),
+      );
+    }
+    else{
+      return Center(child: Container(
+          width: MediaQuery.of(context).size.width/1.5,
+          child: Image.network(imgUrl,width: MediaQuery.of(context).size.width/1.5,)));
+    }
+  }
   Widget setCardUIImage(var imgUrl,var tittle,var logoUrl,var showLogo,var showTittle,var fontColor){
     if(showLogo=="1" && showTittle=="1"){
       return Center(
@@ -242,10 +499,10 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(width: 20,),
+                    const SizedBox(width: 20,),
                     Image.network(logoUrl??"https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png",
                       width: 30,height: 30,),
-                    SizedBox(width: 20,),
+                    const SizedBox(width: 20,),
                     Text(tittle,style: TextStyle(fontSize:15 ,color: hexStringToColor(fontColor)),maxLines: 3),
 
                   ],
@@ -270,9 +527,9 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(width: 20,),
+                    const SizedBox(width: 20,),
 
-                    SizedBox(width: 20,),
+                    const SizedBox(width: 20,),
                     Text(tittle,style: TextStyle(fontSize:15,color: hexStringToColor(fontColor)),maxLines: 3),
 
                   ],
@@ -297,10 +554,10 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(width: 20,),
+                    const SizedBox(width: 20,),
                     Image.network(logoUrl??"https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png",
                       width: 30,height: 30,),
-                    SizedBox(width: 20,),
+                    const SizedBox(width: 20,),
 
 
                   ],
@@ -318,11 +575,6 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
           child: Image.network(imgUrl,width: MediaQuery.of(context).size.width/1.5,)));
     }
   }
-
-
-
-
-
 
   Future<ECardDetailsModel> getEcardDetailsData() async {
 
@@ -343,13 +595,13 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
         'consumer_application_type':CommonUtils.consumerApplicationType,
         'consumer_language_id':CommonUtils.consumerLanguageId,
       },
-    ).timeout(Duration(seconds: 30));
+    ).timeout(const Duration(seconds: 30));
 
 
 
     if(response.statusCode==200 && jsonDecode(response.body)["Status"]=="True")
     {
-
+      debugPrint(jsonDecode(response.body)["data"]["CardData"].toString(),wrapWidth: 1024);
       Map<String,dynamic> body = jsonDecode(response.body)["data"]["CardData"];
       ECardDetailsModel posts1=ECardDetailsModel.fromJson(body);
 
@@ -362,7 +614,6 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
     //
   }
   FutureBuilder<ECardDetailsModel> _ECardDetails(BuildContext context) {
-
     return FutureBuilder<ECardDetailsModel>(
 
       future: getEcardDetailsData(),
@@ -371,8 +622,8 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
           final ECardDetailsModel? posts = snapshot.data;
           return _buildPostsHome(context, posts!);
         } else {
-          return Center(
-            child: CircularProgressIndicator(),
+          return const Center(
+            child: const CircularProgressIndicator(),
           );
         }
       },
@@ -383,16 +634,23 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
       crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Center(child: setCardUIImage(prgmImgUrl,tittle,posts.LogoURL,posts.MerchantLogoSettings,posts.ProgramTitleSettings,posts.FontColor)),
-            SizedBox(height: 5,),
+            const SizedBox(height: 5,),
             Center(child: Text(cardExpiry+ expire_date)),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             setUICenterCardWidgetData(prgmType,posts),
-            SizedBox(height: 20,),
-            Padding(
-              padding: const EdgeInsets.only(left:10.0,right: 10),
-              child: Text(description,style:TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold)),
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(left: 10,right: 10),
+              child: Text(rewards,style:TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.normal)),
+            ),
+            SizedBox(height:10),
+            _ECardRewards(context),
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(left:10.0,right: 10),
+              child: const Text(description,style:const TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold)),
             ),
 
             Padding(
@@ -400,26 +658,30 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
               child: Html(data:utf8.decode(base64.decode(posts.Description))),
             ),
 
-            SizedBox(height: 20,),
-            Padding(
-              padding: const EdgeInsets.only(left:10.0,right: 10),
-              child: Text(terms_cond,style:TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold)),
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(left:10.0,right: 10),
+              child: const Text(terms_cond,style:const TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold)),
             ),
 
             Padding(
               padding: const EdgeInsets.only(left:10.0,right: 10),
             child:Html(data:utf8.decode(base64.decode(posts.Tnc)))),
-            SizedBox(height: 20,),
-            Padding(
-              padding: const EdgeInsets.only(left: 10,right: 10),
-              child: Text(location,style:TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold)),
-            ),
+            const SizedBox(height: 20,),
 
+            const Padding(
+              padding: EdgeInsets.only(top:10,left: 10,right: 10),
+              child: Text(location,style:TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.normal)),
+            ),
+            SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.only(left:10,right: 10),
+              child: _ECardLocation(context),
+            ),
           ],
         );
       }
-
-    Widget setUserTierView(var userTire,var spinnerData){
+  Widget setUserThreeTierView(var userTire,var spinnerData){
     if(userTire==spinnerData[0]["CardTitle"]){
       return Column(
         children: [
@@ -427,35 +689,35 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
             children: [
 
               Expanded(flex:1,child: Container()),
-              Expanded(flex:1,child: Center(child: Icon(Icons.check_circle,color: corporateColor,size: 15,))),
+              const Expanded(flex:1,child: Center(child: Icon(Icons.check_circle,color: corporateColor,size: 20,))),
               Expanded(flex:1,child: Container(height: 1,color: Colors.black,)),
-              Expanded(flex:1,child: Center(child: Icon(Icons.circle_outlined,color: Colors.black,size: 15,))),
+              const Expanded(flex:1,child: Center(child: Icon(Icons.circle_outlined,color: Colors.black,size: 20,))),
               Expanded(flex:1,child: Container(height: 1,color: Colors.black,)),
-              Expanded(flex:1,child: Center(child: Icon(Icons.circle_outlined,color: black,size: 15,))),
+              const Expanded(flex:1,child: Center(child: Icon(Icons.circle_outlined,color: black,size: 20,))),
               Expanded(flex:1,child: Container()),
             ],
           ),
-          SizedBox(height: 4,),
+          const SizedBox(height: 4,),
           Row(
             children: [
 
               Expanded(flex:1,child: Container()),
               Expanded(flex:1,child: Center(
                 child: Text(
-                  spinnerData[0]["CardTitle"],style: TextStyle(fontSize: 10,color: corporateColor),
+                  spinnerData[0]["CardTitle"],style: const TextStyle(fontSize: 10,color: corporateColor),
                 ),
               )),
               Expanded(flex:1,child: Container()),
               Expanded(flex:1,child: Center(
                 child: Text(
                   spinnerData[1]["CardTitle"]
-                  ,style: TextStyle(fontSize: 10),),
+                  ,style: const TextStyle(fontSize: 10),),
               )),
               Expanded(flex:1,child: Container()),
               Expanded(flex:1,child: Center(
                 child: Text(
                   spinnerData[2]["CardTitle"]
-                  ,style: TextStyle(fontSize: 10),),
+                  ,style: const TextStyle(fontSize: 10),),
               )),
               Expanded(flex:1,child: Container()),
             ],
@@ -471,35 +733,35 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
             children: [
 
               Expanded(flex:1,child: Container()),
-              Expanded(flex:1,child: Center(child: Icon(Icons.circle_outlined,color: Colors.black,size: 15,))),
+              const Expanded(flex:1,child: Center(child: const Icon(Icons.circle_outlined,color: Colors.black,size: 20,))),
               Expanded(flex:1,child: Container(height: 1,color: Colors.black,)),
-              Expanded(flex:1,child: Center(child: Icon(Icons.check_circle,color: corporateColor,size: 15,))),
+              const Expanded(flex:1,child: const Center(child: Icon(Icons.check_circle,color: corporateColor,size: 20,))),
               Expanded(flex:1,child: Container(height: 1,color: Colors.black,)),
-              Expanded(flex:1,child: Center(child: Icon(Icons.circle_outlined,color: Colors.black,size: 15,))),
+              const Expanded(flex:1,child: const Center(child: const Icon(Icons.circle_outlined,color: Colors.black,size: 20,))),
               Expanded(flex:1,child: Container()),
             ],
           ),
-          SizedBox(height: 4,),
+          const SizedBox(height: 4,),
           Row(
             children: [
 
               Expanded(flex:1,child: Container()),
               Expanded(flex:1,child: Center(
                 child: Text(
-                  spinnerData[0]["CardTitle"],style: TextStyle(fontSize: 10,color: Colors.black),
+                  spinnerData[0]["CardTitle"],style: const TextStyle(fontSize: 10,color: Colors.black),
                 ),
               )),
               Expanded(flex:1,child: Container()),
               Expanded(flex:1,child: Center(
                 child: Text(
                   spinnerData[1]["CardTitle"]
-                  ,style: TextStyle(fontSize: 10,color: corporateColor),),
+                  ,style: const TextStyle(fontSize: 10,color: corporateColor),),
               )),
               Expanded(flex:1,child: Container()),
               Expanded(flex:1,child: Center(
                 child: Text(
                   spinnerData[2]["CardTitle"]
-                  ,style: TextStyle(fontSize: 10,color: Colors.black),),
+                  ,style: const TextStyle(fontSize: 10,color: Colors.black),),
               )),
               Expanded(flex:1,child: Container()),
             ],
@@ -514,35 +776,118 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
             children: [
 
               Expanded(flex:1,child: Container()),
-              Expanded(flex:1,child: Center(child: Icon(Icons.circle_outlined,color: Colors.black,size: 15,))),
+              const Expanded(flex:1,child: Center(child: Icon(Icons.circle_outlined,color: Colors.black,size: 20,))),
               Expanded(flex:1,child: Container(height: 1,color: Colors.black,)),
-              Expanded(flex:1,child: Center(child: Icon(Icons.circle_outlined,color: Colors.black,size: 15,))),
+              const Expanded(flex:1,child: Center(child: const Icon(Icons.circle_outlined,color: Colors.black,size: 20,))),
               Expanded(flex:1,child: Container(height: 1,color: Colors.black,)),
-              Expanded(flex:1,child: Center(child: Icon(Icons.check_circle,color: corporateColor,size: 15,))),
+              const Expanded(flex:1,child: Center(child: const Icon(Icons.check_circle,color: corporateColor,size: 20,))),
               Expanded(flex:1,child: Container()),
             ],
           ),
-          SizedBox(height: 4,),
+          const SizedBox(height: 4,),
           Row(
             children: [
 
               Expanded(flex:1,child: Container()),
               Expanded(flex:1,child: Center(
                 child: Text(
-                  spinnerData[0]["CardTitle"],style: TextStyle(fontSize: 10,color: Colors.black),
+                  spinnerData[0]["CardTitle"],style: const TextStyle(fontSize: 10,color: Colors.black),
                 ),
               )),
               Expanded(flex:1,child: Container()),
               Expanded(flex:1,child: Center(
                 child: Text(
                   spinnerData[1]["CardTitle"]
-                  ,style: TextStyle(fontSize: 10,color: Colors.black),),
+                  ,style: const TextStyle(fontSize: 10,color: Colors.black),),
               )),
               Expanded(flex:1,child: Container()),
               Expanded(flex:1,child: Center(
                 child: Text(
                   spinnerData[2]["CardTitle"]
-                  ,style: TextStyle(fontSize: 10,color: corporateColor),),
+                  ,style: const TextStyle(fontSize: 10,color: corporateColor),),
+              )),
+              Expanded(flex:1,child: Container()),
+            ],
+          ),
+        ],
+      );
+    }
+    return const Text("");
+ }
+  Widget setUserTwoTierView(var userTire,var spinnerData){
+    if(userTire==spinnerData[0]["CardTitle"]){
+      return Column(
+        children: [
+          Row(
+            children: [
+
+              Expanded(flex:1,child: Container()),
+              const Expanded(flex:1,child: Center(child: Icon(Icons.check_circle,color: corporateColor,size: 20,))),
+              Expanded(flex:1,child: Container(height: 1,color: Colors.black,)),
+              const Expanded(flex:1,child: Center(child: Icon(Icons.circle_outlined,color: Colors.black,size: 20,))),
+              Expanded(flex:1,child: Container()),
+            ],
+          ),
+          const SizedBox(height: 4,),
+          Row(
+            children: [
+
+              Expanded(flex:1,child: Container()),
+              Expanded(flex:1,child: Center(
+                child: Text(
+                  spinnerData[0]["CardTitle"],style: const TextStyle(fontSize: 10,color: corporateColor),
+                ),
+              )),
+              Expanded(flex:1,child: Container()),
+              Expanded(flex:1,child: Center(
+                child: Text(
+                  spinnerData[1]["CardTitle"]
+                  ,style: const TextStyle(fontSize: 10),),
+              )),
+              Expanded(flex:1,child: Container()),
+
+            ],
+          ),
+        ],
+      );
+
+    }
+    else if(userTire==spinnerData[1]["CardTitle"]){
+      return Column(
+        children: [
+          Row(
+            children: [
+
+              Expanded(flex:1,child: Container()),
+              const Expanded(flex:1,child: Center(child: const Icon(Icons.circle_outlined,color: Colors.black,size: 20,))),
+              Expanded(flex:1,child: Container(height: 1,color: Colors.black,)),
+              const Expanded(flex:1,child: const Center(child: Icon(Icons.check_circle,color: corporateColor,size: 20,))),
+              Expanded(flex:1,child: Container(height: 1,color: Colors.black,)),
+              const Expanded(flex:1,child: const Center(child: const Icon(Icons.circle_outlined,color: Colors.black,size: 20,))),
+              Expanded(flex:1,child: Container()),
+            ],
+          ),
+          const SizedBox(height: 4,),
+          Row(
+            children: [
+
+              Expanded(flex:1,child: Container()),
+              Expanded(flex:1,child: Center(
+                child: Text(
+                  spinnerData[0]["CardTitle"],style: const TextStyle(fontSize: 10,color: Colors.black),
+                ),
+              )),
+              Expanded(flex:1,child: Container()),
+              Expanded(flex:1,child: Center(
+                child: Text(
+                  spinnerData[1]["CardTitle"]
+                  ,style: const TextStyle(fontSize: 10,color: corporateColor),),
+              )),
+              Expanded(flex:1,child: Container()),
+              Expanded(flex:1,child: Center(
+                child: Text(
+                  spinnerData[2]["CardTitle"]
+                  ,style: const TextStyle(fontSize: 10,color: Colors.black),),
               )),
               Expanded(flex:1,child: Container()),
             ],
@@ -551,10 +896,9 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
       );
     }
 
-      return Text("");
-    }
-
-    Future<void> showCardQRImage(){
+    return const Text("");
+  }
+  Future<void> showCardQRImage(){
       return showDialog(
       barrierDismissible: false,
         context: context,
@@ -575,27 +919,27 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children:[
                       // ML0a029bO02feJ0f43R64Z00U00V9125T1XbfV1Y01Ibb56
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
 
-                      Text(prgmTittle+"x" +"1" ,style: TextStyle(fontSize: 16,color: Colors.black),),
-                      SizedBox(height: 30,),
-                      Text(" SCAN CARD QR CODE ",style: TextStyle(fontSize: 21,color: Colors.black),),
-                      SizedBox(height: 20,),
+                      Text(prgmTittle+"x" +"1" ,style: const TextStyle(fontSize: 16,color: Colors.black),),
+                      const SizedBox(height: 30,),
+                      const Text(" SCAN CARD QR CODE ",style: TextStyle(fontSize: 21,color: Colors.black),),
+                      const SizedBox(height: 20,),
                       Center(child:
 
                       // generateQRCode(fullRunNo,prgmType,qty,giftcardOrderId,prgMId),
-                      // generateQRCode("",prgmType,"1","0",prgMId),
+                      generateQRCode("",prgmType,"1","0",prgMId),
 
-                      generateQRCodeForPOS(),
+                      // generateQRCodeForPOS(),
 
                       ),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       MaterialButton(onPressed: (){
                         Navigator.pop(context,true);
                       },
                         color: corporateColor,
-                        child: Text(cancel.toUpperCase(),style: TextStyle(color: Colors.white,fontSize: 13),),),
-                      SizedBox(height: 20,),
+                        child: Text(cancel.toUpperCase(),style: const TextStyle(color: Colors.white,fontSize: 13),),),
+                      const SizedBox(height: 20,),
                     ],
 
                   ),
@@ -606,7 +950,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
         }
       );
       }
-      Widget  generateQRCodeForPOS()  {
+  Widget  generateQRCodeForPOS()  {
 
     var data1= CommonUtils.consumermobileNumber.toString().replaceAll("65 ", "");
 
@@ -633,7 +977,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
 
       );
         }
-    Widget generateQRCode(String FullRunno,String ProgramType,String qty1,String GiftCardOrderId,String prgmId){
+  Widget generateQRCode(String FullRunno,String ProgramType,String qty1,String GiftCardOrderId,String prgmId){
       return FutureBuilder(
         future:  getdata1(FullRunno, ProgramType, qty1,GiftCardOrderId, prgmId),
         builder: (context, snapshot) {
@@ -659,21 +1003,15 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
             );
           }
           else {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
       },
       );
 
-
-
-
-
-
-
     }
-    Future<String> getdata1(String FullRunno,String ProgramType,String qty1,String GiftCardOrderId,String prgmId) async {
+  Future<String> getdata1(String FullRunno,String ProgramType,String qty1,String GiftCardOrderId,String prgmId) async {
       int programId ;
 
       if(ProgramType.toLowerCase()=="events"){
@@ -758,8 +1096,8 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
       }
       return consumerName;
     }
-
-    Widget setUICenterCardWidgetData(var prgmType,ECardDetailsModel posts) {
+  Widget setUICenterCardWidgetData(var prgmType,ECardDetailsModel posts) {
+      debugPrint(prgmType);
       if(prgmType=="packagecard"){
         // PackageCard
         return Container(
@@ -775,22 +1113,50 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     posts.punch_package_desc.toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.black, fontSize: 15),),
                 ),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
 
               setCardDetailsView(posts.punch_slot_status),
 
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
 
             ],
           ),
         );
         }
-      else {
-        //three tier card
+      else if(prgmType=="punchcard"){
+        // PackageCard
+        return Container(
+          width: double.infinity,
+          color: lightGrey3,
+          child: Column(
+            children: [
+
+
+              Padding(
+                padding: const EdgeInsets.only(left:20,top:20),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    posts.punch_package_desc.toString(),
+                    style: const TextStyle(
+                        color: Colors.black, fontSize: 15),),
+                ),
+              ),
+              const SizedBox(height: 10,),
+
+              setCardDetailsView(posts.punch_slot_status),
+
+              const SizedBox(height: 20,),
+
+            ],
+          ),
+        );
+      }
+      else if(prgmType=="storecard"){
         return
           Container(
             width: double.infinity,
@@ -802,9 +1168,9 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                       width: 300,
                       height: 300,
 
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/pointcard_bg.png'),
+                      decoration: const BoxDecoration(
+                          image: const DecorationImage(
+                            image: AssetImage('assets/storecard_bg.png'),
                           )
                       ),
                       child:
@@ -815,43 +1181,185 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            balancePoints.toString().replaceAll("Points", ""),
-                            style: TextStyle(
-                                color: Colors.white, fontSize: 20),),
-                          Text(points, style: TextStyle(
-                              color: Colors.white, fontSize: 20),),
+                            posts.circle_data["point1"],style: const TextStyle(color: Colors.white, fontSize: 20),),
+                           SizedBox(height: 10,),
+                           Text("${posts.circle_data["currency1"]} ${posts.circle_data["desc1"]}", style: const TextStyle(color: Colors.white, fontSize: 14),),
 
                         ],
                       )
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
 
-                  setUserTierView(posts.spinner_data['curent_status'],
-                      posts.spinner_data['spin_array']),
 
-                  SizedBox(height: 20,),
 
-                  Text("- " + posts.upgrade_data),
-
-                  SizedBox(height: 20,),
 
                 ],
               ),
             ),
           );
       }
-  }
+      else if(prgmType=="cashbackcard"){
+        return
+          Container(
+            width: double.infinity,
+            color: lightGrey3,
+            child: Center(
+              child: Column(
+                children: [
+                  Container(
+                      width: 300,
+                      height: 300,
 
-    Widget setCardDetailsView(var punch_slot_status) {
+                      decoration: const BoxDecoration(
+                          image: const DecorationImage(
+                            image: AssetImage('assets/cashback_bg.png'),
+                          )
+                      ),
+                      child:
+
+
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            // posts.circle_data["point1"],style: const TextStyle(color: Colors.white, fontSize: 20),),
+                            balancePoints.toString().replaceAll("INR", ""),style: const TextStyle(color: Colors.white, fontSize: 20),),
+                           SizedBox(height: 10,),
+                           Text("${posts.circle_data["currency1"]} ${posts.circle_data["desc1"]}", style: const TextStyle(color: Colors.white, fontSize: 14),),
+
+                        ],
+                      )
+                  ),
+                  const SizedBox(height: 10,),
+
+
+
+
+                ],
+              ),
+            ),
+          );
+      }
+
+      else {
+
+        var membercardSpinerLength=jsonDecode(jsonEncode(posts.spinner_data["spin_array"])).length;
+
+        //twotier
+        if(membercardSpinerLength==2){
+          return
+            Container(
+              width: double.infinity,
+              color: lightGrey3,
+              child: Center(
+                child: Column(
+                  children: [
+                    Container(
+                        width: 300,
+                        height: 300,
+
+                        decoration: const BoxDecoration(
+                            image: const DecorationImage(
+                              image: AssetImage('assets/pointcard_bg.png'),
+                            )
+                        ),
+                        child:
+
+
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              balancePoints.toString().replaceAll("Points", ""),
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 20),),
+                            const Text(points, style: const TextStyle(
+                                color: Colors.white, fontSize: 20),),
+
+                          ],
+                        )
+                    ),
+                    const SizedBox(height: 10,),
+
+                    setUserTwoTierView(posts.spinner_data['curent_status'],
+                        posts.spinner_data['spin_array']),
+
+                    const SizedBox(height: 20,),
+
+                    Text("- " + posts.upgrade_data),
+
+                    const SizedBox(height: 20,),
+
+                  ],
+                ),
+              ),
+            );
+        }
+
+        // three tier
+        else{
+          return
+            Container(
+              width: double.infinity,
+              color: lightGrey3,
+              child: Center(
+                child: Column(
+                  children: [
+                    Container(
+                        width: 300,
+                        height: 300,
+
+                        decoration: const BoxDecoration(
+                            image: const DecorationImage(
+                              image: AssetImage('assets/pointcard_bg.png'),
+                            )
+                        ),
+                        child:
+
+
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              balancePoints.toString().replaceAll("Points", ""),
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 20),),
+                            const Text(points, style: const TextStyle(
+                                color: Colors.white, fontSize: 20),),
+
+                          ],
+                        )
+                    ),
+                    const SizedBox(height: 10,),
+
+                    setUserThreeTierView(posts.spinner_data['curent_status'],
+                        posts.spinner_data['spin_array']),
+
+                    const SizedBox(height: 20,),
+
+                    Text("- " + posts.upgrade_data),
+
+                    const SizedBox(height: 20,),
+
+                  ],
+                ),
+              ),
+            );
+        }
+
+      }
+  }
+  Widget setCardDetailsView(var punch_slot_status) {
     punch_slot_status=punch_slot_status.toString();
     List<String> data=punch_slot_status.toString().split(",");
 
 
     return GridView.count(
       crossAxisCount: 5,
-
-
-
+      physics: const ScrollPhysics(),
       shrinkWrap: true,
       children: List.generate(data.length, (index)  {
 
@@ -867,9 +1375,27 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
 
                     border: Border.all(color: Colors.black, )
                   ),
-                  child: Center(child: Text((index+1).toString(),style: TextStyle(color: corporateColor),)),
+                  child: Center(child: Text((index+1).toString(),style: const TextStyle(color: corporateColor),)),
                 )
             ),
+          );
+        }
+        else if(data[index]=="togift"){
+          return  Center(
+            child: Container(
+
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+
+                      border: Border.all(color: Colors.black, )
+                  ),
+                  child: Image.asset('assets/yet_to_punch_icon.png',width: 50,height: 50,),
+                  ),
+                )
+
           );
         }
         else{
@@ -880,10 +1406,9 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
 
 
       }),
-
     );
   }
 
-  }
+}
 
 

@@ -47,5 +47,4 @@ class _WalletFragmentState extends State<WalletFragment> with SingleTickerProvid
     );
   }
 
-
 }

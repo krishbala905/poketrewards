@@ -78,7 +78,7 @@ class _EVoucherDetailsFragmentState extends State<EVoucherDetailsFragment> {
                 showCardQRImage();
               },
               child: Container(
-                color: corporateColor,
+                color: corporateColor3,
                 child: Center(
                   child: Text(showCashierCode,style: TextStyle(color: Colors.white),),
                 ),
@@ -684,8 +684,8 @@ class _EVoucherDetailsFragmentState extends State<EVoucherDetailsFragment> {
                       Center(child:
 
                       // generateQRCode(fullRunNo,prgmType,qty,giftcardOrderId,prgMId),
-                      // generateQRCode(fulrnuno,prgmType,"1","0",prgMId),
-                      generateQRCodeForPOS(fulrnuno),
+                      generateQRCode(fulrnuno,prgmType,"1","0",prgMId),
+                      // generateQRCodeForPOS(fulrnuno),
                       ),
                       SizedBox(height: 20,),
                       MaterialButton(onPressed: (){
