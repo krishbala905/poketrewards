@@ -9,7 +9,7 @@ const FEEDBACK_URL = "$BaseUrl${SERVER_SUB_HEADER}NewUiTransactionFeedbackCmd";
 const INBOX_URL="$BaseUrl${SERVER_SUB_HEADER}NewUiInboxListCmd";
 const INBOX_DETAILS_URL="${BaseUrl}showwebview/getwebview/";
 const WALLET_CARD_URL="$BaseUrl${SERVER_SUB_HEADER}NewUiPoketWalletCmd";
-
+const PROFILE_URL = "$BaseUrl${SERVER_SUB_HEADER}NewUiConsumerProfileCmd";
 const WALLET_CARD_DETAILS_URL="$BaseUrl${SERVER_SUB_HEADER}NewUiPoketWalletCardDetailsCmd";
 const WALLET_CARD_BANNER_URL="$BaseUrl${SERVER_SUB_HEADER}NewUiPoketListBrowseBannersCmd";
 const WALLET_CARD_BANNER_DETAILS_URL="$BaseUrl${SERVER_SUB_HEADER}NewUiPoketItemListViewCmd";

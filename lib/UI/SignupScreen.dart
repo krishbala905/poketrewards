@@ -66,30 +66,13 @@ class _SignupScreenState extends State<SignupScreen> {
       final imagetemp = File(image.path);
       print(image.mimeType);
       setState(() {
-        this.image = imagetemp;
+        this.image =   imagetemp;
       });
     } on PlatformException catch (e){
       print('failed : $e');
     }
 
   }
-  // Future<File> testCompressAndGetFile(File file, String targetPath) async {
-  //   var result = await FlutterImageCompress.compressAndGetFile(
-  //     file.absolute.path, targetPath,
-  //     quality: 88,
-  //     rotate: 180,
-  //   );
-
-  // print(file.lengthSync());
-  // print(result.lengthSync());
-  //
-  // return result;
-  //}
-
-
-
-
-
   Future OpenCamera() async {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.camera);
@@ -217,7 +200,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   onTap: (){
                     showImgSource(context);
                     // Picimgae();
-                    print('object');
+                    print('object'+update);
                   },
                 ),
                 SizedBox(
@@ -836,10 +819,6 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                       ),
                     ),
-
-
-
-
                   ),
                 ),
                 SizedBox(
