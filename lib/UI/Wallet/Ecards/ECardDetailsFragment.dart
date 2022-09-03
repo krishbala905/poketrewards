@@ -1,7 +1,10 @@
 import 'dart:convert';
+import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../Others/Urls.dart';
 import '../../../res/Colors.dart';
 import '../../../res/Strings.dart';
@@ -350,7 +353,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
       suffixKey=" punches";
       suffixKey1="Punches";
     }else if(totalPoints.toString().contains("more spending")){
-      suffixKey=" more spending";
+      suffixKey=" punch";
       suffixKey1="more spending";
     }
     else{
@@ -394,6 +397,267 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
     child: Image.asset("assets/ic_lock.png",width: 10,height: 10,),
     );
   }
+  }
+
+
+
+  Future<ECardDetailsModel> getEcardDetailsData() async {
+
+
+    final http.Response response = await http.post(
+      Uri.parse(WALLET_CARD_DETAILS_URL),
+
+      body: {
+        "consumer_id": CommonUtils.consumerID.toString(),
+        "program_id": prgMId.toString(),
+        "program_type": prgmType.toString(),
+        "merchant_id": merchantId,
+        "action_event": "1",
+        "cma_timestamps":Utils().getTimeStamp(),
+        "time_zone":Utils().getTimeZone(),
+        "software_version":CommonUtils.softwareVersion,
+        "os_version":CommonUtils.osVersion,
+        "phone_model":CommonUtils.deviceModel,
+        "device_type":CommonUtils.deviceType,
+        'consumer_application_type':CommonUtils.consumerApplicationType,
+        'consumer_language_id':CommonUtils.consumerLanguageId,
+      },
+    ).timeout(const Duration(seconds: 30));
+    print("------------------");
+    print(CommonUtils.consumerID.toString());
+    print(prgMId.toString());
+    print(prgmType.toString());
+    print(Utils().getTimeZone());
+    print(Utils().getTimeStamp());
+    print(CommonUtils.deviceModel);
+    print("------------------");
+
+    if(response.statusCode==200 && jsonDecode(response.body)["Status"]=="True")
+    {
+      debugPrint("CardDetails:"+jsonDecode(response.body)["data"].toString(),wrapWidth: 1024);
+      Map<String,dynamic> body = jsonDecode(response.body)["data"]["CardData"];
+      ECardDetailsModel posts1=ECardDetailsModel.fromJson(body);
+
+      return posts1;
+
+    }
+    else {
+      throw "Unable to retrieve posts.";
+    }
+    //
+  }
+  FutureBuilder<ECardDetailsModel> _ECardDetails(BuildContext context) {
+    return FutureBuilder<ECardDetailsModel>(
+
+      future: getEcardDetailsData(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          final ECardDetailsModel? posts = snapshot.data;
+          return _buildPostsHome(context, posts!);
+        } else {
+          return const Center(
+            child: const CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+  Column _buildPostsHome(BuildContext context, ECardDetailsModel posts) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 20,),
+            Center(child: setCardUIImage(prgmImgUrl,tittle,posts.LogoURL,posts.MerchantLogoSettings,posts.ProgramTitleSettings,posts.FontColor)),
+            const SizedBox(height: 5,),
+            Center(child: Text(cardExpiry+ expire_date)),
+            const SizedBox(height: 20,),
+            setUICenterCardWidgetData(prgmType,posts),
+
+            // Rewards
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(left: 10,right: 10),
+              child: Text(rewards,style:TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.normal)),
+            ),
+            SizedBox(height:10),
+            _ECardRewards(context),
+
+
+
+            // Decription
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(left:10.0,right: 10),
+              child: const Text(description,style:const TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left:10.0,right: 10),
+              child: Html(data:utf8.decode(base64.decode(posts.Description))),
+            ),
+
+
+            //terms
+            const SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.only(left:10.0,right: 10),
+              child: const Text(terms_cond,style:const TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold)),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left:10.0,right: 10),
+            child:Html(data:utf8.decode(base64.decode(posts.Tnc)))),
+            const SizedBox(height: 20,),
+
+            setReferOption(posts),
+
+            // location
+            const Padding(
+              padding: EdgeInsets.only(top:10,left: 10,right: 10),
+              child: Text(location,style:TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.normal)),
+            ),
+            SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.only(left:10,right: 10),
+              child: _ECardLocation(context),
+            ),
+          ],
+        );
+      }
+
+  Widget setReferOption(ECardDetailsModel posts){
+    if(posts.ReferFriendOption=="no"){
+      return Container();
+    }
+    else{
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+
+        children: [
+
+          //Refer Friend Block
+
+          const Padding(
+            padding: EdgeInsets.only(left:10.0,right: 10),
+            child: const Text(refer_friend,style:const TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold)),
+          ),
+          // Html(data:utf8.decode(base64.decode(posts.ReferrelDescription))),
+          Padding(
+            padding: const EdgeInsets.only(left:10.0),
+            child: Html(data:utf8.decode(base64.decode(posts.ReferrelDescription))),
+          ),
+
+
+
+          const SizedBox(height: 5,),
+          GestureDetector(
+            onTap: (){
+
+              var referFriendContent=utf8.decode(base64.decode(posts.ReferFriendContent));
+
+              showReferAlertDialogForMultipleShare(context,referFriendContent);
+            },
+            child: Center(
+              child: Container(
+
+              width: 180,
+                decoration: BoxDecoration(
+                    border: Border.all(color: corporateColor),
+                    color: Colors.white,borderRadius: BorderRadius.circular(25)),
+                child:Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Image.asset("assets/refer_friend_icon.png",height: 25,width: 25,),
+                      const Text(refer_friend_caps,style:const TextStyle(color: Colors.black,fontSize: 13,fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 20,),
+
+        ],
+      );
+    }
+  }
+
+  showReferAlertDialogForMultipleShare(BuildContext context,var content){
+    AlertDialog alert = AlertDialog(
+      backgroundColor: Colors.white,
+
+      actions: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(left:10,right:10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 15,),
+                const Text(contactUs_content,style: TextStyle(fontSize: 15),),
+                SizedBox(height: 35,),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context, true);
+                    _launchEmail(content);
+                  },
+                  child: Text(email,style: TextStyle(fontSize: 15),),
+                ),
+                SizedBox(height: 20,),
+
+
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context, true);
+                    _launchFacebook(content);
+                  },
+                  child: Text(facebook,style: TextStyle(fontSize: 15),),
+                ),
+                SizedBox(height: 20,),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context, true);
+                    _launchTwitter(content);
+                  },
+                  child: Text(twitter,style: TextStyle(fontSize: 15),),
+                ),
+
+                SizedBox(height: 20,),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context, true);
+                    _launchWhatsapp(content);
+                  },
+                  child: Text(whatsapp,style: TextStyle(fontSize: 15),),
+                ),
+                SizedBox(height: 25,),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right:15.0),
+          child: GestureDetector(
+            onTap: (){Navigator.pop(context);},
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: Text(cancel,style: TextStyle(fontSize: 15),),
+            ),
+          ),
+        )
+      ],
+    );
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return new BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: alert);
+      },
+    );
   }
 
   Widget setCardUIImagefoRewardVoucher(var imgUrl,var tittle,var logoUrl,var showLogo,var showTittle,var fontColor){
@@ -576,111 +840,6 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
     }
   }
 
-  Future<ECardDetailsModel> getEcardDetailsData() async {
-
-
-    final http.Response response = await http.post(
-      Uri.parse(WALLET_CARD_DETAILS_URL),
-
-      body: {
-        "consumer_id": CommonUtils.consumerID.toString(),
-        "program_id": prgMId.toString(),
-        "program_type": prgmType.toString(),
-        "cma_timestamps":Utils().getTimeStamp(),
-        "time_zone":Utils().getTimeZone(),
-        "software_version":CommonUtils.softwareVersion,
-        "os_version":CommonUtils.osVersion,
-        "phone_model":CommonUtils.deviceModel,
-        "device_type":CommonUtils.deviceType,
-        'consumer_application_type':CommonUtils.consumerApplicationType,
-        'consumer_language_id':CommonUtils.consumerLanguageId,
-      },
-    ).timeout(const Duration(seconds: 30));
-
-
-
-    if(response.statusCode==200 && jsonDecode(response.body)["Status"]=="True")
-    {
-      debugPrint(jsonDecode(response.body)["data"]["CardData"].toString(),wrapWidth: 1024);
-      Map<String,dynamic> body = jsonDecode(response.body)["data"]["CardData"];
-      ECardDetailsModel posts1=ECardDetailsModel.fromJson(body);
-
-      return posts1;
-
-    }
-    else {
-      throw "Unable to retrieve posts.";
-    }
-    //
-  }
-  FutureBuilder<ECardDetailsModel> _ECardDetails(BuildContext context) {
-    return FutureBuilder<ECardDetailsModel>(
-
-      future: getEcardDetailsData(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          final ECardDetailsModel? posts = snapshot.data;
-          return _buildPostsHome(context, posts!);
-        } else {
-          return const Center(
-            child: const CircularProgressIndicator(),
-          );
-        }
-      },
-    );
-  }
-  Column _buildPostsHome(BuildContext context, ECardDetailsModel posts) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(height: 20,),
-            Center(child: setCardUIImage(prgmImgUrl,tittle,posts.LogoURL,posts.MerchantLogoSettings,posts.ProgramTitleSettings,posts.FontColor)),
-            const SizedBox(height: 5,),
-            Center(child: Text(cardExpiry+ expire_date)),
-            const SizedBox(height: 20,),
-            setUICenterCardWidgetData(prgmType,posts),
-            const SizedBox(height: 20,),
-            const Padding(
-              padding: EdgeInsets.only(left: 10,right: 10),
-              child: Text(rewards,style:TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.normal)),
-            ),
-            SizedBox(height:10),
-            _ECardRewards(context),
-            const SizedBox(height: 20,),
-            const Padding(
-              padding: EdgeInsets.only(left:10.0,right: 10),
-              child: const Text(description,style:const TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold)),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.only(left:10.0,right: 10),
-              child: Html(data:utf8.decode(base64.decode(posts.Description))),
-            ),
-
-            const SizedBox(height: 20,),
-            const Padding(
-              padding: EdgeInsets.only(left:10.0,right: 10),
-              child: const Text(terms_cond,style:const TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold)),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.only(left:10.0,right: 10),
-            child:Html(data:utf8.decode(base64.decode(posts.Tnc)))),
-            const SizedBox(height: 20,),
-
-            const Padding(
-              padding: EdgeInsets.only(top:10,left: 10,right: 10),
-              child: Text(location,style:TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.normal)),
-            ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: const EdgeInsets.only(left:10,right: 10),
-              child: _ECardLocation(context),
-            ),
-          ],
-        );
-      }
   Widget setUserThreeTierView(var userTire,var spinnerData){
     if(userTire==spinnerData[0]["CardTitle"]){
       return Column(
@@ -898,6 +1057,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
 
     return const Text("");
   }
+
   Future<void> showCardQRImage(){
       return showDialog(
       barrierDismissible: false,
@@ -1409,6 +1569,32 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
     );
   }
 
+
+  _launchWhatsapp(var content) async {
+
+    var whatsappAndroid = Uri.parse(
+        // "whatsapp://send?phone=$whatsapp&text=" + content+" "+link);
+        "whatsapp://send?&text=" + content);
+    if (await canLaunchUrl(whatsappAndroid)) {
+      await launchUrl(whatsappAndroid);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("WhatsApp is not installed on the device"),
+        ),
+      );
+    }
+  }
+  _launchEmail(var content) async {
+    final Email email = Email(
+      subject: content,
+      isHTML: false,
+    );
+
+    await FlutterEmailSender.send(email);
+  }
+  _launchTwitter(var content){}
+  _launchFacebook(var content){}
 }
 
 

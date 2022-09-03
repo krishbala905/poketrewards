@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 // const  corporateColor  = Color(0xFFff9800);
 const  corporateColor  = Color(0xFF00ADA7);
 const  corporateColor2  = Color(0xFF39b2a9);
-const  corporateColor3  = Color(0xFF39b2a9);
+const  corporateColor3  = Color(0xFFA1E0A9);
 const  background      = Color(0xFFFFFFFF);
 const  textColor       = Color(0xFFFFFFFF);
 const  hintTextcolor   = Color(0xFFFFFFFF);

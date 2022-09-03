@@ -68,7 +68,7 @@ class _ECardFragmentState extends State<ECardFragment> {
 
     if(response.statusCode==200 && jsonDecode(response.body)["Status"]=="True")
     {
-    debugPrint("Gojkul:"+jsonDecode(response.body)["data"]["Cards"].toString(),wrapWidth: 1024);
+
 
       List<dynamic> body = jsonDecode(response.body)["data"]["Cards"];
       List<ECardModel> posts1 = body.map((dynamic item) => ECardModel.fromJson(item),).toList();

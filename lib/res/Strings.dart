@@ -76,9 +76,16 @@ const mycards="MY CARD";
 const evoucher="E-Vouchers";
 const enter_store_pin="ENTER STORE PIN";
 const redeem_voucher="Redeem Voucher";
+const whatsapp="WhatsApp";
+const facebook="Facebook";
+const twitter="Twitter";
+
 const cancel="Cancel";
+const contactUs_content="How would you like to share ?";
 const cardExpiry="Card Expiry";
 const terms_cond="Terms & Condition";
+const refer_friend="Refer A Friend";
+const refer_friend_caps="REFER A FRIEND";
 const contact="Contact "+appName;
 const redeem="REDEEM";
 const points="Points";
