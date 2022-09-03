@@ -538,7 +538,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
 
           const Padding(
             padding: EdgeInsets.only(left:10.0,right: 10),
-            child: const Text(refer_friend,style:const TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold)),
+            child:  Text(refer_friend,style:const TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold)),
           ),
           // Html(data:utf8.decode(base64.decode(posts.ReferrelDescription))),
           Padding(

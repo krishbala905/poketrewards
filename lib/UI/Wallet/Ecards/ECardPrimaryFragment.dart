@@ -54,7 +54,7 @@ class _ECardPrimaryFragmentState extends State<ECardPrimaryFragment> {
                 child: Container(
                   decoration: BoxDecoration(color: lightGrey2),
                   height: 40.0,
-                    child: const TabBar(
+                    child:  TabBar(
                       labelColor: corporateColor3,
                       indicatorColor: corporateColor3,
                       unselectedLabelColor: Colors.black54,

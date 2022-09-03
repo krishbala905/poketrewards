@@ -89,6 +89,18 @@ const expiry="Expiry";
 const no="No";
 const showCashierCode="SHOW CASHIER QR CODE";
 const cashierEnterStorePin="CASHIER ENTER STORE PIN";
+const whatsapp="WhatsApp";
+const facebook="Facebook";
+const twitter="Twitter";
+const refer_friend_caps="REFER FRIEND";
+const contactUs_content="How would you like to share ?";
+const view="View";
+const refer_friend="Refer Friend";
+const emailContent="Hi,"+appName;
+const details="Details";
+const mycards="MY CARDS";
+const  noMessage="You have no message at this moment";
+const whatson_caps="WHAT'S ON";
 
 
 
