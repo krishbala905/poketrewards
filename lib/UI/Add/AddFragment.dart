@@ -1,6 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:poketrewards/generated/l10n.dart';
+//import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
+import 'package:poketrewards/UI/Add/MyQrSegment.dart';
+import 'package:poketrewards/UI/Add/SearchSegment.dart';
+
+
 class AddFragment extends StatefulWidget {
   const AddFragment({Key? key}) : super(key: key);
 
@@ -14,13 +19,45 @@ class _AddFragmentState extends State<AddFragment> {
   
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: true,
-        child:Scaffold(
+    return new DefaultTabController(
+      length: 4,
+      child: new Scaffold(
+        appBar: new PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),
+          child: new Container(
+            decoration: BoxDecoration(color:lightGrey2),
+            height: 40.0,
+            child: new TabBar(
+              indicatorColor: corporateColor,
+              unselectedLabelColor: Colors.black,
+              labelColor:corporateColor,
 
-          backgroundColor:  Colors.white,
+
+              tabs: [
+                Tab(child: Text('My QR',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13 ),),),
+                Tab(child: Text('SCAN',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13),),),
+                Tab(child: Text('SEARCH',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13 ),),),
+                Tab(child: Text('PERSONAL',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13),),),
+
+
+              ],
+            ),
+          ),
         ),
+        body: TabBarView(
+          children: [
+            MyQrSegment(),
+            MyQrSegment(),
+          SearchSegment(),
+            MyQrSegment(),
 
+
+          ],
+        ),
+      ),
     );
   }
+
+
+
 }

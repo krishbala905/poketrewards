@@ -13,6 +13,6 @@ const PROFILE_URL = "$BaseUrl${SERVER_SUB_HEADER}NewUiConsumerProfileCmd";
 const WALLET_CARD_DETAILS_URL="$BaseUrl${SERVER_SUB_HEADER}NewUiPoketWalletCardDetailsCmd";
 const WALLET_CARD_BANNER_URL="$BaseUrl${SERVER_SUB_HEADER}NewUiPoketListBrowseBannersCmd";
 const WALLET_CARD_BANNER_DETAILS_URL="$BaseUrl${SERVER_SUB_HEADER}NewUiPoketItemListViewCmd";
-
+const SEARCH_URL = BaseUrl+ SERVER_SUB_HEADER + 'NewUiSearchProgramsAndroidCmd';
 
 

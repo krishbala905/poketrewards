@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>463237164898-6jo9abll8lunicnir62iu4o3bmoduph6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.463237164898-6jo9abll8lunicnir62iu4o3bmoduph6</string>
+	<key>API_KEY</key>
+	<string>AIzaSyASaJHVASR4WAt-ikEMhhmsz6x5QIqkPuM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>463237164898</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.poket.flutterAppPoket</string>
+	<key>PROJECT_ID</key>
+	<string>poket-rewards-939ac</string>
+	<key>STORAGE_BUCKET</key>
+	<string>poket-rewards-939ac.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:463237164898:ios:b8f39c1f67fce0a51b463b</string>
+</dict>
+</plist>

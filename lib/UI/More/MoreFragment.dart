@@ -4,7 +4,7 @@ import 'package:poketrewards/UI/More/ChangePassword.dart';
 import 'package:poketrewards/UI/More/History.dart';
 import 'package:poketrewards/UI/More/Language.dart';
 import 'package:poketrewards/UI/More/Privacy.dart';
-import 'package:poketrewards/UI/More/Profile.dart';
+//import 'package:poketrewards/UI/More/Profile.dart';
 import 'package:poketrewards/UI/More/Signout.dart';
 import 'package:poketrewards/UI/More/Subscribe.dart';
 import 'package:poketrewards/UI/More/Tellyourfriends.dart';
@@ -13,7 +13,7 @@ import 'package:poketrewards/UI/More/feadback.dart';
 import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
 
-import '../../../res/Strings.dart';
+//import '../../../res/Strings.dart';
 
 class MoreFragment extends StatefulWidget {
   const MoreFragment({Key? key}) : super(key: key);
@@ -36,8 +36,8 @@ class _MoreFragmentState extends State<MoreFragment> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Profile(),));
+                // Navigator.push(
+                //     context, MaterialPageRoute(builder: (context) => Profile(),));
               },
               child: Container(
                   height: 48,
