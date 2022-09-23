@@ -44,7 +44,7 @@ const and = "&";
 const privacypolicy = " Privacy Policy";
 const add = "Add";
 const e_wallet = "E-wallet";
-const whatson = "Whats On";
+const whatson = "What's On";
 const notify = "Notification";
 const ok ="OK";
 const rewards ="Rewards";
@@ -101,6 +101,16 @@ const details="Details";
 const mycards="MY CARDS";
 const  noMessage="You have no message at this moment";
 const whatson_caps="WHAT'S ON";
+const editprofile = "Edit Profile";
+const full_name = "Full Name";
+const gender = "Gender";
+const dateofbirth = "Date Of Birth";
+const address = "Address";
+const mobile_number = "Mobile Number";
+const memberexclusive = "Member Exclusive";
+const no_content_catalogue = "Oops, you have not joined a merchant who is using Poket rewards platform. No worries, when the day comes that your favorite merchant is using Poket platform and invites you to join them as a member, you will be able to see their catalogue  on this screen. We are eager that this day comes soon so that we can serve you better";
+
+
 
 
 

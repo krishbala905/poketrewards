@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:poketrewards/Others/CommonBrowser.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 
@@ -7,7 +8,6 @@ import '../../../Others/CommonUtils.dart';
 import '../../../Others/Urls.dart';
 import '../../../Others/Utils.dart';
 import '../../../res/Colors.dart';
-import '../../CommonBrowser.dart';
 import 'WhatsOnMultipleInitModel.dart';
 
 class MultipleBanners extends StatefulWidget {
@@ -47,8 +47,8 @@ class _MultipleBannersState extends State<MultipleBanners> {
       Uri.parse(WALLET_CARD_BANNER_DETAILS_URL),
 
       body: {
-        "main_category_id":id,
-        "merchant_id": merchantId,
+        "main_category_id":widget.id,
+        "merchant_id": widget.merchantId,
         "consumer_id": CommonUtils.consumerID.toString(),
         "action_event": "1",
         "cma_timestamps":Utils().getTimeStamp(),
@@ -63,13 +63,13 @@ class _MultipleBannersState extends State<MultipleBanners> {
     ).timeout(Duration(seconds: 30));
 
 
-
+print("check5"+response.body.toString());
 
     if(response.statusCode==200)
     {
       List<dynamic> body = jsonDecode(response.body)["SubBanners"];
       List<WhatsOnMultipleInitModel> posts1 = body.map((dynamic item) => WhatsOnMultipleInitModel.fromJson(item),).toList();
-
+      print("check8"+posts1.toString());
       return posts1;
 
     }
@@ -85,6 +85,7 @@ class _MultipleBannersState extends State<MultipleBanners> {
       future: getHomeBannerData(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
+          print("check7"+widget.id);
           final List<WhatsOnMultipleInitModel>? posts = snapshot.data;
           return _buildPostsHome(context, posts!);
         } else {
