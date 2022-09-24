@@ -405,7 +405,13 @@ class _ConsumerTabState extends State<ConsumerTab>{
         if (snapshot.connectionState == ConnectionState.done) {
 
           final String ? posts = snapshot.data;
-          return _buildPostsInbox(context, posts!);
+          if(posts!=null){
+            return _buildPostsInbox(context, posts);
+          }
+          else{
+            return Container();
+          }
+
         } else {
           return Center(
             child:SpinKitCircle(

@@ -324,7 +324,7 @@ class _LoginState extends State<Login> {
         // CommonUtils.consumerID = consId;
         CommonUtils.consumerName = "Gokul";
         CommonUtils.consumerGender = "Male";
-        CommonUtils.consumerProfileImageUrl = "https://media.istockphoto.com/photos/sample-red-grunge-round-stamp-on-white-background-picture-id491520707?k=20&m=491520707&s=612x612&w=0&h=b_KK4QHA7hqLwUN_gj4lQNRhx2c9vsibJyz5xO0Cvww=";
+        CommonUtils.consumerProfileImageUrl = "https://global-uploads.webflow.com/6216ae5cdca4d58db79b5ac6/623d21de84b79b87fb4e2d3f_623cc238606a9e542b0dcdf1_software%2520development%2520business.jpeg";
         CommonUtils.consumermobileNumber = "87654321";
         CommonUtils.consumerIntialScreen = "Wallet";
         CommonUtils.consumerEmail = email;
@@ -338,6 +338,7 @@ class _LoginState extends State<Login> {
         prefs.setString('consumerMobile', CommonUtils.consumermobileNumber.toString());
         prefs.setString('consumerDeviceTokenId', CommonUtils.deviceTokenID.toString());
         prefs.setString('consumerProfileImage',CommonUtils.consumerProfileImageUrl.toString());
+        print("4"+prefs.getString("consumerProfileImage").toString());
 
         Navigator.push(
             context,

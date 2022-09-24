@@ -54,12 +54,14 @@ class CommonUtils{
   static  String walletPage = "walletPage";
 
 
-
+  static String ROAD_ASSIST_WITH_CALL = "roadassistwithcall";
+  static String ROAD_ASSIST_WITHOUT_CALL = "roadassistwithoutcall";
   static String triggerUrl="triggerurl";
   static String triggerPhone="triggerphone";
   static String triggerCMS="cms";
   static String triggerPDF="triggerPDF";
   static String triggerNormal="normal";
+  static String triggerVoucher= "voucher";
   static String triggerEmail="triggeremail";
   static String triggerOneSubbaner="onesubbanner";
   static String MerchantId="318";
@@ -70,7 +72,7 @@ class CommonUtils{
   static String? APPLICATIONLANGUAGECOUNTRY = " ";
 
   static String? consumerID="";
-  static String? merchantID="318";
+  static String? merchantID=" ";
   static String? consumerName="";
   static String? consumerGender="";
   static String? consumerProfileImageUrl="";
