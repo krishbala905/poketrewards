@@ -4,7 +4,7 @@ import 'package:poketrewards/UI/More/ChangePassword.dart';
 import 'package:poketrewards/UI/More/History.dart';
 import 'package:poketrewards/UI/More/Language.dart';
 import 'package:poketrewards/UI/More/Privacy.dart';
-//import 'package:poketrewards/UI/More/Profile.dart';
+
 import 'package:poketrewards/UI/More/Signout.dart';
 import 'package:poketrewards/UI/More/Subscribe.dart';
 import 'package:poketrewards/UI/More/Tellyourfriends.dart';

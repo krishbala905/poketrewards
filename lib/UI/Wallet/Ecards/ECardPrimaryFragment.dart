@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:poketrewards/UI/ECardDetailsFragment.dart';
 import 'package:poketrewards/UI/More/ChangePassword.dart';
 
 import '../../../res/Colors.dart';

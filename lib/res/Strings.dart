@@ -95,6 +95,7 @@ const twitter="Twitter";
 const refer_friend_caps="REFER FRIEND";
 const contactUs_content="How would you like to share ?";
 const view="View";
+const about_us="About Us";
 const refer_friend="Refer Friend";
 const emailContent="Hi,"+appName;
 const details="Details";
