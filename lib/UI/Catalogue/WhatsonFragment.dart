@@ -186,69 +186,46 @@ class _WhatsOnFragmentState extends State<WhatsOnFragment> {
       },
     );
   }*/
-  ListView _buildPostsHome(BuildContext context, List<MerchantDataModel> posts) {
-    // showData=true;
-    print("check2 "+ posts.toString());
-    return ListView.builder(
-      // physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: posts.length,
-      itemBuilder: (context, index) {
-        /*return Card(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children:<Widget> [
-                  InkWell(
-                    onTap: (){
+  Container _buildPostsHome(BuildContext context, List<MerchantDataModel> posts) {
+    if(posts!=null){
+    return Container(
+      child: ListView.builder(
 
-                    },
+        shrinkWrap: true,
+        itemCount: posts.length,
+        itemBuilder: (context, index) {
+           return InkWell(
+              onTap: (){
 
-                  ),
-                  ListTile(
-                    leading: CircleAvatar(
-                      radius: 10.0,
-                      backgroundImage: NetworkImage(posts[index].merchant_logo),
+                Navigator.push(context, MaterialPageRoute(builder: (context) => WhatsonDetailsFragment(
+
+                    posts[index].merchant_name,
+                    posts[index].merchant_id, posts[index].merchant_logo,
+                ),
+
+                ));
+              },
+             //  child: Card(
+                child: Container(
+                  decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black12))),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top:10,bottom: 10.0),
+                    child: ListTile(
+
+                      contentPadding: EdgeInsets.zero,
+                      leading: setleadingImage(posts[index].merchant_logo),
+                      title: Text(posts[index].merchant_name,style: TextStyle(fontSize: 20.0),),
                     ),
-                    title: Text(posts[index].merchant_name),
-                  ),
-                ],
-              )
-
-            ],
-          ),
-        );*/
-         // padding: const EdgeInsets.only(bottom:2.0),
-         return InkWell(
-            onTap: (){
-
-              Navigator.push(context, MaterialPageRoute(builder: (context) => WhatsonDetailsFragment(
-
-                  posts[index].merchant_name,
-                  posts[index].merchant_id, posts[index].merchant_logo,
-              ),
-
-              ));
-            },
-           //  child: Card(
-              child: Container(
-                decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black12))),
-                child: Padding(
-                  padding: const EdgeInsets.only(top:10,bottom: 10.0),
-                  child: ListTile(
-
-                    contentPadding: EdgeInsets.zero,
-                    leading: setleadingImage(posts[index].merchant_logo),
-                    title: Text(posts[index].merchant_name,style: TextStyle(fontSize: 20.0),),
                   ),
                 ),
-              ),
-           // ),
-          );
-      },
-    );
+             // ),
+            );
+        },
+      ),
+    );}
+    else{
+      return Container();
+    }
   }
   Widget setleadingImage(var data){
     if(data==null){

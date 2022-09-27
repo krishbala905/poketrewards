@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
-
 import '../../res/Strings.dart';
 import 'EVoucher/EVoucherFragment.dart';
 import 'Ecards/ECardFragment.dart';
+import 'Others/OthersFragment.dart';
 class WalletFragment extends StatefulWidget {
   const WalletFragment({Key? key}) : super(key: key);
 
@@ -16,7 +15,7 @@ class _WalletFragmentState extends State<WalletFragment> with SingleTickerProvid
   @override
   Widget build(BuildContext context) {
     return  DefaultTabController(
-      length: 2,
+      length: 3,
       child:  Scaffold(
         appBar:  PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight),
@@ -29,9 +28,8 @@ class _WalletFragmentState extends State<WalletFragment> with SingleTickerProvid
 
               tabs: [
                 Tab(child: Text(ecards,style: TextStyle(color: Colors.black),),),
-                Tab(child: Text(evoucher,style: TextStyle(color: Colors.black),),
-                ),
-
+                Tab(child: Text(evoucher,style: TextStyle(color: Colors.black),),),
+                Tab(child: Text(others,style: TextStyle(color: Colors.black),),),
               ],
             ),
           ),
@@ -39,7 +37,8 @@ class _WalletFragmentState extends State<WalletFragment> with SingleTickerProvid
         body: const TabBarView(
           children: [
             ECardFragment(),
-            EVoucherFragment()
+            EVoucherFragment(),
+            OthersFragment()
 
           ],
         ),

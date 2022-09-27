@@ -1,12 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:poketrewards/Others/AlertDialogUtil.dart';
 import 'package:poketrewards/Others/CommonUtils.dart';
 import 'package:poketrewards/Others/Urls.dart';
+import 'package:poketrewards/UI/LanguageActivity.dart';
 import 'package:poketrewards/UI/More/ChangePassword.dart';
 import 'package:poketrewards/UI/More/History.dart';
-import 'package:poketrewards/UI/More/Language.dart';
 import 'package:poketrewards/UI/More/Privacy.dart';
 //import 'package:poketrewards/UI/More/Profile.dart';
 import 'package:http/http.dart'as http;
@@ -19,7 +20,11 @@ import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
 import 'package:poketrewards/res/Strings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:xml2json/xml2json.dart';
+
+import '../../Others/CommonBrowser.dart';
+import 'Profile.dart';
 
 //import '../../../res/Strings.dart';
 
@@ -44,10 +49,12 @@ class _MoreFragmentState extends State<MoreFragment> {
               ),
               GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //     context, MaterialPageRoute(builder: (context) => Profile(),));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Profile(),));
                 },
                 child: Container(
+                    decoration: BoxDecoration(color: Colors.white),
+                    width: double.infinity,
                     height: 48,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
@@ -63,7 +70,10 @@ class _MoreFragmentState extends State<MoreFragment> {
                       context, MaterialPageRoute(builder: (context) => History(),));
                 },
                 child: Container(
+                    decoration: BoxDecoration(color: Colors.white),
+                    width: double.infinity,
                     height: 48,
+
                     child: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Align(alignment: Alignment.centerLeft,
@@ -75,9 +85,11 @@ class _MoreFragmentState extends State<MoreFragment> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Language(),));
+                      context, MaterialPageRoute(builder: (context) => LanguageActivity(),));
                 },
                 child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(color: Colors.white),
                     height: 48,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
@@ -93,6 +105,8 @@ class _MoreFragmentState extends State<MoreFragment> {
                       context, MaterialPageRoute(builder: (context) => ChangePassword(),));
                 },
                 child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(color: Colors.white),
                     height: 48,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
@@ -104,10 +118,11 @@ class _MoreFragmentState extends State<MoreFragment> {
               Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Feadback(),));
+                  _launchEmail();
                 },
                 child: Container(
+                    decoration: BoxDecoration(color: Colors.white),
+                    width: double.infinity,
                     height: 48,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
@@ -119,10 +134,11 @@ class _MoreFragmentState extends State<MoreFragment> {
               Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Tellyourfriends(),));
+                  showContactUSPopup(context);
                 },
                 child: Container(
+                    decoration: BoxDecoration(color: Colors.white),
+                    width: double.infinity,
                     height: 48,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
@@ -134,10 +150,12 @@ class _MoreFragmentState extends State<MoreFragment> {
               Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Privacy(),));
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => CommonBrowser(PRIVACY_URL, privacy),));
                 },
                 child: Container(
+                    decoration: BoxDecoration(color: Colors.white),
+                    width: double.infinity,
                     height: 48,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
@@ -149,10 +167,13 @@ class _MoreFragmentState extends State<MoreFragment> {
               Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => TermsandConditions(),));
+
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => CommonBrowser(TERMS_AND_CONDITION_URL, terms_cond),));
                 },
                 child: Container(
+                    decoration: BoxDecoration(color: Colors.white),
+                    width: double.infinity,
                     height: 48,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
@@ -164,10 +185,12 @@ class _MoreFragmentState extends State<MoreFragment> {
               Container(decoration: BoxDecoration(color: lightGrey), height: 0.5,),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Subscribe(),));
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => CommonBrowser(SUBSCRIBE_LOG_URL, terms_cond),));
                 },
                 child: Container(
+                    decoration: BoxDecoration(color: Colors.white),
+                    width: double.infinity,
                     height: 48,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
@@ -183,6 +206,8 @@ class _MoreFragmentState extends State<MoreFragment> {
                   callSignoutAPi();
                 },
                 child: Container(
+                    decoration: BoxDecoration(color: Colors.white),
+                    width: double.infinity,
                     height: 48,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
@@ -304,6 +329,105 @@ class _MoreFragmentState extends State<MoreFragment> {
     // TODO: implement dispose
     FocusScope.of(context).requestFocus(FocusNode());
     super.dispose();
+  }
+
+  _launchEmail() async {
+    final Email email = Email(
+      subject: emailContent,
+      recipients: [contactEmail],
+      isHTML: false,
+    );
+
+    await FlutterEmailSender.send(email);
+  }
+  void showContactUSPopup(BuildContext context) {
+    AlertDialog alert = AlertDialog(
+      backgroundColor: Colors.white,
+
+      actions: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.only(left:10,right:10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 15,),
+                Text(contactUs_content,style: TextStyle(fontSize: 15),),
+                SizedBox(height: 35,),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context, true);
+                    // _launchFacebook();
+                  },
+                  child: Text(facebook,style: TextStyle(fontSize: 15),),
+                ),
+                SizedBox(height: 20,),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context, true);
+                    shareEmailFunction();
+                  },
+                  child: Text(email,style: TextStyle(fontSize: 15),),
+                ),
+                SizedBox(height: 20,),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context, true);
+                    _launchSMS();
+                  },
+                  child: Text(sms,style: TextStyle(fontSize: 15),),
+                ),
+                SizedBox(height: 25,),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right:15.0),
+          child: GestureDetector(
+            onTap: (){Navigator.pop(context);},
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: Text(cancel,style: TextStyle(fontSize: 15),),
+            ),
+          ),
+        )
+      ],
+    );
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+  shareEmailFunction() async{
+    final Email email = Email(
+      subject: email_subject,
+      isHTML: false,
+      body: email_body,
+    );
+
+    await FlutterEmailSender.send(email);
+  }
+  _launchSMS() async{
+    var smsUri = Uri.parse('sms:''?body= You gotta check out this awesome rewards app - Poket Rewards app. SO COOL! Get yours for FREE at https://poket.com/app');
+    try {
+      print(smsUri.toString());
+      if (await canLaunchUrl(
+        smsUri,
+      )) {
+        await launchUrl(smsUri);
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: const Text('Some error occured'),
+        ),
+      );
+    }
   }
 }
 

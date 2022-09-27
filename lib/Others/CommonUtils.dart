@@ -78,6 +78,7 @@ class CommonUtils{
   static String? consumerGender="";
   static String? consumerProfileImageUrl="";
   static String? consumermobileNumber="";
+  static String? consumerDateofBirth="";
   static String? consumerIntialScreen="";
   static String? consumerEmail="";
   static String? deviceTokenID="3907";

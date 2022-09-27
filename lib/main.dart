@@ -71,6 +71,7 @@ class MyApp extends StatelessWidget {
        child: Builder(
          builder: (context)=>
           MaterialApp(
+
           locale: Provider.of<LanguageChangeProvider>(context,listen: true).currentLocale,
           localizationsDelegates: [
             S.delegate,
@@ -83,6 +84,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Poket Rewards',
           theme: ThemeData(
+            fontFamily: 'josefinsRegular',
             primaryColor: corporateColor,
           ),
             home: const SplashScreen(),
