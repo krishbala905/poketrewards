@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/services.dart';
+import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'CommonUtils.dart';
@@ -34,11 +35,20 @@ class Utils {
 
       }
       else if (Platform.isIOS) {
+      //   CommonUtils.deviceType="1";
+      //   deviceData = _readIosDeviceInfo(await deviceInfoPlugin.o);
+      // //  deviceData['version.systemVersion'];
+      //   CommonUtils.osVersion= "15.5";
+      //   CommonUtils.deviceModel=deviceData['model'];
+
+        var iosInfo = await DeviceInfoPlugin().iosInfo;
+        PackageInfo packageInfo = await PackageInfo.fromPlatform();
+        var version = iosInfo.systemVersion;
         CommonUtils.deviceType="1";
         deviceData = _readIosDeviceInfo(await deviceInfoPlugin.iosInfo);
-      //  deviceData['version.systemVersion'];
-        CommonUtils.osVersion= "15.5";
-        CommonUtils.deviceModel=deviceData['model'];
+        CommonUtils.osVersion = version;
+        CommonUtils.deviceModel= iosInfo.model;
+        CommonUtils.softwareVersion = packageInfo.version;
       }
       else {
 
