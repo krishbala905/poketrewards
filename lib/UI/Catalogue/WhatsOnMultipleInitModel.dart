@@ -20,7 +20,7 @@ class WhatsOnMultipleInitModel {
     required this.subCount,
     required this.programid,
     required this. expiry,
-    required this. programtype,
+   required this. programtype,
     required this.  poketed,
     required this. cangift,
     required this. cardimage,
@@ -36,13 +36,13 @@ class WhatsOnMultipleInitModel {
   var details;
   var errorMessage;
   var subCount;
-  var programid;
-  var  expiry;
-  var programtype;
-  var  poketed;
-  var cangift;
-  var cardimage;
-  var merchantid;
+var programid;
+var  expiry;
+var programtype;
+var  poketed;
+var cangift;
+var cardimage;
+var merchantid;
 
 
   factory WhatsOnMultipleInitModel.fromJson(Map<String, dynamic> json) => WhatsOnMultipleInitModel(
@@ -75,11 +75,11 @@ class WhatsOnMultipleInitModel {
     "details": details,
     "program_id" :programid,
     "Expiry": expiry,
-    "program_type": programtype,
-    "Poketed": poketed,
-    "can_gift":cangift,
-    "Card_Image":cardimage,
-    "merchant_id": merchantid,
+  "program_type": programtype,
+   "Poketed": poketed,
+   "can_gift":cangift,
+   "Card_Image":cardimage,
+   "merchant_id": merchantid,
     "errormessage": errorMessage,
     "sub_count": subCount,
 

@@ -44,186 +44,186 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: corporateColor2,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          iconSize: 20.0,
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (_) => Onboarding()));
-            // _goBack(context);
-          },
-        ),
-        elevation: 0.0,
-        backgroundColor: corporateColor2,
-        centerTitle: true,
-        title: Text(
-          S.of(context).login,
-          style: TextStyle(color: textColor, fontSize: 20),
-        ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            decoration: BoxDecoration(color: textColor),
-            height: 0.5,
-          ),
-          SizedBox(
-            height: 100,
-          ),
-          Container(
-            decoration: BoxDecoration(color: textColor),
-            height: 0.5,
-          ),
-          Container(
-            height: 50,
-            width: double.infinity,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(width: 25),
-                Container(
-                    width: 100,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Text(S.of(context).email,
-                          style: TextStyle(
-                            color: textColor,
-                            fontSize: 15,
-                          )),
-                    )),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 25),
-                    child: TextField(
-                      cursorColor: textColor,
-                      controller: emailId_cntrl,
-                      keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(color: textColor, fontSize: 15),
-                      decoration: InputDecoration(
-                        labelText: "",
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                  flex: 1,
-                ),
-                SizedBox(width: 25),
-              ],
+          backgroundColor: corporateColor2,
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios),
+              iconSize: 20.0,
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => Onboarding()));
+                // _goBack(context);
+              },
+            ),
+            elevation: 0.0,
+            backgroundColor: corporateColor2,
+            centerTitle: true,
+            title: Text(
+              S.of(context).login,
+              style: TextStyle(color: textColor, fontSize: 20),
             ),
           ),
-          Container(
-            decoration: BoxDecoration(color: textColor),
-            height: 0.5,
-          ),
-          Container(
-            height: 50,
-            width: double.infinity,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(width: 25),
-                Container(
-                    width: 100,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Text(S.of(context).password,
-                          style: TextStyle(
-                            color: textColor,
-                            fontSize: 15,
-                          )),
-                    )),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 25),
-                    child: TextField(
-                      cursorColor: textColor,
-                      controller: pwdId_cntrl,
-                      obscureText: _obscured,
-                      keyboardType: TextInputType.text,
-                      style: TextStyle(color: textColor, fontSize: 15),
-                      decoration: InputDecoration(
-                        labelText: "",
-                        border: InputBorder.none,
-                        suffixIcon: GestureDetector(
-                          onTap: _toggleObscured,
-                          child: Icon(
-                            _obscured
-                                ? Icons.visibility_off_rounded
-                                : Icons.visibility_rounded,
-                            size: 24,
-                            color: textColor,
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                decoration: BoxDecoration(color: textColor),
+                height: 0.5,
+              ),
+              SizedBox(
+                height: 100,
+              ),
+              Container(
+                decoration: BoxDecoration(color: textColor),
+                height: 0.5,
+              ),
+              Container(
+                height: 50,
+                width: double.infinity,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(width: 25),
+                    Container(
+                        width: 100,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: Text(S.of(context).email,
+                              style: TextStyle(
+                                color: textColor,
+                                fontSize: 15,
+                              )),
+                        )),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 25),
+                        child: TextField(
+                          cursorColor: textColor,
+                          controller: emailId_cntrl,
+                          keyboardType: TextInputType.emailAddress,
+                          style: TextStyle(color: textColor, fontSize: 15),
+                          decoration: InputDecoration(
+                            labelText: "",
+                            border: InputBorder.none,
                           ),
                         ),
                       ),
+                      flex: 1,
                     ),
-                  ),
-                  flex: 1,
+                    SizedBox(width: 25),
+                  ],
                 ),
-                SizedBox(width: 25),
-              ],
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(color: textColor),
-            height: 0.5,
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          GestureDetector(
-            onTap: () {
-              //  Navigator.push(context, MaterialPageRoute(builder: (_) => ConsumerTab()));
-              //  Validation
-              var email = emailId_cntrl.text.toString().trim();
-              var paswd = pwdId_cntrl.text.toString();
-
-              loginTask(email, paswd);
-            },
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
-              child: Container(
-                height: 45,
-                decoration: BoxDecoration(
-                  color: Colors.white70,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: textColor),
-                ),
-                child: Center(
-                    child: Text(
-                  S.of(context).loginwith,
-                  style: TextStyle(
-                      color: textColor,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                )),
               ),
-            ),
+              Container(
+                decoration: BoxDecoration(color: textColor),
+                height: 0.5,
+              ),
+              Container(
+                height: 50,
+                width: double.infinity,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(width: 25),
+                    Container(
+                        width: 100,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: Text(S.of(context).password,
+                              style: TextStyle(
+                                color: textColor,
+                                fontSize: 15,
+                              )),
+                        )),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 25),
+                        child: TextField(
+                          cursorColor: textColor,
+                          controller: pwdId_cntrl,
+                          obscureText: _obscured,
+                          keyboardType: TextInputType.text,
+                          style: TextStyle(color: textColor, fontSize: 15),
+                          decoration: InputDecoration(
+                            labelText: "",
+                            border: InputBorder.none,
+                            suffixIcon: GestureDetector(
+                              onTap: _toggleObscured,
+                              child: Icon(
+                                _obscured
+                                    ? Icons.visibility_off_rounded
+                                    : Icons.visibility_rounded,
+                                size: 24,
+                                color: textColor,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      flex: 1,
+                    ),
+                    SizedBox(width: 25),
+                  ],
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(color: textColor),
+                height: 0.5,
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              GestureDetector(
+                onTap: () {
+                  //  Navigator.push(context, MaterialPageRoute(builder: (_) => ConsumerTab()));
+                  //  Validation
+                  var email = emailId_cntrl.text.toString().trim();
+                  var paswd = pwdId_cntrl.text.toString();
+
+                  loginTask(email, paswd);
+                },
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+                  child: Container(
+                    height: 45,
+                    decoration: BoxDecoration(
+                      color: Colors.white70,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: textColor),
+                    ),
+                    child: Center(
+                        child: Text(
+                          S.of(context).loginwith,
+                          style: TextStyle(
+                              color: textColor,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        )),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 80,
+              ),
+              GestureDetector(
+                onTap: () {
+                  // Validation
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassword(),));
+                },
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(35.0, 0, 35.0, 0),
+                  child: Center(
+                      child: Text(
+                        S.of(context).forgot_password,
+                        style: TextStyle(color: textColor, fontSize: 15),
+                        textAlign: TextAlign.center,
+                      )),
+                ),
+              ),
+            ],
           ),
-          SizedBox(
-            height: 80,
-          ),
-          GestureDetector(
-            onTap: () {
-              // Validation
-               Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassword(),));
-            },
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(35.0, 0, 35.0, 0),
-              child: Center(
-                  child: Text(
-                S.of(context).forgot_password,
-                style: TextStyle(color: textColor, fontSize: 15),
-                textAlign: TextAlign.center,
-              )),
-            ),
-          ),
-        ],
-      ),
-    ));
+        ));
   }
 
   void _toggleObscured() {
@@ -232,7 +232,7 @@ class _LoginState extends State<Login> {
       if (textFieldFocusNode.hasPrimaryFocus)
         return; // If focus is on text field, dont unfocus
       textFieldFocusNode.canRequestFocus =
-          false; // Prevents focus if tap on eye
+      false; // Prevents focus if tap on eye
     });
   }
 
@@ -303,32 +303,30 @@ class _LoginState extends State<Login> {
       final Xml2Json xml2json = new Xml2Json();
       xml2json.parse(response.body);
       var jsonstring = xml2json.toParker();
-      var status="1";
-      var messg="1";
-
+      var data = jsonDecode(jsonstring);
+      var data2 = data['info'];
+      var status = stringSplit(data2['p1']);
+      var messg = stringSplit(data2['p5']);
       if (status == "1") {
-
-        // var consId = stringSplit(data2['p2']);
-        // var name = stringSplit(data2['p3']);
-        // var devTokenId = stringSplit(data2['p4']);
-        //
-        // var p6 = stringSplit(data2['p6']);
-        // var p7 = stringSplit(data2['p7']);
-        // var gender = stringSplit(data2['p8']);
-        // var profileImg = stringSplit(data2['p9']);
-        //
-        // var mobNmbr = stringSplit(data2['p10']);
-        // var firstPag = stringSplit(data2['p11']);
-        print(status);
-        CommonUtils.consumerID = "219732";
-        // CommonUtils.consumerID = consId;
-        CommonUtils.consumerName = "Gokul";
-        CommonUtils.consumerGender = "Male";
-        CommonUtils.consumerProfileImageUrl = "https://global-uploads.webflow.com/6216ae5cdca4d58db79b5ac6/623d21de84b79b87fb4e2d3f_623cc238606a9e542b0dcdf1_software%2520development%2520business.jpeg";
-        CommonUtils.consumermobileNumber = "87654321";
-        CommonUtils.consumerIntialScreen = "Wallet";
+        print(data2['p1']);
+        var consId = stringSplit(data2['p2']);
+        var name = stringSplit(data2['p3']);
+        var devTokenId = stringSplit(data2['p4']);
+        var p6 = stringSplit(data2['p6']);
+        var pnsforcetologut = stringSplit(data2['p7']);
+        var gender = stringSplit(data2['p8']);
+        var profileImg = stringSplit(data2['p9']);
+        var mobNmbr = stringSplit(data2['p10']);
+        //  var firstPag = stringSplit(data2['p11']);
+        //  CommonUtils.consumerID = "219732";
+        CommonUtils.consumerID = consId;
+        CommonUtils.consumerName = name;
+        CommonUtils.consumerGender = gender;
+        CommonUtils.consumerProfileImageUrl = profileImg;
+        CommonUtils.consumermobileNumber = mobNmbr;
+        CommonUtils.consumerforcelogout = pnsforcetologut;
         CommonUtils.consumerEmail = email;
-        CommonUtils.deviceTokenID ="280469";
+        CommonUtils.deviceTokenID =devTokenId;
 
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('alreadyLoggedIn', "1");

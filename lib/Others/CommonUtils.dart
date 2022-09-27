@@ -72,6 +72,7 @@ class CommonUtils{
   static String? APPLICATIONLANGUAGECOUNTRY = " ";
 
   static String? consumerID="";
+  static String? consumerforcelogout="";
   static String? merchantID=" ";
   static String? consumerName="";
   static String? consumerGender="";

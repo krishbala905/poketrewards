@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:poketrewards/Others/AlertDialogUtil.dart';
 import 'package:poketrewards/UI/Wallet/Model/ECardAboutUsModel.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -93,6 +94,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
       body: {
         "consumer_id": CommonUtils.consumerID.toString(),
         "program_id": prgMId.toString(),
+        "member_id": memberid,
         "program_type": prgmType.toString(),
         "cma_timestamps":Utils().getTimeStamp(),
         "time_zone":Utils().getTimeZone(),
@@ -140,10 +142,22 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
       },
     );
   }
+
+  Widget setOperationHours(String data){
+    if(data.contains("<br>")){
+      return Html(data:data,style: {
+        "body":Style(
+            color:Colors.black54
+        ),
+      },);
+    }
+    else{return  Text(data,style: TextStyle(color:Colors.black54));}
+
+  }
   ListView _buildPostsHomeLocation(BuildContext context, List<ECardDetailsLocationModel> posts) {
     return ListView.builder(
 
-      physics: const NeverScrollableScrollPhysics(),
+      physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: posts.length,
 
@@ -152,74 +166,87 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
           onTap: (){
 
           },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+          child: Padding(
+            padding: const EdgeInsets.only(left:15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
 
 
-              const SizedBox(height: 5,),
-              if(posts[index].openinghrs!="")Row(
-                children: [
-                  const SizedBox(width: 5,),
-                  const Icon(Icons.access_time),
-                  const SizedBox(width: 5,),
-                  Text(posts[index].openinghrs),
-                ],),
-              const SizedBox(height: 5,),
-              if(posts[index].shop_name!="")Row(
-                children: [
-                  const SizedBox(width: 5,),
-                  const Icon(Icons.location_on_outlined),
-                  const SizedBox(width: 5,),
-                  Text(posts[index].shop_name),
-                ],),
-              const SizedBox(height: 5,),
-              if(posts[index].building_name!="")Row(
-                children: [
-                  const SizedBox(width: 5,),
-                  const Icon(Icons.location_city),
-                  const SizedBox(width: 5,),
-                  Text(posts[index].building_name),
-                ],),
-              const SizedBox(height: 5,),
-              if(posts[index].address!="")Row(
-                children: [
-                  const SizedBox(width: 5,),
-                  const Icon(Icons.location_on_outlined),
-                  const SizedBox(width: 5,),
-                  Text(utf8.decode(base64.decode(posts[index].address))),
-                ],),
-              const SizedBox(height: 5,),
-              if(posts[index].city_postal!="")Row(
-                children: [
-                  const SizedBox(width: 5,),
-                  const Icon(Icons.location_on_outlined),
-                  const SizedBox(width: 5,),
-                  Text(posts[index].city_postal),
-                ],),
-              const SizedBox(height: 5,),
-              if(posts[index].tel!="")GestureDetector(
-                onTap: (){
-                  Utils().call(posts[index].tel);
-                },
-                child: Row(
+
+                if(posts[index].shop_name!="")Row(
                   children: [
-                    const SizedBox(width: 5,),
-                    const Icon(Icons.call),
-                    const SizedBox(width: 5,),
-                    Text(posts[index].tel),
+                    SizedBox(width: 5,),
+                    Icon(Icons.location_on_outlined,color:Colors.black54),
+                    SizedBox(width: 5,),
+                    Text(posts[index].shop_name,style: TextStyle(color:Colors.black54),),
+
                   ],),
-              ),
+                if(posts[index].address!="")Padding(
+                  padding: const EdgeInsets.only(left:25.0),
+                  child: Text(utf8.decode(base64.decode(posts[index].address)
+                  ),style: TextStyle(color: Colors.black54),
+                  ),
+                ),
+
+                SizedBox(height:10),
+                if(posts[index].tel!="")GestureDetector(
+                  onTap:(){
+                    Utils().call(posts[index].tel.toString().replaceAll("~", ""));
+                  },
+                  child: Row(
+                    children: [
+                      SizedBox(width: 5,),
+                      Icon(Icons.call,color:Colors.black54),
+                      SizedBox(width: 5,),
+                      Text(posts[index].tel.toString().replaceAll("~", ""),style: TextStyle(color:Colors.black54)),
+                    ],),
+                ),
+
+                SizedBox(height:10),
+                if(posts[index].openinghrs!="")Row(
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(width: 5,),
+                    Icon(Icons.access_time,color:Colors.black54),
+                    SizedBox(width: 5,),
+                    Expanded(child: setOperationHours(posts[index].openinghrs.toString())),
+                  ],),
 
 
 
-            ],
+
+
+                // if(posts[index].building_name!="")Row(
+                //   children: [
+                //     SizedBox(width: 5,),
+                //     Icon(Icons.location_city),
+                //     SizedBox(width: 5,),
+                //     Text(posts[index].building_name),
+                //   ],),
+
+
+                SizedBox(height: 5,),
+                if(posts[index].city_postal!="")Row(
+                  children: [
+                    SizedBox(width: 5,),
+                    Icon(Icons.location_on_outlined),
+                    SizedBox(width: 5,),
+                    Text(posts[index].city_postal),
+                  ],),
+                SizedBox(height: 5,),
+
+
+
+
+              ],
+            ),
           ),
         );
       },
     );
   }
-
 
 
   Future<List<ECardRewardsModel>> getEcardRewardsData() async {
@@ -229,9 +256,11 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
       Uri.parse(WALLET_CARD_DETAILS_URL),
 
       body: {
+        "merchant_id": merchantId,
         "consumer_id": CommonUtils.consumerID.toString(),
         "program_id": prgMId.toString(),
         "program_type": prgmType.toString(),
+        "member_id": memberid.toString(),
         "cma_timestamps":Utils().getTimeStamp(),
         "time_zone":Utils().getTimeZone(),
         "software_version":CommonUtils.softwareVersion,
@@ -301,63 +330,72 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
       itemCount: posts.length,
 
       itemBuilder: (context, index) {
-        return Column(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex:1,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width/3,
-                    height: MediaQuery.of(context).size.width/5,
-                    child:setCardUIImagefoRewardVoucher(posts[index].img_url,posts[index].program_title,posts[index].LogoURL,posts[index].MerchantLogoSettings,posts[index].ProgramTitleSettings,posts[index].FontColor,),
+        return Padding(
+          padding: const EdgeInsets.only(left:10,right:10),
+          child: Column(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex:1,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width/3,
+                      height: MediaQuery.of(context).size.width/5,
+                      child:setCardUIImagefoRewardVoucher(posts[index].img_url,posts[index].program_title,posts[index].LogoURL,posts[index].MerchantLogoSettings,posts[index].ProgramTitleSettings,posts[index].FontColor,),
+                    ),
                   ),
-                ),
 
-                Expanded(
-                  flex:2,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(posts[index].program_title),
-                      SizedBox(height: 7,),
-                      Wrap(
+                  Expanded(
+                    flex:2,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left:8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(posts[index].program_title),
+                          SizedBox(height: 7,),
+                          Wrap(
 
-                        children: const [
-                          Text(details,style: TextStyle(fontSize: 12),),
-                          SizedBox(width: 5,),
-                           Text(view,style: TextStyle(
-                            fontSize: 12,
-                            decoration: TextDecoration.underline,
-                            decorationColor: Colors.black54,
-                            decorationThickness: 4,
-                            decorationStyle: TextDecorationStyle.dashed,
+                            children: const [
+                              Text(details,style: TextStyle(fontSize: 12),),
+                              SizedBox(width: 5,),
+                               Text(view,style: TextStyle(
+                                fontSize: 12,
+                                decoration: TextDecoration.underline,
+                                decorationColor: Colors.black54,
+                                decorationThickness: 4,
+                                decorationStyle: TextDecorationStyle.dashed,
 
-                          ),softWrap: true),
+                              ),softWrap: true),
+                            ],
+                          ),
+                          SizedBox(height: 10,),
+                          if(posts[index].amt_to_purchase!=null && posts[index].amt_to_purchase!="" && balancePoints!=null)
+                        showRedeemButtonOrLock(balancePoints,posts[index].amt_to_purchase),
+
+
+
                         ],
                       ),
-                      SizedBox(height: 10,),
-                      showRedeemButtonOrLock(balancePoints,posts[index].amt_to_purchase),
-
-
-                    ],
+                    ),
                   ),
-                ),
 
-              ],
-            ),
-            SizedBox(height: 3,),
-            Container(decoration: BoxDecoration(color: Colors.black12),height: 1,width: double.infinity,),
-            SizedBox(height: 3,),
-          ],
+                ],
+              ),
+              SizedBox(height: 3,),
+              Container(decoration: BoxDecoration(color: Colors.black12),height: 1,width: double.infinity,),
+              SizedBox(height: 3,),
+            ],
+          ),
         );
       },
     );
   }
   Widget showRedeemButtonOrLock(var totalPoints,var voucherPoints){
     print("topints:"+totalPoints.toString());
+    print("vcpints:"+voucherPoints.toString());
     var suffixKey="";
     var suffixKey1="";
     if(totalPoints.toString().contains("Points")){
@@ -376,7 +414,15 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
     }
 
     totalPoints=totalPoints.toString().replaceAll(suffixKey1, "");
-    var t= int.parse(totalPoints);
+
+    var t=0;
+    if(totalPoints.toString().contains(",")){
+      t=int.parse(totalPoints.toString().split(",")[1]);
+    }
+    else{
+      t= int.parse(totalPoints);
+    }
+
     assert(t is int);
 
     var v=int.parse(voucherPoints);
@@ -401,16 +447,36 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
 
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
-            child: Text(voucherPoints+suffixKey),
+            child:  Text(voucherPoints+suffixKey),
           ),
         ],
       ),
     );
   }
+
   else{
-    return Container(
-    child: Image.asset("assets/ic_lock.png",width: 10,height: 10,),
-    );
+      if(prgmType=="checkincard"){
+        return Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.asset("assets/ic_lock.png",width: 25,height: 25,),
+              Text(t.toString()+" "+check_in,style:TextStyle(color:corporateColor3)),
+            ],
+          ),
+        );
+      }
+    else{
+        return Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.asset("assets/ic_lock.png",width: 25,height: 25,),
+              Text(t.toString() +suffixKey,style:TextStyle(color:corporateColor3)),
+            ],
+          ),
+        );
+     }
   }
   }
 
@@ -427,6 +493,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
         "program_id": prgMId.toString(),
         "program_type": prgmType.toString(),
         "merchant_id": merchantId,
+        "member_id": memberid.toString(),
         "action_event": "1",
         "cma_timestamps":Utils().getTimeStamp(),
         "time_zone":Utils().getTimeZone(),
@@ -565,6 +632,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
         "program_id": prgMId.toString(),
         "program_type": prgmType.toString(),
         "merchant_id": merchantId,
+        "member_id": memberid,
         "action_event": "1",
         "cma_timestamps":Utils().getTimeStamp(),
         "time_zone":Utils().getTimeZone(),
@@ -585,10 +653,12 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
     print(CommonUtils.deviceModel);
     print("------------------");
 
+
     if(response.statusCode==200 && jsonDecode(response.body)["Status"]=="True")
     {
 
       Map<String,dynamic> body = jsonDecode(response.body)["data"]["AboutUs"];
+      print("AboutUs: "+jsonDecode(response.body)["data"]["AboutUs"].toString());
       ECardAboutUsModel posts1=ECardAboutUsModel.fromJson(body);
 
       return posts1;
@@ -606,7 +676,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           final ECardAboutUsModel? posts = snapshot.data;
-          return _buildPostsAbout(context, posts!);
+           return _buildPostsAbout(context, posts!);
         } else {
           return const Center(
             child: const CircularProgressIndicator(),
@@ -615,19 +685,23 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
       },
     );
   }
-
   Column _buildPostsAbout(BuildContext context, ECardAboutUsModel posts){
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(about_us,style:TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.normal)),
-        Image.network(posts.brandlogo,width: 70,height: 70,),
+
+        if(posts.brandlogo!=null && posts.brandname!=null
+            && posts.branddescription!=null && posts.websiteurl!=null
+            && posts.instagramurl!=null && posts.facebookurl!=null && posts.galleryurls!=null
+        )Text(about_us,style:TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.normal)),
+        if(posts.brandlogo!="" && posts.brandlogo!=null)Image.network(posts.brandlogo,width: 70,height: 70,),
         SizedBox(height: 5,),
-        Text(posts.brandname),
+        if(posts.brandname!="" && posts.brandname!=null)Text(posts.brandname),
         SizedBox(height: 5,),
-        Html(data:utf8.decode(base64.decode(posts.branddescription))),
+        if(posts.branddescription!="" && posts.branddescription!=null)Html(data:utf8.decode(base64.decode(posts.branddescription))),
         SizedBox(height: 5,),
-        Row(
+        if(posts.websiteurl!="" && posts.websiteurl!=null)Row(
           children: [
             Image.asset("assets/web_icon.png",width: 20,height:20),
             SizedBox(width: 5,),
@@ -635,7 +709,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
           ],
         ),
         SizedBox(height: 8,),
-        Row(
+        if(posts.facebookurl!="" && posts.facebookurl!=null)Row(
           children: [
             Image.asset("assets/facebook_icon.png",width: 20,height:20),
             SizedBox(width: 5,),
@@ -643,7 +717,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
           ],
         ),
         SizedBox(height: 8,),
-        Row(
+        if(posts.instagramurl!="" && posts.instagramurl!=null)Row(
           children: [
             Image.asset("assets/instagram_icon.png",width: 20,height:20),
             SizedBox(width: 5,),
@@ -651,7 +725,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
           ],
         ),
         SizedBox(height: 5,),
-        loadGalleryUrls(posts.galleryurls),
+        if(posts.galleryurls!="" && posts.galleryurls!=null)loadGalleryUrls(posts.galleryurls),
         SizedBox(height: 5,),
       ],
     );
@@ -786,7 +860,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                 GestureDetector(
                   onTap: () {
                     Navigator.pop(context, true);
-                    _launchWhatsapp(content);
+                    _launchWhatsapp(content,context);
                   },
                   child: Text(whatsapp,style: TextStyle(fontSize: 15),),
                 ),
@@ -1416,8 +1490,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
     }
 
     Widget setUICenterCardWidgetData(var prgmType,ECardDetailsModel posts) {
-      debugPrint(prgmType);
-      if(prgmType=="packagecard"){
+      if (prgmType == "packagecard") {
         // PackageCard
         return Container(
           width: double.infinity,
@@ -1427,7 +1500,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
 
 
               Padding(
-                padding: const EdgeInsets.only(left:20,top:20),
+                padding: const EdgeInsets.only(left: 20, top: 20),
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
@@ -1441,33 +1514,17 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
               setCardDetailsView(posts.punch_slot_status),
 
               const SizedBox(height: 20,),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:[
 
-            ],
-          ),
-        );
-        }
-      else if(prgmType=="punchcard"){
-        // PackageCard
-        return Container(
-          width: double.infinity,
-          color: lightGrey3,
-          child: Column(
-            children: [
+                  checkUpgradeData(posts.upgrade_data),
 
+                  const SizedBox(height: 10,),
 
-              Padding(
-                padding: const EdgeInsets.only(left:20,top:20),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    posts.punch_package_desc.toString(),
-                    style: const TextStyle(
-                        color: Colors.black, fontSize: 15),),
-                ),
-              ),
-              const SizedBox(height: 10,),
+                  checkPointsExpiryView(posts.PointExpiry),
 
-              setCardDetailsView(posts.punch_slot_status),
+                ],                    ),
 
               const SizedBox(height: 20,),
 
@@ -1475,7 +1532,56 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
           ),
         );
       }
-      else if(prgmType=="storecard"){
+      else if (prgmType == "punchcard") {
+        // PackageCard
+        return Container(
+          width: double.infinity,
+          color: lightGrey3,
+          child: Column(
+            children: [
+
+
+              Padding(
+                padding: const EdgeInsets.only(left: 20, top: 20),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    posts.punch_package_desc.toString(),
+                    style: const TextStyle(
+                        color: Colors.black, fontSize: 15),),
+                ),
+              ),
+              const SizedBox(height: 10,),
+
+              setCardDetailsView(posts.punch_slot_status),
+              const SizedBox(height: 20,),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:[
+
+                  checkUpgradeData(posts.upgrade_data),
+
+                  const SizedBox(height: 10,),
+
+                  checkPointsExpiryView(posts.PointExpiry),
+
+                ],                    ),
+
+              const SizedBox(height: 20,),
+
+            ],
+          ),
+        );
+      }
+      else if (prgmType == "discountcard") {
+        // DiscountCard
+        return Container();
+      }
+      else if (prgmType == "checkincard") {
+        // DiscountCard
+        return Container();
+      }
+      else if (prgmType == "storecard") {
         return
           Container(
             width: double.infinity,
@@ -1500,30 +1606,62 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            posts.circle_data["point1"],style: const TextStyle(color: Colors.white, fontSize: 20),),
-                           SizedBox(height: 10,),
-                           Text("${posts.circle_data["currency1"]} ${posts.circle_data["desc1"]}", style: const TextStyle(color: Colors.white, fontSize: 14),),
+                            posts.circle_data["point1"], style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),),
+                          SizedBox(height: 10,),
+                          Text("${posts.circle_data["currency1"]} ${posts
+                              .circle_data["desc1"]}", style: const TextStyle(
+                              color: Colors.white, fontSize: 14),),
 
+                          SizedBox(height: 15,),
+
+                          if(posts.circle_data["points2"] != null &&
+                              posts.circle_data["points2"] != "")
+                            Text(
+                              posts.circle_data["points2"],
+                              style: const TextStyle(color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20),),
+                          SizedBox(height: 10,),
+
+                          if(posts.circle_data["desc2"] != null &&
+                              posts.circle_data["desc2"] != "")
+                            Text(posts.circle_data["desc2"],
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 14),),
                         ],
                       )
                   ),
-                  const SizedBox(height: 10,),
+                  const SizedBox(height: 20,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children:[
 
+                      checkUpgradeData(posts.upgrade_data),
 
+                      const SizedBox(height: 10,),
 
+                      checkPointsExpiryView(posts.PointExpiry),
+
+                    ],                    ),
+
+                  const SizedBox(height: 20,),
 
                 ],
               ),
             ),
           );
       }
-      else if(prgmType=="cashbackcard"){
+      else if (prgmType == "cashbackcard") {
         return
           Container(
             width: double.infinity,
             color: lightGrey3,
             child: Center(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                       width: 300,
@@ -1543,30 +1681,34 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                         children: [
                           Text(
                             // posts.circle_data["point1"],style: const TextStyle(color: Colors.white, fontSize: 20),),
-                            balancePoints.toString().replaceAll("INR", ""),style: const TextStyle(color: Colors.white, fontSize: 20),),
-                           SizedBox(height: 10,),
-                           Text("${posts.circle_data["currency1"]} ${posts.circle_data["desc1"]}", style: const TextStyle(color: Colors.white, fontSize: 14),),
+                            balancePoints.toString().replaceAll("INR", ""),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 20),),
+                          SizedBox(height: 10,),
+                          Text("${posts.circle_data["currency1"]} ${posts
+                              .circle_data["desc1"]}", style: const TextStyle(
+                              color: Colors.white, fontSize: 14),),
 
                         ],
                       )
                   ),
                   const SizedBox(height: 10,),
+                  checkUpgradeData(posts.upgrade_data),
 
+                  const SizedBox(height: 10,),
 
-
-
+                  checkPointsExpiryView(posts.PointExpiry),
+                  const SizedBox(height: 20,),
                 ],
               ),
             ),
           );
       }
-
-      else {
-
-        var membercardSpinerLength=jsonDecode(jsonEncode(posts.spinner_data["spin_array"])).length;
-
+      else if (prgmType == "membercard" && posts.spinner_data["spin_array"] != null) {
+        var membercardSpinerLength = jsonDecode(jsonEncode(posts.spinner_data["spin_array"])).length;
         //twotier
-        if(membercardSpinerLength==2){
+        if (membercardSpinerLength == 2) {
+          print("twotier");
           return
             Container(
               width: double.infinity,
@@ -1606,19 +1748,27 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                         posts.spinner_data['spin_array']),
 
                     const SizedBox(height: 20,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children:[
 
-                    Text("- " + posts.upgrade_data),
+                        checkUpgradeData(posts.upgrade_data),
+
+                        const SizedBox(height: 10,),
+
+                        checkPointsExpiryView(posts.PointExpiry),
+
+                      ],                    ),
 
                     const SizedBox(height: 20,),
-
                   ],
                 ),
               ),
             );
         }
-
         // three tier
-        else{
+        else {
+          print("threetier");
           return
             Container(
               width: double.infinity,
@@ -1658,8 +1808,17 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                         posts.spinner_data['spin_array']),
 
                     const SizedBox(height: 20,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children:[
 
-                    Text("- " + posts.upgrade_data),
+                        checkUpgradeData(posts.upgrade_data),
+
+                        const SizedBox(height: 10,),
+
+                        checkPointsExpiryView(posts.PointExpiry),
+
+                      ],                    ),
 
                     const SizedBox(height: 20,),
 
@@ -1668,8 +1827,119 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
               ),
             );
         }
-
       }
+
+      else {
+        // Single tier
+        print("singletier");
+        return
+          Container(
+            width: double.infinity,
+            color: lightGrey3,
+            child: Center(
+              child: Column(
+                children: [
+                  Container(
+                      width: 300,
+                      height: 300,
+
+                      decoration: const BoxDecoration(
+                          image: const DecorationImage(
+                            image: AssetImage('assets/pointcard_bg.png'),
+                          )
+                      ),
+                      child:
+
+
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            balancePoints.toString().replaceAll("Points", ""),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 20),),
+                          const Text(points, style: const TextStyle(
+                              color: Colors.white, fontSize: 20),),
+
+                        ],
+                      )
+                  ),
+                  const SizedBox(height: 10,),
+                  //
+                  // setUserThreeTierView(posts.spinner_data['curent_status'],
+                  //     posts.spinner_data['spin_array']),
+
+                  const SizedBox(height: 20,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children:[
+
+                      checkUpgradeData(posts.upgrade_data),
+
+                      const SizedBox(height: 10,),
+
+                      checkPointsExpiryView(posts.PointExpiry),
+
+                    ],                    ),
+
+                  const SizedBox(height: 20,),
+
+                ],
+              ),
+            ),
+          );
+      }
+    }
+
+  Widget checkPointsExpiryView(var pointsExpiry){
+
+    if(pointsExpiry.toString()=="These points will expires once the card has expired"){
+
+      return Container();
+    }
+    else if(pointsExpiry==null && pointsExpiry=="" ){
+
+      return Container();
+    }
+    else{
+
+      return Row(
+
+        children: [
+          setPointsExpiryLabel(),
+
+          GestureDetector( onTap:(){
+            if(pointsExpiry.toString().contains("<br>")){
+              pointsExpiry=pointsExpiry.toString().replaceAll("<br>","");
+            }
+            showAlertDialogoneBtn_lc(context, pointsExpiry);
+
+          },
+              child: Text(view,style: TextStyle(
+                  decoration: TextDecoration.underline,
+              ),)),
+        ],
+
+      );
+    }
+  }
+  Widget setPointsExpiryLabel(){
+    if(prgmType.toString()=="cashbackcard"){ return Text(rebateExpiry);}
+
+    else{return Text(pointsExpiry);}
+
+  }
+
+  Widget checkUpgradeData(var upgradeData){
+    print("gokultest");
+    if(upgradeData!=null && upgradeData!=""){
+      return Text("- " + upgradeData);
+    }
+    else{
+
+      return Container();
+    }
   }
   Widget setCardDetailsView(var punch_slot_status) {
     punch_slot_status=punch_slot_status.toString();
@@ -1692,7 +1962,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
 
-                    border: Border.all(color: Colors.black, )
+                    border: Border.all(color: Colors.black, ),
                   ),
                   child: Center(child: Text((index+1).toString(),style: const TextStyle(color: corporateColor),)),
                 )
@@ -1711,7 +1981,25 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
 
                       border: Border.all(color: Colors.black, )
                   ),
-                  child: Image.asset('assets/yet_to_punch_icon.png',width: 50,height: 50,),
+                  child: Image.asset('assets/yet_to_punched_icon.png',width: 50,height: 50,),
+                  ),
+                )
+
+          );
+        }
+        else if(data[index]=="gifted"){
+          return  Center(
+            child: Container(
+
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+
+                      border: Border.all(color: Colors.black, )
+                  ),
+                  child: Image.asset('assets/punched_icon.png',width: 50,height: 50,),
                   ),
                 )
 
@@ -1719,7 +2007,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
         }
         else{
           return  Center(
-                child: Image.asset('assets/icon_ok.png',width: 50,height: 50,),
+                child: Image.asset('assets/star_icon.png',width: 50,height: 50,),
           );
         }
 
@@ -1729,7 +2017,7 @@ class _ECardDetailsFragmentState extends State<ECardDetailsFragment> {
   }
 
 
-  _launchWhatsapp(var content) async {
+  _launchWhatsapp(var content,BuildContext context) async {
 
     var whatsappAndroid = Uri.parse(
         // "whatsapp://send?phone=$whatsapp&text=" + content+" "+link);

@@ -233,17 +233,29 @@ class _WhatsOnFragmentState extends State<WhatsOnFragment> {
               ));
             },
            //  child: Card(
-              child: ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: CircleAvatar(
-                  radius: 15.0,
-                  backgroundImage: NetworkImage(posts[index].merchant_logo),
+              child: Container(
+                decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black12))),
+                child: Padding(
+                  padding: const EdgeInsets.only(top:10,bottom: 10.0),
+                  child: ListTile(
+
+                    contentPadding: EdgeInsets.zero,
+                    leading: setleadingImage(posts[index].merchant_logo),
+                    title: Text(posts[index].merchant_name,style: TextStyle(fontSize: 20.0),),
+                  ),
                 ),
-                title: Text(posts[index].merchant_name,style: TextStyle(fontSize: 15.0),),
               ),
            // ),
           );
       },
     );
+  }
+  Widget setleadingImage(var data){
+    if(data==null){
+      return CircleAvatar(radius: 40,child: Image.network(data));
+    }
+    else{
+      return Image.network(data,fit: BoxFit.cover,);
+    }
   }
 }

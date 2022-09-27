@@ -112,12 +112,13 @@ class _EVoucherFragmentState  extends State<EVoucherFragment> {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: (){
+
             Navigator.push(context, MaterialPageRoute(builder: (context) => EVoucherDetailsFragment(
                 posts[index].program_title,
                 posts[index].program_id, posts[index].program_type,
                 posts[index].program_title, posts[index].img_url,
                 posts[index].expire_date,posts[index].member_id,
-                posts[index].sub_type,
+                posts[index].sub_type,"categAction","poketed"
             ),
             ));
           },

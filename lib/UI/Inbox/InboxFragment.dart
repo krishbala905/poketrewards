@@ -55,6 +55,7 @@ class _InboxFragmentState extends State<InboxFragment> {
             }
 
         );
+        print("check2"+res.body.toString());
 
         final List fetchedPosts = json.decode(res.body)['Data']['Messages'];
         if (fetchedPosts.isNotEmpty) {
@@ -97,7 +98,7 @@ class _InboxFragmentState extends State<InboxFragment> {
             'consumer_application_type':CommonUtils.consumerApplicationType,
             'consumer_language_id':CommonUtils.consumerLanguageId,
           });
-      print("InboxList"+res.body);
+      print("InboxList1"+res.body.toString());
       if(json.decode(res.body)['Status']=="False"){
         showNoMsg=true;
         showContent=false;
@@ -160,19 +161,19 @@ class _InboxFragmentState extends State<InboxFragment> {
                     controller: _controller,
                     itemCount: _posts.length,
                     itemBuilder: (_, index) =>
-                     GestureDetector(
-                       onTap: (){
-                         Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                             InboxDetails(_posts[index]['message_id'], _posts[index]['merchant_name']),
-                           ));
-                       },
-                       child: Container(
-                         width: double.infinity,
-                         color: Colors.white,
-                         child: Column(
-                           children: [
-                             SizedBox(height: 5,),
-                             Row(
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                                InboxDetails(_posts[index]['country_index']," ",_posts[index]['merchant_name'],_posts[index]['message_id'],_posts[index]['message_type'], _posts[index]['message_sub_type'], _posts[index]['message_send_date'], _posts[index]['message_read_status'], _posts[index]['message_title'], _posts[index]['merchant_logo'],)
+                            ));
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            color: Colors.white,
+                            child: Column(
+                              children: [
+                                SizedBox(height: 5,),
+                                Row(
                                     children:[
                                       Expanded(
                                         flex: 8,
@@ -196,12 +197,12 @@ class _InboxFragmentState extends State<InboxFragment> {
 
 
                                 ),
-                             SizedBox(height: 5,),
-                             Container(height: 1,width: double.infinity,decoration: BoxDecoration(color: Colors.black26),)
-                           ],
-                         ),
-                       ),
-                     ),
+                                SizedBox(height: 5,),
+                                Container(height: 1,width: double.infinity,decoration: BoxDecoration(color: Colors.black26),)
+                              ],
+                            ),
+                          ),
+                        ),
                   ),
                 ),
               ),

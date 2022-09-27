@@ -48,6 +48,42 @@ void showAlertDialog_oneBtn(BuildContext context,String tittle,String message)
 }
 
 
+void showAlertDialogoneBtn_lc(BuildContext context,String tittle)
+{
+  AlertDialog alert = AlertDialog(
+
+    backgroundColor: Colors.white,
+    title: Text(tittle,style: TextStyle(color:Colors.grey,fontSize: 14)),
+    // content: CircularProgressIndicator(),
+
+    actions: [
+      GestureDetector(
+        onTap: (){Navigator.pop(context,true);},
+        child: Align(
+          alignment: Alignment.centerRight,
+          child: Container(
+            height: 35,
+            width: 100,
+            color: Colors.white,
+            child:Center(child: Text(ok,style: TextStyle(color: corporateColor),)),
+          ),
+        ),
+      ),
+    ],
+  );
+  showDialog(
+
+    barrierDismissible: false,
+    context: context,
+    builder: (BuildContext context) {
+      return BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 6,sigmaY: 6),
+        child: alert,
+      );
+    },
+  );
+}
+
 void showRewardsDeliveryDialog(BuildContext context,var data){
   data=jsonDecode(data);
   debugPrint("DEDUCT:"+data['DEDUCT']);
