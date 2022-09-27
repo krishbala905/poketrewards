@@ -5,7 +5,7 @@ import 'package:poketrewards/Others/AlertDialogUtil.dart';
 import 'package:poketrewards/Others/Urls.dart';
 import 'package:poketrewards/Others/Utils.dart';
 import 'package:poketrewards/UI/ForgotPassword.dart';
-import 'package:poketrewards/UI/LanguageActivity.dart';
+import 'package:poketrewards/UI/More/LanguageActivity.dart';
 import 'package:poketrewards/UI/Onboarding.dart';
 import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Strings.dart';

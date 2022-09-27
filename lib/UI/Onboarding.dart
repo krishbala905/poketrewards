@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:poketrewards/UI/Login.dart';
 import 'package:poketrewards/UI/SignupScreen.dart';
-import 'package:poketrewards/UI/LanguageActivity.dart';
+import 'package:poketrewards/UI/More/LanguageActivity.dart';
 import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
 import 'package:url_launcher/url_launcher.dart';

@@ -5,7 +5,7 @@ import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:poketrewards/Others/AlertDialogUtil.dart';
 import 'package:poketrewards/Others/CommonUtils.dart';
 import 'package:poketrewards/Others/Urls.dart';
-import 'package:poketrewards/UI/LanguageActivity.dart';
+import 'package:poketrewards/UI/More/LanguageActivity.dart';
 import 'package:poketrewards/UI/More/ChangePassword.dart';
 import 'package:poketrewards/UI/More/History.dart';
 import 'package:poketrewards/UI/More/Privacy.dart';

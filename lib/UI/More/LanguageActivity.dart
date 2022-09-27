@@ -12,8 +12,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../generated/l10n.dart';
 
-
-
 enum language{english,japanese,Czech,Spanish}
 class LanguageActivity extends StatefulWidget {
   const LanguageActivity({Key? key}) : super(key: key);
@@ -161,8 +159,6 @@ language _site = language.english;
               SharedPreferences pre=await SharedPreferences.getInstance();
               pre.setString("ApplicationLanguageId", CommonUtils.APPLICATIONLANGUAGEID.toString());
               print("langId2:"+CommonUtils.APPLICATIONLANGUAGEID.toString());
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => SplashScreen(),));
             },
             child: Padding(
               padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),

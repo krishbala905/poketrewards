@@ -7,7 +7,7 @@ import 'package:poketrewards/Others/LanguageChangeProvider.dart';
 import 'package:poketrewards/UI/SplashScreen.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart' show Firebase;
-import 'package:poketrewards/UI/LanguageActivity.dart';
+import 'package:poketrewards/UI/More/LanguageActivity.dart';
 import 'package:poketrewards/UI/Onboarding.dart';
 import 'package:poketrewards/UI/ConsumerTab.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

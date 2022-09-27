@@ -6,6 +6,8 @@ import 'package:poketrewards/res/Colors.dart';
 import 'package:poketrewards/UI/Add/MyQrSegment.dart';
 import 'package:poketrewards/UI/Add/SearchSegment.dart';
 
+import 'MyScanSegment.dart';
+
 
 
 class AddFragment extends StatefulWidget {
@@ -49,7 +51,7 @@ class _AddFragmentState extends State<AddFragment> {
         body: TabBarView(
           children: [
             MyQrSegment(),
-            MyQrSegment(),
+            MyScanSegment(),
           SearchSegment(),
             PersonalSegment()
 
