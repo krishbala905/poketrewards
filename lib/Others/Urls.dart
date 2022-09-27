@@ -28,3 +28,5 @@ const CHANGEPASSWORD_URL="$BaseUrl${SERVER_SUB_HEADER}NewUiConsumerChangePasswor
 const SignupUrl="$BaseUrl${SERVER_SUB_HEADER}NewUiConsumerSignUpCmd";
 const PROFILE_URL_GET="$BaseUrl${SERVER_SUB_HEADER}NewUiConsumerProfileCmdV1";
 const SUBSCRIBE_LOG_URL = "https://brands.poket.com/web/HomeNewVersion3/NewUiCMAEmailSubscriptionCmd";
+const  ADD_CUSTOM_DOCUMENT_URL=  "https://poketiosapi.poket.com/main/newapi/NewUiPoketAddCustomDocument";
+const ADD_CUSTOM_CARD_URL = "https://poketiosapi.poket.com/main/newapi/NewUiPoketAddCustomCard";

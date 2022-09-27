@@ -107,11 +107,12 @@ import 'package:poketrewards/Others/Urls.dart';
      if(response.statusCode==200 && jsonDecode(response.body)["Status"]=="True") {
        print("Search:"+response.body.toString());
        List<dynamic> body = jsonDecode(response.body)["data"]["Cards"];
-       List<ECardModel> posts1 = body.map((dynamic item) => ECardModel.fromJson(item),).toList();
+       List<ECardModel> Cards = body.map((dynamic item) => ECardModel.fromJson(item),).toList();
+       List<dynamic> body2 = jsonDecode(response.body)["data"]["Vouchers"];
+       List<ECardModel> Vouchers = body2.map((dynamic item) => ECardModel.fromJson(item),).toList();
 
 
-
- Navigator.push(context, MaterialPageRoute(builder: (context) => SearchResultVc(Cards: posts1, SearchTxt: SearchTxt.text.toString())));
+ Navigator.push(context, MaterialPageRoute(builder: (context) => SearchResultVc(Cards: Cards, SearchTxt: SearchTxt.text.toString(), Vocuher: Vouchers,)));
 
 
      }

@@ -291,7 +291,50 @@ void gotoAppstore(BuildContext context){
   );
 }
 
+void showAlertDialog_oneBtnWitDismiss(BuildContext context,String tittle,String message)
+{
+  AlertDialog alert = AlertDialog(
+    backgroundColor: Colors.white,
+    title: Text(tittle),
+    // content: CircularProgressIndicator(),
+    content: Text(message,style: TextStyle(color: Colors.black45)),
+    actions: [
+      GestureDetector(
+        onTap: (){Navigator.pop(context,true);
 
+        },
+        child: Align(
+          alignment: Alignment.centerRight,
+          child: Container(
+            height: 35,
+            width: 100,
+            color: Colors.white,
+            child:Center(child: Text(ok,style: TextStyle(color: corporateColor),)),
+          ),
+        ),
+      ),
+    ],
+  );
+
+  showDialog(
+    barrierDismissible: false,
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  ).then((exit){
+    if (exit == null) return;
+
+    if (exit) {
+      // back to previous screen
+
+      Navigator.pop(context);
+    } else {
+      // user pressed No button
+    }
+  });
+
+}
 void showLoadingView(BuildContext context){
 AlertDialog   alert = AlertDialog(
     backgroundColor: Colors.white,

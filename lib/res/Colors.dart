@@ -18,6 +18,7 @@ const  lightGrey      = Color(0xFFAEAEAE);
 const  lightGrey2     = Color(0xFFEAEAEA);
 const  lightGrey3     = Color(0xFFF3F3F3);
 const  poketPurple    = Color(0xFF6A1A41);
+const DarkGrey = Color(0xFF424242);
 
 // const  PoketMaincolo   = Color(0xFF00ADA7);
 const PoketNormalGreen = Color(0xFF39b2a9);

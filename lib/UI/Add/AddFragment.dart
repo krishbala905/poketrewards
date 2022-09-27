@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:poketrewards/UI/Add/Personal/PersonalSegment.dart';
 //import 'package:poketrewards/generated/l10n.dart';
 import 'package:poketrewards/res/Colors.dart';
 import 'package:poketrewards/UI/Add/MyQrSegment.dart';
 import 'package:poketrewards/UI/Add/SearchSegment.dart';
+
 
 
 class AddFragment extends StatefulWidget {
@@ -34,10 +36,10 @@ class _AddFragmentState extends State<AddFragment> {
 
 
               tabs: [
-                Tab(child: Text('My QR',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13 ),),),
-                Tab(child: Text('SCAN',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13),),),
-                Tab(child: Text('SEARCH',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13 ),),),
-                Tab(child: Text('PERSONAL',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13),),),
+                Tab(child: Text('My QR',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10 ),),),
+                Tab(child: Text('SCAN',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10),),),
+                Tab(child: Text('SEARCH',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10 ),),),
+                Tab(child: Text('PERSONAL',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10),),),
 
 
               ],
@@ -49,7 +51,7 @@ class _AddFragmentState extends State<AddFragment> {
             MyQrSegment(),
             MyQrSegment(),
           SearchSegment(),
-            MyQrSegment(),
+            PersonalSegment()
 
 
           ],

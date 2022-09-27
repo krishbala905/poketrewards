@@ -17,20 +17,21 @@ class SearchResultVc extends StatefulWidget {
 final String SearchTxt;
 
  final List<ECardModel> Cards;
-
-  const SearchResultVc({Key? key,required this.Cards,required this.SearchTxt}) : super(key: key);
+final List<ECardModel> Vocuher;
+  const SearchResultVc({Key? key,required this.Cards,required this.SearchTxt,required this.Vocuher}) : super(key: key);
 
 
   @override
-  State<SearchResultVc> createState() => _SearchResultVcState(Cards,SearchTxt);
+  State<SearchResultVc> createState() => _SearchResultVcState(Cards,SearchTxt,Vocuher);
 
 }
 
 class _SearchResultVcState extends State<SearchResultVc> {
 var SearchTxt = "";
 List<ECardModel>Cards;
+List<ECardModel>Vocuher;
 
-  _SearchResultVcState(this.Cards,this.SearchTxt);
+  _SearchResultVcState(this.Cards,this.SearchTxt,this.Vocuher);
 
 
 
@@ -40,10 +41,14 @@ List<ECardModel>Cards;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(SearchTxt,style: TextStyle(
+      appBar: AppBar(
 
-      ),),),
-      backgroundColor: corporateColor,
+        title: Text(SearchTxt,style: TextStyle(
+
+      ),),
+        backgroundColor: corporateColor
+        ,),
+
 
       body: new DefaultTabController(
         length: 2,
@@ -73,7 +78,7 @@ List<ECardModel>Cards;
             children: [
 
              CardsVc(posts: Cards),
-              VoucherVc()
+              VoucherVc(posts: Vocuher)
 
 
 

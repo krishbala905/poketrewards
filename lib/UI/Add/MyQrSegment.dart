@@ -55,7 +55,9 @@ foregroundColor: corporateColor,
             ),
             Center(
               child: ClipOval(
-                child: Image.asset('assets/ic_profile.png',width: 100,height: 100,color: corporateColor2,),
+                child: CommonUtils.consumerProfileImageUrl != "" ? Image.network(CommonUtils.consumerProfileImageUrl.toString(),width: 100,height: 100,fit: BoxFit.cover,):
+
+                Image.asset('assets/ic_profile.png',width: 100,height: 100,color: corporateColor2,),
               ),
             ),
             SizedBox(
