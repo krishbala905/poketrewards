@@ -35,6 +35,7 @@ bool statusdata = false;*/
     super.initState();
 
   }
+  // double height = 1;
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
@@ -50,6 +51,7 @@ bool statusdata = false;*/
 
   }
   FutureBuilder<List<dynamic>> _InboxDetails(BuildContext context) {
+
 
     return FutureBuilder<List<dynamic>>(
 
@@ -72,7 +74,7 @@ bool statusdata = false;*/
                 child: Column(
                   children: [
                     Container(
-                      height:MediaQuery.of(context).size.height,
+                      height: 500,
                       width: double.infinity,
                       child: WebView(
                         initialUrl: posts[0],
