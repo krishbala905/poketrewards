@@ -30,7 +30,7 @@ class _MyQrSegmentState extends State<MyQrSegment> {
       version: QrVersions.auto,
       size: 250,
       gapless: false,
-foregroundColor: corporateColor,
+      foregroundColor: corporateColor,
       errorStateBuilder: (cxt, err) {
         return Container(
           child: Center(
